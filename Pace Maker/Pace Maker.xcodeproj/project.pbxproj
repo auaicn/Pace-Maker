@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C6261EE8A40073029F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C5261EE8A40073029F /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18252B6D261EFE53001A76DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18252B70261EFE79001A76DC /* Route.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18252B6E261EFE5C001A76DC /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				188126C5261EE8A40073029F /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		18252B6F261EFE62001A76DC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				188126C7261EE8A40073029F /* Main.storyboard */,
+				188126CC261EE8A70073029F /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		18252B73261EFEC3001A76DC /* Supported Files */ = {
+			isa = PBXGroup;
+			children = (
+				188126C1261EE8A40073029F /* AppDelegate.swift */,
+				188126C3261EE8A40073029F /* SceneDelegate.swift */,
+				188126CF261EE8A70073029F /* Info.plist */,
+			);
+			path = "Supported Files";
+			sourceTree = "<group>";
+		};
 		188126B5261EE8A40073029F = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +93,11 @@
 		188126C0261EE8A40073029F /* Pace Maker */ = {
 			isa = PBXGroup;
 			children = (
-				188126C1261EE8A40073029F /* AppDelegate.swift */,
-				188126C3261EE8A40073029F /* SceneDelegate.swift */,
-				188126C5261EE8A40073029F /* ViewController.swift */,
-				188126C7261EE8A40073029F /* Main.storyboard */,
+				18252B73261EFEC3001A76DC /* Supported Files */,
+				18252B6F261EFE62001A76DC /* UI */,
+				18252B6E261EFE5C001A76DC /* ViewController */,
+				18252B6D261EFE53001A76DC /* Model */,
 				188126CA261EE8A70073029F /* Assets.xcassets */,
-				188126CC261EE8A70073029F /* LaunchScreen.storyboard */,
-				188126CF261EE8A70073029F /* Info.plist */,
 			);
 			path = "Pace Maker";
 			sourceTree = "<group>";
@@ -138,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				188126C6261EE8A40073029F /* ViewController.swift in Sources */,
+				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 			);
