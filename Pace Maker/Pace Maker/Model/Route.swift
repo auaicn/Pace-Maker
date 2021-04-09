@@ -8,6 +8,6 @@
 import Foundation
 
 struct Route{
-    var distance : UInt
-    var timeSpentInSeconds : UInt
+    var distance : String
+    var timeSpentInSeconds : String
 }
