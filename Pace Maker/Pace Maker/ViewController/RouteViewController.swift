@@ -8,13 +8,14 @@
 import UIKit
 
 class RouteViewController: UIViewController {
-    var routeData : Route!
+    
+    var routeData : Route = Route(distance: "distance", timeSpentInSeconds: "time")
+    
     @IBOutlet weak var distanceLabel : UILabel!
     @IBOutlet weak var timeLabel : UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     

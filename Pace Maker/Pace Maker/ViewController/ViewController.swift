@@ -17,10 +17,8 @@ class ViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? RouteViewController {
-            let sendDistance = sendDistanceLabel.text
-            let sendTime = sendTimeLabel.text
-            vc.routeData.distance = sendDistance!
-            vc.routeData.timeSpentInSeconds = sendTime!
+            vc.routeData.distance = sendDistanceLabel.text!
+            vc.routeData.timeSpentInSeconds = sendTimeLabel.text!
         }
     }
 }
