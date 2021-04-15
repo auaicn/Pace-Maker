@@ -188,11 +188,11 @@
             </objects>
             <point key="canvasLocation" x="826" y="1568"/>
         </scene>
-        <!--Item-->
+        <!--yeonji-->
         <scene sceneID="5XE-LX-AyV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0ll-6L-7PE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="lLM-6s-0GG"/>
+                    <tabBarItem key="tabBarItem" title="yeonji" image="folder" catalog="system" id="lLM-6s-0GG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rdf-GL-vWm">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -228,6 +228,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="folder" catalog="system" width="128" height="97"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="shadow" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
