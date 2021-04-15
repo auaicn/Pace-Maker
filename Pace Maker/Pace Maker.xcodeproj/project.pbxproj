@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1815200A26203F570061F7A9 /* KyungHoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1815200926203F570061F7A9 /* KyungHoTableViewController.swift */; };
 		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
 		1825E8AD26203CF000B0F550 /* sungjoon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8AC26203CF000B0F550 /* sungjoon.storyboard */; };
 		1825E8B026203D0700B0F550 /* yeonji.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8AF26203D0700B0F550 /* yeonji.storyboard */; };
 		1825E8B326203D1200B0F550 /* kyungho.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8B226203D1200B0F550 /* kyungho.storyboard */; };
+		1829196B26275F1400EE6A50 /* KTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829196A26275F1400EE6A50 /* KTableViewController.swift */; };
+		182919732627628C00EE6A50 /* KDetailedTableCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */; };
+		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C6261EE8A40073029F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C5261EE8A40073029F /* ViewController.swift */; };
@@ -22,11 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1815200926203F570061F7A9 /* KyungHoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KyungHoTableViewController.swift; sourceTree = "<group>"; };
 		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1825E8AC26203CF000B0F550 /* sungjoon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = sungjoon.storyboard; sourceTree = "<group>"; };
 		1825E8AF26203D0700B0F550 /* yeonji.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = yeonji.storyboard; sourceTree = "<group>"; };
 		1825E8B226203D1200B0F550 /* kyungho.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = kyungho.storyboard; sourceTree = "<group>"; };
+		1829196A26275F1400EE6A50 /* KTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTableViewController.swift; sourceTree = "<group>"; };
+		182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailedTableCellViewController.swift; sourceTree = "<group>"; };
+		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +66,8 @@
 			children = (
 				188126C5261EE8A40073029F /* ViewController.swift */,
 				18E30AAB261F023900FBED84 /* RouteViewController.swift */,
-				1815200926203F570061F7A9 /* KyungHoTableViewController.swift */,
+				1829196A26275F1400EE6A50 /* KTableViewController.swift */,
+				182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -89,6 +94,14 @@
 			path = "Supported Files";
 			sourceTree = "<group>";
 		};
+		182919752627679E00EE6A50 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		188126B5261EE8A40073029F = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +121,7 @@
 		188126C0261EE8A40073029F /* Pace Maker */ = {
 			isa = PBXGroup;
 			children = (
+				182919752627679E00EE6A50 /* Fonts */,
 				18252B73261EFEC3001A76DC /* Supported Files */,
 				18252B6F261EFE62001A76DC /* UI */,
 				18252B6E261EFE5C001A76DC /* ViewController */,
@@ -174,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */,
 				188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */,
 				1825E8AD26203CF000B0F550 /* sungjoon.storyboard in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
@@ -190,12 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182919732627628C00EE6A50 /* KDetailedTableCellViewController.swift in Sources */,
 				188126C6261EE8A40073029F /* ViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				18E30AAC261F023900FBED84 /* RouteViewController.swift in Sources */,
-				1815200A26203F570061F7A9 /* KyungHoTableViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
+				1829196B26275F1400EE6A50 /* KTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
