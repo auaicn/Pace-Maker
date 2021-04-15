@@ -21,6 +21,9 @@
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
 		18E30AAC261F023900FBED84 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E30AAB261F023900FBED84 /* RouteViewController.swift */; };
+		EDF01DF126280C730057F450 /* SungJoonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */; };
+		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
+		EDF01DF726280CD70057F450 /* SungJoonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18E30AAB261F023900FBED84 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
+		EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SungJoonTableViewController.swift; sourceTree = "<group>"; };
+		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SungJoonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,7 @@
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EDF01DF326280C880057F450 /* User.swift */,
 				18252B70261EFE79001A76DC /* Route.swift */,
 			);
 			path = Model;
@@ -64,10 +71,12 @@
 		18252B6E261EFE5C001A76DC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */,
 				188126C5261EE8A40073029F /* ViewController.swift */,
 				18E30AAB261F023900FBED84 /* RouteViewController.swift */,
 				1829196A26275F1400EE6A50 /* KTableViewController.swift */,
 				182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */,
+				EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -207,8 +216,11 @@
 			files = (
 				182919732627628C00EE6A50 /* KDetailedTableCellViewController.swift in Sources */,
 				188126C6261EE8A40073029F /* ViewController.swift in Sources */,
+				EDF01DF126280C730057F450 /* SungJoonTableViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
+				EDF01DF426280C880057F450 /* User.swift in Sources */,
+				EDF01DF726280CD70057F450 /* SungJoonDetailViewController.swift in Sources */,
 				18E30AAC261F023900FBED84 /* RouteViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				1829196B26275F1400EE6A50 /* KTableViewController.swift in Sources */,
