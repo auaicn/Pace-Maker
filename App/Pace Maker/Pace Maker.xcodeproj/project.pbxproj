@@ -7,45 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816155F263B01F0008038C5 /* TabBarViewController.swift */; };
+		18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18161563263B078D008038C5 /* LaunchingImages.xcassets */; };
+		18161567263B0CFE008038C5 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161566263B0CFE008038C5 /* Activity.storyboard */; };
+		1816156A263B0D09008038C5 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161569263B0D09008038C5 /* Social.storyboard */; };
+		1816156E263B0D59008038C5 /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1816156D263B0D59008038C5 /* Running.storyboard */; };
+		18161571263B0D89008038C5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161570263B0D89008038C5 /* Setting.storyboard */; };
+		18161574263B0D97008038C5 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161573263B0D97008038C5 /* Feed.storyboard */; };
 		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
-		1825E8AD26203CF000B0F550 /* sungjoon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8AC26203CF000B0F550 /* sungjoon.storyboard */; };
-		1825E8B026203D0700B0F550 /* yeonji.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8AF26203D0700B0F550 /* yeonji.storyboard */; };
-		1825E8B326203D1200B0F550 /* kyungho.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825E8B226203D1200B0F550 /* kyungho.storyboard */; };
-		1829196B26275F1400EE6A50 /* KTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1829196A26275F1400EE6A50 /* KTableViewController.swift */; };
-		182919732627628C00EE6A50 /* KDetailedTableCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */; };
 		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
-		188126C6261EE8A40073029F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C5261EE8A40073029F /* ViewController.swift */; };
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
-		18E30AAC261F023900FBED84 /* RouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E30AAB261F023900FBED84 /* RouteViewController.swift */; };
-		EDF01DF126280C730057F450 /* SungJoonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */; };
+		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
+		18952188263F0F720089AE77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952187263F0F720089AE77 /* HomeViewController.swift */; };
 		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
-		EDF01DF726280CD70057F450 /* SungJoonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1816155F263B01F0008038C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Pace Maker/ViewController/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18161563263B078D008038C5 /* LaunchingImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LaunchingImages.xcassets; sourceTree = "<group>"; };
+		18161566263B0CFE008038C5 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		18161569263B0D09008038C5 /* Social.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
+		1816156D263B0D59008038C5 /* Running.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Running.storyboard; sourceTree = "<group>"; };
+		18161570263B0D89008038C5 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		18161573263B0D97008038C5 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		1825E8AC26203CF000B0F550 /* sungjoon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = sungjoon.storyboard; sourceTree = "<group>"; };
-		1825E8AF26203D0700B0F550 /* yeonji.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = yeonji.storyboard; sourceTree = "<group>"; };
-		1825E8B226203D1200B0F550 /* kyungho.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = kyungho.storyboard; sourceTree = "<group>"; };
-		1829196A26275F1400EE6A50 /* KTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTableViewController.swift; sourceTree = "<group>"; };
-		182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDetailedTableCellViewController.swift; sourceTree = "<group>"; };
 		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		188126C5261EE8A40073029F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		188126C8261EE8A40073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		188126CA261EE8A70073029F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18E30AAB261F023900FBED84 /* RouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViewController.swift; sourceTree = "<group>"; };
-		EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SungJoonTableViewController.swift; sourceTree = "<group>"; };
+		18952183263F0D510089AE77 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
+		18952187263F0F720089AE77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SungJoonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,12 +71,9 @@
 		18252B6E261EFE5C001A76DC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EDF01DF026280C730057F450 /* SungJoonTableViewController.swift */,
-				188126C5261EE8A40073029F /* ViewController.swift */,
-				18E30AAB261F023900FBED84 /* RouteViewController.swift */,
-				1829196A26275F1400EE6A50 /* KTableViewController.swift */,
-				182919722627628C00EE6A50 /* KDetailedTableCellViewController.swift */,
-				EDF01DF626280CD70057F450 /* SungJoonDetailViewController.swift */,
+				1816155F263B01F0008038C5 /* TabBarViewController.swift */,
+				18952187263F0F720089AE77 /* HomeViewController.swift */,
+				18952183263F0D510089AE77 /* RunningViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -86,9 +83,11 @@
 			children = (
 				188126CC261EE8A70073029F /* LaunchScreen.storyboard */,
 				188126C7261EE8A40073029F /* Main.storyboard */,
-				1825E8AC26203CF000B0F550 /* sungjoon.storyboard */,
-				1825E8AF26203D0700B0F550 /* yeonji.storyboard */,
-				1825E8B226203D1200B0F550 /* kyungho.storyboard */,
+				18161573263B0D97008038C5 /* Feed.storyboard */,
+				18161570263B0D89008038C5 /* Setting.storyboard */,
+				1816156D263B0D59008038C5 /* Running.storyboard */,
+				18161569263B0D09008038C5 /* Social.storyboard */,
+				18161566263B0CFE008038C5 /* Activity.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -136,6 +135,7 @@
 				18252B6E261EFE5C001A76DC /* ViewController */,
 				18252B6D261EFE53001A76DC /* Model */,
 				188126CA261EE8A70073029F /* Assets.xcassets */,
+				18161563263B078D008038C5 /* LaunchingImages.xcassets */,
 			);
 			path = "Pace Maker";
 			sourceTree = "<group>";
@@ -197,12 +197,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18161574263B0D97008038C5 /* Feed.storyboard in Resources */,
+				1816156E263B0D59008038C5 /* Running.storyboard in Resources */,
 				18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */,
+				18161567263B0CFE008038C5 /* Activity.storyboard in Resources */,
 				188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */,
-				1825E8AD26203CF000B0F550 /* sungjoon.storyboard in Resources */,
+				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
+				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
+				1816156A263B0D09008038C5 /* Social.storyboard in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
-				1825E8B026203D0700B0F550 /* yeonji.storyboard in Resources */,
-				1825E8B326203D1200B0F550 /* kyungho.storyboard in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,16 +217,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182919732627628C00EE6A50 /* KDetailedTableCellViewController.swift in Sources */,
-				188126C6261EE8A40073029F /* ViewController.swift in Sources */,
-				EDF01DF126280C730057F450 /* SungJoonTableViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				EDF01DF426280C880057F450 /* User.swift in Sources */,
-				EDF01DF726280CD70057F450 /* SungJoonDetailViewController.swift in Sources */,
-				18E30AAC261F023900FBED84 /* RouteViewController.swift in Sources */,
+				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
+				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
+				18952188263F0F720089AE77 /* HomeViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
-				1829196B26275F1400EE6A50 /* KTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -399,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
