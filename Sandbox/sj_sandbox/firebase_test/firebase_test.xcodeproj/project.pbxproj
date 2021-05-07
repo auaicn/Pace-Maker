@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,7 +18,7 @@
 		ED9C0B582643E77A002418B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0B562643E77A002418B5 /* LaunchScreen.storyboard */; };
 		ED9C0B632643E77B002418B5 /* firebase_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9C0B622643E77B002418B5 /* firebase_testTests.swift */; };
 		ED9C0B6E2643E77B002418B5 /* firebase_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9C0B6D2643E77B002418B5 /* firebase_testUITests.swift */; };
-		ED9C0B7F2643E9A5002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0B7E2643E9A4002418B5 /* GoogleService-Info.plist */; };
+		ED9C0C69264513CD002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C68264513CD002418B5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		ED9C0B692643E77B002418B5 /* firebase_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = firebase_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9C0B6D2643E77B002418B5 /* firebase_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebase_testUITests.swift; sourceTree = "<group>"; };
 		ED9C0B6F2643E77B002418B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED9C0B7E2643E9A4002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ED9C0C68264513CD002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F104E73970633CC87F19392D /* Pods_firebase_testTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_firebase_testTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +128,7 @@
 		ED9C0B4A2643E776002418B5 /* firebase_test */ = {
 			isa = PBXGroup;
 			children = (
+				ED9C0C68264513CD002418B5 /* GoogleService-Info.plist */,
 				ED9C0B4B2643E776002418B5 /* AppDelegate.swift */,
 				ED9C0B4D2643E776002418B5 /* SceneDelegate.swift */,
 				ED9C0B4F2643E776002418B5 /* ViewController.swift */,
@@ -135,7 +136,6 @@
 				ED9C0B542643E77A002418B5 /* Assets.xcassets */,
 				ED9C0B562643E77A002418B5 /* LaunchScreen.storyboard */,
 				ED9C0B592643E77A002418B5 /* Info.plist */,
-				ED9C0B7E2643E9A4002418B5 /* GoogleService-Info.plist */,
 			);
 			path = firebase_test;
 			sourceTree = "<group>";
@@ -168,7 +168,6 @@
 				99B55ADB38C1D9BAC537B773 /* Pods-firebase_testTests.debug.xcconfig */,
 				1A484AB9A5C30C64A4130674 /* Pods-firebase_testTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -281,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED9C0B582643E77A002418B5 /* LaunchScreen.storyboard in Resources */,
-				ED9C0B7F2643E9A5002418B5 /* GoogleService-Info.plist in Resources */,
+				ED9C0C69264513CD002418B5 /* GoogleService-Info.plist in Resources */,
 				ED9C0B552643E77A002418B5 /* Assets.xcassets in Resources */,
 				ED9C0B532643E776002418B5 /* Main.storyboard in Resources */,
 			);
