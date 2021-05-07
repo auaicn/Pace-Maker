@@ -1,4 +1,6 @@
 PODS:
+  - Alamofire (5.4.3)
+  - CoreGPX (0.9.0)
   - Firebase/Analytics (7.11.0):
     - Firebase/Core
   - Firebase/Core (7.11.0):
@@ -98,12 +100,16 @@ PODS:
   - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - CoreGPX
   - Firebase/Analytics
   - Firebase/Database
   - Firebase/Storage
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - CoreGPX
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -120,6 +126,8 @@ SPEC REPOS:
     - PromisesObjC
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
   Firebase: c121feb35e4126c0b355e3313fa9b487d47319fd
   FirebaseAnalytics: cd3bd84d722a24a8923918af8af8e5236f615d77
   FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
@@ -135,6 +143,6 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 10de71c0449e02492a5b201119ad72664a40838f
+PODFILE CHECKSUM: 1a103265649716475102676e69cf605bbbbf4ffc
 
 COCOAPODS: 1.10.1
