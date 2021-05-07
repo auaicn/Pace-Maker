@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (5.4.3)
+  - CoreGPX (0.9.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - CoreGPX
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CoreGPX
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  CoreGPX: 1381c8c47428c3a6bcac2f93d25ca1c5e3525811
+
+PODFILE CHECKSUM: ef6c0a77a048bbf213167955bdcd54bab4657580
+
+COCOAPODS: 1.10.1
