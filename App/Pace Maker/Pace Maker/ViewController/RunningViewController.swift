@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreGPX
 
 class RunningViewController: UIViewController{
     @IBOutlet weak var mapView: MKMapView!
@@ -27,19 +28,24 @@ class RunningViewController: UIViewController{
     var isTrackingStarted: Bool = false
     let regionMeters: Double = 1000
     let format = DateFormatter()
+
+    // Core GPX
+    let root = GPXRoot(creator: APP_NAME) // insert your app name here
     
     @IBOutlet weak var currentLocationLabel: UILabel!
     
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // This level of accurate is available only if isAuthorizedForPreciseLocation is true.
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = .zero
     }
     
     func centerViewOnUserLocation() {
         if let location = locationManager.location?.coordinate{
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionMeters, longitudinalMeters: regionMeters)
             mapView.setRegion(region, animated: true)
+        }else {
+            print("locationManager's location not loaded")
         }
     }
     
@@ -47,7 +53,7 @@ class RunningViewController: UIViewController{
     
     /// 앱별로 위치정보 사용동의 값이 다를 수 있는데, 확인하고 각자 필요한 후처리를 해주는 함수.
     func checkLocationAuthrization() {
-        print("location usage permisson - \(locationManager.authorizationStatus.rawValue)")
+        print("Checking Location Usage Permission")
         switch locationManager.authorizationStatus {
             case .authorizedWhenInUse: // foreground 에서만 location 정보가 필요한 경우
                 // Do Map Stuff
@@ -75,11 +81,13 @@ class RunningViewController: UIViewController{
         }
     }
     
+    /// start updating user location & device dependent heading
+    /// startUpdatingLocation 는 내부적으로 locationManagerdidUpdateHeading 를 부릅니다.
     func startTrackingUserLocation(){
-        centerViewOnUserLocation()
         locationManager.startUpdatingLocation()
-        locationManager.startUpdatingHeading()
-        previousLocation = getCenterLocation(for: mapView)
+        if CLLocationManager.headingAvailable(){
+            locationManager.startUpdatingHeading()  // device dependent
+        }
     }
     
     /// device-wide 하게 위치 정보 사용이 켜져있는지 먼저 확인한다
@@ -104,21 +112,58 @@ class RunningViewController: UIViewController{
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
+    
+    let locationLoadedForFirstTime:Bool = false
 }
 
 extension RunningViewController :CLLocationManagerDelegate{
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return } // locations 에 아무것도 반환되지 않은경우, 아무일도 하지 않는다.
+        guard let location = locations.last else { return }
+        if previousLocation == nil {
+            previousLocation = location
+            centerViewOnUserLocation()
+            updateLocationLookup(with: location)
+        }
         
-        // 10초마다 였으면 조헥ㅆ다
+        let timeElapsedFromLastUpdate = location.timestamp.timeIntervalSince(previousLocation!.timestamp)
+        if timeElapsedFromLastUpdate < MINUMUM_UPDATE_PERIOD { return }
+        print("location updated. elasped time",timeElapsedFromLastUpdate)
         
+        // Update UI Labels
+        updateLocationLookup(with: location)
+        
+        // Core GPX
+        var trackpoints = [GPXTrackPoint]()
+        
+        let yourLatitudeHere: CLLocationDegrees = 1.3521
+        let yourLongitudeHere: CLLocationDegrees = 103.8198
+        let yourElevationValue: Double = 10.724
+        
+        let trackpoint = GPXTrackPoint(latitude: yourLatitudeHere, longitude: yourLongitudeHere)
+        trackpoint.elevation = yourElevationValue
+        trackpoint.time = Date() // set time to current date
+        trackpoints.append(trackpoint)
+        
+        let track = GPXTrack()                          // inits a track
+        let tracksegment = GPXTrackSegment()            // inits a tracksegment
+        tracksegment.add(trackpoints: trackpoints)      // adds an array of trackpoints to a track segment
+        track.add(trackSegment: tracksegment)           // adds a track segment to a track
+        root.add(track: track)                          // adds a track
+        
+//        print(root.gpx())
+        
+
+        previousLocation = location
+    }
+    
+    func updateLocationLookup(with location:CLLocation) -> Void {
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionMeters, longitudinalMeters: regionMeters)
         mapView.setRegion(region, animated: true)
         let locationDescription = "lati : \(String(format: "%3.8f",location.coordinate.latitude))\nlong: \(String(format: "%3.8f",location.coordinate.longitude))"
-        print(locationDescription)
-
+        
         // UI labels
         coordinateLabel.text = locationDescription
         altitudeLabel.text = String(format: "%3.8f",location.altitude)
@@ -128,14 +173,13 @@ extension RunningViewController :CLLocationManagerDelegate{
         speedAccuracyLabel.text = String(location.speedAccuracy)
         courseAccuracyLabel.text = String(location.courseAccuracy)
         timeStampLabel.text = String(format.string(from: location.timestamp))
-
         // calculated UI Labels
         let distance = location.distance(from: previousLocation!)
-        print("distance", distance)
-        print("distance", String(distance))
         movedDistanceLabel.text = String(distance)
-
-        previousLocation = location
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("failed to retrieve location")
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -170,7 +214,7 @@ extension RunningViewController: MKMapViewDelegate{
                 return
             }
             
-            let streetNumber = placemark.subThoroughfare
+//            let streetNumber = placemark.subThoroughfare
 //            let streetNumber = placemark.subThoroughfare
             self.currentLocationLabel.text = placemark.name
             
