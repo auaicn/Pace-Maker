@@ -24,7 +24,6 @@
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
 		18952188263F0F720089AE77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952187263F0F720089AE77 /* HomeViewController.swift */; };
-		D3FCDD631DFD592E770A750C /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFF230EC7419413012F2866 /* Pods_Pace_Maker.framework */; };
 		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +47,7 @@
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18952183263F0D510089AE77 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		18952187263F0F720089AE77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		2081D6066B8A825042F40B6B /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
-		3BA2A29CD10E740459E2D6E1 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
-		DAFF230EC7419413012F2866 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3FCDD631DFD592E770A750C /* Pods_Pace_Maker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +102,7 @@
 				188126C1261EE8A40073029F /* AppDelegate.swift */,
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
 				188126CF261EE8A70073029F /* Info.plist */,
+				ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -123,8 +120,7 @@
 			children = (
 				188126C0261EE8A40073029F /* Pace Maker */,
 				188126BF261EE8A40073029F /* Products */,
-				7AB501AB8B9FCBCF35069904 /* Pods */,
-				B8C505223BAC328A2BAB1266 /* Frameworks */,
+
 			);
 			sourceTree = "<group>";
 		};
@@ -150,21 +146,6 @@
 			path = "Pace Maker";
 			sourceTree = "<group>";
 		};
-		7AB501AB8B9FCBCF35069904 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3BA2A29CD10E740459E2D6E1 /* Pods-Pace Maker.debug.xcconfig */,
-				2081D6066B8A825042F40B6B /* Pods-Pace Maker.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		B8C505223BAC328A2BAB1266 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DAFF230EC7419413012F2866 /* Pods_Pace_Maker.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,11 +155,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188126D2261EE8A70073029F /* Build configuration list for PBXNativeTarget "Pace Maker" */;
 			buildPhases = (
-				3240991EAE7B8BCEA24D2B67 /* [CP] Check Pods Manifest.lock */,
-				188126BA261EE8A40073029F /* Sources */,
-				188126BB261EE8A40073029F /* Frameworks */,
-				188126BC261EE8A40073029F /* Resources */,
-				B76B33887AC086C7ECACBE70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,6 +210,7 @@
 				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
 				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
 				1816156A263B0D09008038C5 /* Social.storyboard in Resources */,
+				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
 			);
@@ -242,7 +219,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3240991EAE7B8BCEA24D2B67 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -264,7 +240,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B76B33887AC086C7ECACBE70 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,7 +414,7 @@
 		};
 		188126D3261EE8A70073029F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BA2A29CD10E740459E2D6E1 /* Pods-Pace Maker.debug.xcconfig */;
+
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -459,7 +434,6 @@
 		};
 		188126D4261EE8A70073029F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2081D6066B8A825042F40B6B /* Pods-Pace Maker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

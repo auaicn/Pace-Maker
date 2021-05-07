@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Pace Maker
+//  firebase_test
 //
-//  Created by Kyungho on 2021/04/08.
+//  Created by 성준오 on 2021/05/06.
 //
 
 import UIKit
@@ -13,12 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
         FirebaseApp.configure()
         return true
     }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
