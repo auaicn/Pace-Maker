@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import CoreGPX
+import Firebase
 
 class RunningViewController: UIViewController{
     @IBOutlet weak var mapView: MKMapView!
@@ -27,13 +29,65 @@ class RunningViewController: UIViewController{
     var isTrackingStarted: Bool = false
     let regionMeters: Double = 1000
     let format = DateFormatter()
+    let fileNameFormat = DateFormatter()
     
-    @IBOutlet weak var currentLocationLabel: UILabel!
+    var root = GPXRoot(creator: "Pace Maker") // insert your app name here
+    var trackpoints = [GPXTrackPoint]()
+    
+    let storage = Storage.storage()
+    
+    func uploadGPX(with prefix: String){
+        // filepath to upload
+        let gpxFormatSuffix :String = ".gpx"
+        let fileName = String(fileNameFormat.string(from: Date()))
+        let filePath = prefix + fileName + gpxFormatSuffix
+        // metadata
+        let metaData = StorageMetadata()
+        metaData.contentType = "xml"
+        
+        // encdoing using utf-8
+        let data: Data? = root.gpx().data(using: .utf8)
+        guard let dataToPut = data else {return}
+        storage.reference().child(filePath).putData(dataToPut,metadata: metaData){
+            (metaData,error) in if let error = error{
+                print(error.localizedDescription)
+                return
+            }else{
+                print("성공")
+            }
+        }
+        
+    }
+    
+    var touched : Bool = false;
+    @IBAction func buttonTouched(_ sender: Any) {
+        touched = !touched
+        if touched == true {
+            button.setTitle("중지", for: .normal)
+            locationManager.startUpdatingLocation()
+            locationManager.startUpdatingHeading()
+        }else {
+            button.setTitle("시작", for: .normal)
+            locationManager.stopUpdatingHeading()
+            locationManager.stopUpdatingLocation()
+            
+            let track = GPXTrack()                          // inits a track
+            let tracksegment = GPXTrackSegment()            // inits a tracksegment
+            tracksegment.add(trackpoints: trackpoints)      // adds an array of trackpoints to a track segment
+            track.add(trackSegment: tracksegment)           // adds a track segment to a track
+            root.add(track: track)                          // adds a track
+            
+            uploadGPX(with: "routes/")
+            
+            root = GPXRoot(creator: "Pace Maker")
+        }
+    }
+    @IBOutlet weak var button: UIButton!
     
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // This level of accurate is available only if isAuthorizedForPreciseLocation is true.
-        locationManager.distanceFilter = 10
+        locationManager.distanceFilter = .zero
     }
     
     func centerViewOnUserLocation() {
@@ -77,8 +131,6 @@ class RunningViewController: UIViewController{
     
     func startTrackingUserLocation(){
         centerViewOnUserLocation()
-        locationManager.startUpdatingLocation()
-        locationManager.startUpdatingHeading()
         previousLocation = getCenterLocation(for: mapView)
     }
     
@@ -97,6 +149,7 @@ class RunningViewController: UIViewController{
         mapView.showsUserLocation = false
         checkLocationServices()
         format.dateFormat = "MM / dd HH : mm : ss"
+        fileNameFormat.dateFormat = "MMdd-HHmmssHH"
     }
     
     func getCenterLocation(for mapView:MKMapView) -> CLLocation {
@@ -111,13 +164,18 @@ extension RunningViewController :CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return } // locations 에 아무것도 반환되지 않은경우, 아무일도 하지 않는다.
         
-        // 10초마다 였으면 조헥ㅆ다
+        let coordinate = location.coordinate
+        let trackpoint = GPXTrackPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        trackpoint.elevation = location.altitude
+        trackpoint.time = Date()
         
+        trackpoints.append(trackpoint)
+        
+        // 10초마다 였으면 조헥ㅆ다
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionMeters, longitudinalMeters: regionMeters)
         mapView.setRegion(region, animated: true)
         let locationDescription = "lati : \(String(format: "%3.8f",location.coordinate.latitude))\nlong: \(String(format: "%3.8f",location.coordinate.longitude))"
-        print(locationDescription)
 
         // UI labels
         coordinateLabel.text = locationDescription
@@ -131,8 +189,8 @@ extension RunningViewController :CLLocationManagerDelegate{
 
         // calculated UI Labels
         let distance = location.distance(from: previousLocation!)
-        print("distance", distance)
-        print("distance", String(distance))
+//        print("distance", distance)
+//        print("distance", String(distance))
         movedDistanceLabel.text = String(distance)
 
         previousLocation = location
@@ -171,11 +229,8 @@ extension RunningViewController: MKMapViewDelegate{
             }
             
             let streetNumber = placemark.subThoroughfare
-//            let streetNumber = placemark.subThoroughfare
-            self.currentLocationLabel.text = placemark.name
             
         }
-//        geoCoder.reverseGeocodeLocation(center, completionHandler: g)
         
     }
 }

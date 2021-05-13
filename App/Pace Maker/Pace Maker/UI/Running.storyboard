@@ -49,19 +49,22 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZ6-eQ-yO2">
                                         <rect key="frame" x="0.0" y="350" width="398" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="현 위치" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki6-4E-n7M" userLabel="위치">
-                                                <rect key="frame" x="8" y="0.0" width="382" height="44"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rar-MQ-q8r">
+                                                <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="PJK-mj-csr"/>
+                                                </constraints>
+                                                <state key="normal" title="시작 / 중지">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="buttonTouched:" destination="vbU-my-xwV" eventType="touchUpInside" id="cUh-MC-g2q"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" name="AppColor-3"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Ki6-4E-n7M" secondAttribute="trailing" constant="8" id="2hi-QX-Oer"/>
                                             <constraint firstAttribute="height" constant="44" id="9LE-77-HNp"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ki6-4E-n7M" secondAttribute="bottom" id="C5I-dt-OLI"/>
-                                            <constraint firstItem="Ki6-4E-n7M" firstAttribute="leading" secondItem="PZ6-eQ-yO2" secondAttribute="leading" constant="8" id="MVF-mT-3Ip"/>
-                                            <constraint firstItem="Ki6-4E-n7M" firstAttribute="top" secondItem="PZ6-eQ-yO2" secondAttribute="top" id="O7x-NJ-KLd"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="De9-1Q-yra" userLabel="start">
@@ -285,9 +288,9 @@
                     <navigationItem key="navigationItem" title="Running" id="2ad-BX-vPA"/>
                     <connections>
                         <outlet property="altitudeLabel" destination="uyZ-gV-hfU" id="Ia9-Gv-2yy"/>
+                        <outlet property="button" destination="Rar-MQ-q8r" id="xbL-3z-FlR"/>
                         <outlet property="coordinateLabel" destination="gl8-QZ-SxA" id="nOK-sn-ZKz"/>
                         <outlet property="courseAccuracyLabel" destination="2qQ-Im-dH1" id="qqo-nT-Hgj"/>
-                        <outlet property="currentLocationLabel" destination="Ki6-4E-n7M" id="KAO-EX-Wk7"/>
                         <outlet property="floorLabel" destination="99S-XR-yBV" id="cs2-uP-GrT"/>
                         <outlet property="horizontalAccuracyLabel" destination="jKN-5s-EcQ" id="0iD-pB-MkO"/>
                         <outlet property="mapView" destination="9gw-M7-mEr" id="htT-vH-Cwu"/>
