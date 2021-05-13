@@ -1,12 +1,28 @@
 //
-//  collectionHeader.swift
+//  CollectionHeader.swift
 //  Pace Maker
 //
-//  Created by 전연지 on 2021/05/08.
+//  Created by 전연지 on 2021/05/14.
 //
 
 import UIKit
 
-class collectionHeader: UICollectionReusableView {
+class CollectionHeader: UICollectionReusableView {
         
+    @IBOutlet weak var editProfileButton: UIButton!
+    
+    func viewDidLoad() {
+        editProfileButton.layer.borderColor = UIColor.gray.cgColor
+        editProfileButton.layer.borderWidth = 1
+        editProfileButton.layer.cornerRadius = 8
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.white
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
