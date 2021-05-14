@@ -104,26 +104,45 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //            return header!
 //    }
     
-    func collectionView(_ collectionView: UICollectionView,
-                                 viewForSupplementaryElementOfKind kind: String,
-                                 at indexPath: IndexPath) -> UICollectionReusableView {
-      // 1
-      switch kind {
-      // 2
-      case UICollectionView.elementKindSectionHeader:
-        // 3
-        guard
-          let headerView = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: "FeedCollectionHeader",
-            for: indexPath) as? CollectionHeader
-          else {
-            fatalError("Invalid view type")
+//    func collectionView(_ collectionView: UICollectionView,
+//                                 viewForSupplementaryElementOfKind kind: String,
+//                                 at indexPath: IndexPath) -> UICollectionReusableView {
+//      // 1
+//      switch kind {
+//      // 2
+//      case UICollectionView.elementKindSectionHeader:
+//        // 3
+//        guard
+//          let headerView = collectionView.dequeueReusableSupplementaryView(
+//            ofKind: kind,
+//            withReuseIdentifier: "FeedCollectionHeader",
+//            for: indexPath) as? CollectionHeader
+//          else {
+//            fatalError("Invalid view type")
+//        }
+//        return headerView
+//      default:
+//        // 4
+//        assert(false, "Invalid element type")
+//      }
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+            case UICollectionView.elementKindSectionHeader:
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath)
+                return headerView
+        default:
+            assert(false, "Error")
+            
         }
-        return headerView
-      default:
-        // 4
-        assert(false, "Invalid element type")
-      }
+        
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let width: CGFloat = collectionView.frame.width
+        let height: CGFloat = 20
+        return CGSize(width: width, height: height)
+    }
+
 }
