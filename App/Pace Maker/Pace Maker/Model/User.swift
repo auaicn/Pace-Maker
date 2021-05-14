@@ -7,6 +7,8 @@
 
 import Foundation
 
+let loginedUserId = 1
+
 struct User {
     var name: String
     var id: String
