@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sbo-hA-gjk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o0f-F1-F62">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -19,6 +19,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ml-k2-qDk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1423" y="735"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9lL-7K-3D1">
+            <objects>
+                <viewController id="AZp-AM-8eI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZmM-hS-pUs">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="huL-gQ-O8S">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q4h-BB-4rO">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fS0-L8-BZe">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-te-bts">
+                                                <rect key="frame" x="0.0" y="722" width="390" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ebw-Lf-qK1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ebw-Lf-qK1" firstAttribute="bottom" secondItem="huL-gQ-O8S" secondAttribute="bottom" id="76a-ng-QE7"/>
+                            <constraint firstItem="huL-gQ-O8S" firstAttribute="leading" secondItem="Ebw-Lf-qK1" secondAttribute="leading" id="pQb-gh-t7s"/>
+                            <constraint firstItem="huL-gQ-O8S" firstAttribute="top" secondItem="Ebw-Lf-qK1" secondAttribute="top" id="syh-fp-JVg"/>
+                            <constraint firstItem="Ebw-Lf-qK1" firstAttribute="trailing" secondItem="huL-gQ-O8S" secondAttribute="trailing" id="yBz-Kd-CeV"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igD-bB-a5l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806" y="1051"/>
         </scene>
         <!--User Name-->
         <scene sceneID="zVT-d7-lh8">
@@ -137,6 +179,9 @@
                                             </constraints>
                                             <color key="tintColor" name="AccentColor"/>
                                             <state key="normal" title="Edit"/>
+                                            <connections>
+                                                <segue destination="AZp-AM-8eI" kind="presentation" id="8gq-U5-5ZY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

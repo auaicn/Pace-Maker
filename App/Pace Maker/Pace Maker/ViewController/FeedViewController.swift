@@ -37,6 +37,7 @@ class FeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
+        
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         feedCollectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
@@ -45,7 +46,9 @@ class FeedViewController: UIViewController {
         feedCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "default")
         feedCollectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedCollectionHeader")
         
+        
         setupFlowLayout()
+        
         
     }
     
@@ -60,8 +63,9 @@ class FeedViewController: UIViewController {
         let halfWidth = (feedCollectionView.bounds.width - 4) / 3
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
         self.feedCollectionView.collectionViewLayout = flowLayout
+        
+        flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 200)
     }
-    
     
     /*
     // MARK: - Navigation
@@ -126,17 +130,27 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //        assert(false, "Invalid element type")
 //      }
 //    }
+//
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        switch kind {
+//            case UICollectionView.elementKindSectionHeader:
+//                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath)
+//                return headerView
+//        default:
+//            assert(false, "Error")
+//
+//        }
+//
+//    }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-            case UICollectionView.elementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath)
-                return headerView
-        default:
-            assert(false, "Error")
-            
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath) as? CollectionHeader else {
+            return UICollectionReusableView()
         }
-        
+        headerView.frame.size.height = 200
+        headerView.frame.size.width = collectionView.frame.width
+        // Configure the header view here if needed
+        return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -145,4 +159,5 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height: height)
     }
 
+    
 }
