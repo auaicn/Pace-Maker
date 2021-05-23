@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iXf-nF-Kgr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PEP-VX-MEo">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,22 +8,39 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Activity-->
-        <scene sceneID="wp0-cg-suU">
+        <!--활동-->
+        <scene sceneID="1Tl-ke-4wE">
             <objects>
-                <viewController title="Activity" id="iXf-nF-Kgr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="T1R-hd-VHD">
+                <viewController id="WKM-fe-pDW" customClass="ActivityViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gca-fG-C6O">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zMZ-M5-e4Y"/>
+                        <viewLayoutGuide key="safeArea" id="05Y-ta-2XQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Activity2" id="cbN-pb-FJd"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="활동" id="pNK-0f-ZKc"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggV-Ib-U3I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mHD-dO-F3n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="203"/>
+            <point key="canvasLocation" x="1705.7971014492755" y="-420.53571428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lQs-mo-wSu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PEP-VX-MEo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FdC-4U-uAx">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WKM-fe-pDW" kind="relationship" relationship="rootViewController" id="RMN-bC-sDx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xCt-vT-LH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="795.6521739130435" y="-420.53571428571428"/>
         </scene>
     </scenes>
     <resources>
