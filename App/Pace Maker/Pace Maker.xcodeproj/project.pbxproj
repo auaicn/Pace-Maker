@@ -23,11 +23,11 @@
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
 		18952188263F0F720089AE77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952187263F0F720089AE77 /* HomeViewController.swift */; };
+		A6C37F902659E16700B1183E /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C37F8F2659E16700B1183E /* editProfileViewController.swift */; };
 		A6C6F6472643625800FC11A4 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C6F6462643625800FC11A4 /* FeedViewController.swift */; };
 		A6DA7CC026465E0F00E767A4 /* FeedStory.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6DA7CBF26465E0F00E767A4 /* FeedStory.xcassets */; };
 		A6DA7CC52646666000E767A4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DA7CC32646666000E767A4 /* FeedCell.swift */; };
 		A6DA7CC62646666000E767A4 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DA7CC42646666000E767A4 /* FeedCell.xib */; };
-		A6FC2D5C264DAC6A00756440 /* CollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FC2D5B264DAC6900756440 /* CollectionHeader.swift */; };
 		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,11 +52,11 @@
 		18952187263F0F720089AE77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		48A5BB0A0A75DCC98999A782 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		630913B8BBF8C5714DFB03C5 /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
+		A6C37F8F2659E16700B1183E /* editProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		A6C6F6462643625800FC11A4 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		A6DA7CBF26465E0F00E767A4 /* FeedStory.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FeedStory.xcassets; sourceTree = "<group>"; };
 		A6DA7CC32646666000E767A4 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		A6DA7CC42646666000E767A4 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
-		A6FC2D5B264DAC6900756440 /* CollectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionHeader.swift; sourceTree = "<group>"; };
 		E8EF634B3EC17435D5DB03D0 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,9 +178,9 @@
 		A6C24D5C26465AD4007A72D1 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				A6FC2D5B264DAC6900756440 /* CollectionHeader.swift */,
 				A6DA7CC32646666000E767A4 /* FeedCell.swift */,
 				A6DA7CC42646666000E767A4 /* FeedCell.xib */,
+				A6C37F8F2659E16700B1183E /* editProfileViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -293,8 +293,8 @@
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				EDF01DF426280C880057F450 /* User.swift in Sources */,
+				A6C37F902659E16700B1183E /* editProfileViewController.swift in Sources */,
 				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
-				A6FC2D5C264DAC6A00756440 /* CollectionHeader.swift in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18952188263F0F720089AE77 /* HomeViewController.swift in Sources */,
 				A6C6F6472643625800FC11A4 /* FeedViewController.swift in Sources */,
