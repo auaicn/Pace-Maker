@@ -18,17 +18,26 @@
 		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
 		1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C824264F05B100BC75F5 /* BadgeViewController.swift */; };
 		1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C827264F05C500BC75F5 /* ChallengeViewController.swift */; };
+		184D48252652759F00888675 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D48242652759F00888675 /* DatabaseSettings.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
+		18B6F06926565CD200534D9D /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06826565CD100534D9D /* ChallengeViewController.swift */; };
+		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
 		18C646AE264EC07A00E3E71B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C646AD264EC07A00E3E71B /* HomeViewController.swift */; };
+		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
+		18D3C947265121CE00EBA66A /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C946265121CE00EBA66A /* Badge.swift */; };
+		18D3C94A265121D800EBA66A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C949265121D800EBA66A /* User.swift */; };
+		18D3C94D265127C700EBA66A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C94C265127C700EBA66A /* Login.storyboard */; };
+		18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C94F2651293F00EBA66A /* RegisterViewController.swift */; };
+		18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C9552651299300EBA66A /* LoginViewController.swift */; };
+		18D3C98326523DD300EBA66A /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C98226523DD300EBA66A /* Running.storyboard */; };
 		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
 		4D2C20B48E35097D13B8B38B /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B621BB199F224D0D4A617B23 /* Pods_Pace_Maker.framework */; };
 		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
-		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +52,7 @@
 		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
 		1831C824264F05B100BC75F5 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		1831C827264F05C500BC75F5 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		184D48242652759F00888675 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,13 +61,21 @@
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18952183263F0D510089AE77 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
+		18B6F06826565CD100534D9D /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "Pace Maker/ViewController/ChallengeViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18B6F06B26565D8400534D9D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = "Pace Maker/ViewController/ActivityViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18C646AD264EC07A00E3E71B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		18D3C943265121B800EBA66A /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		18D3C946265121CE00EBA66A /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		18D3C949265121D800EBA66A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18D3C94C265127C700EBA66A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		18D3C94F2651293F00EBA66A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		18D3C9552651299300EBA66A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18D3C98226523DD300EBA66A /* Running.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Running.storyboard; sourceTree = "<group>"; };
 		18FA7DC6264EDE4900C50554 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		7653612BECB4FA3FBA91C02F /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
 		B621BB199F224D0D4A617B23 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECCB8724FC33D5DB6F633E6 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +93,12 @@
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EDF01DF326280C880057F450 /* User.swift */,
 				18252B70261EFE79001A76DC /* Route.swift */,
 				18FA7DC6264EDE4900C50554 /* RoundedView.swift */,
+				18D3C943265121B800EBA66A /* Challenge.swift */,
+				18D3C946265121CE00EBA66A /* Badge.swift */,
+				18D3C949265121D800EBA66A /* User.swift */,
+				184D48242652759F00888675 /* DatabaseSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,7 +109,7 @@
 				1831C823264F059900BC75F5 /* Running */,
 				1831C822264F059100BC75F5 /* Home */,
 				1816155F263B01F0008038C5 /* TabBarViewController.swift */,
-				18952183263F0D510089AE77 /* RunningViewController.swift */,
+				18B6F06B26565D8400534D9D /* ActivityViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -101,8 +122,11 @@
 				18161573263B0D97008038C5 /* Feed.storyboard */,
 				18161570263B0D89008038C5 /* Setting.storyboard */,
 				1816156D263B0D59008038C5 /* Home.storyboard */,
+				18B6F06826565CD100534D9D /* ChallengeViewController.swift */,
 				18161569263B0D09008038C5 /* Social.storyboard */,
 				18161566263B0CFE008038C5 /* Activity.storyboard */,
+				18D3C94C265127C700EBA66A /* Login.storyboard */,
+				18D3C98226523DD300EBA66A /* Running.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -132,6 +156,8 @@
 				18C646AD264EC07A00E3E71B /* HomeViewController.swift */,
 				1831C824264F05B100BC75F5 /* BadgeViewController.swift */,
 				1831C827264F05C500BC75F5 /* ChallengeViewController.swift */,
+				18D3C94F2651293F00EBA66A /* RegisterViewController.swift */,
+				18D3C9552651299300EBA66A /* LoginViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -139,6 +165,7 @@
 		1831C823264F059900BC75F5 /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				18952183263F0D510089AE77 /* RunningViewController.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -252,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18161574263B0D97008038C5 /* Feed.storyboard in Resources */,
+				18D3C98326523DD300EBA66A /* Running.storyboard in Resources */,
 				1816156E263B0D59008038C5 /* Home.storyboard in Resources */,
 				18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */,
 				18161567263B0CFE008038C5 /* Activity.storyboard in Resources */,
@@ -259,6 +287,7 @@
 				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
 				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
 				1816156A263B0D09008038C5 /* Social.storyboard in Resources */,
+				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
 				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
@@ -314,14 +343,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
+				18D3C947265121CE00EBA66A /* Badge.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
+				18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */,
 				18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */,
-				EDF01DF426280C880057F450 /* User.swift in Sources */,
+				18D3C944265121B800EBA66A /* Challenge.swift in Sources */,
 				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
 				18C646AE264EC07A00E3E71B /* HomeViewController.swift in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
+				18D3C94A265121D800EBA66A /* User.swift in Sources */,
+				18B6F06926565CD200534D9D /* ChallengeViewController.swift in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
+				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
+				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
 			);
@@ -400,7 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -455,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

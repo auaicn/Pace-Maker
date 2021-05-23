@@ -6,74 +6,150 @@
 //
 
 import UIKit
+import Firebase
+
+enum AuthenticationStatus {
+    case notLoggined,loggined
+}
+
+var authenticationStatus : AuthenticationStatus = .loggined
+var homeScreenChallengeIndex : Int = 0
+
 class HomeViewController: UIViewController{
 
-    func makeOverlayStartRunningButton() -> Void {
-        let button = UIButton()
-        button.addAction(UIAction(handler: {_ in self.startRunning(sender: button)}), for: .touchUpInside)
-        
-        print(self.view.frame.height)
-        button.backgroundColor = UIColor(named: "AccentColor")
-        
-        let widthMultiplier : CGFloat = 0.9
-        let aspectRatio : CGFloat = 6 / 1
-        
-        button.setTitle("러닝 시작하기", for: .normal)
-        button.frame.size.width = self.view.frame.width * widthMultiplier
-        button.frame.size.height = button.frame.size.width / aspectRatio
-        button.frame.origin.x = self.view.frame.width * ((1-widthMultiplier)/2)
-        button.frame.origin.y = self.view.frame.height - button.frame.size.height - 83 - 16
-        
-        // corner
-        button.layer.cornerRadius = 20
-        button.layer.opacity = 0.96
-        
-        // shadow
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.2
-        button.layer.shadowRadius = 6
-        view.addSubview(button)
+    var userIdentifierString: String?
+    var userId : Int?
+    
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+        _ = unwindSegue.source
+        // Use data from the view controller which initiated the unwind segue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeOverlayStartRunningButton()
-        // Do any additional setup after loading the view.
+        updateAuthenticationStatus(to: .notLoggined)
+        setNavigationBar()
+        loginAsDefaultUser()
+        updateUI()
     }
     
-    func startRunning(sender :UIButton) {
-        sender.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+    func updateUI(){
+        updateProfile()
         
-        UIView.animate(withDuration: 2.0,
-                       delay: 0,
-                       usingSpringWithDamping: CGFloat(0.20),
-                       initialSpringVelocity: CGFloat(6.0),
-                       options: UIView.AnimationOptions.allowUserInteraction,
-                       animations: {
-                        sender.transform = CGAffineTransform.identity
-                       },
-                       completion: { Void in()  }
-        )
-        
-        // let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil) <- 다른 스토리보드로의 이동을 원할때는 그렇게 사용가능하겠는데, 지금은 필요없을듯.
-        if let nextVC = (storyboard?.instantiateViewController(identifier: "Running"))! as? RunningViewController{
-            nextVC.modalTransitionStyle = .crossDissolve
-            nextVC.modalPresentationStyle = .overCurrentContext
+    }
+    
+    func updateProfile(){
+        if authenticationStatus == .loggined{
             
-            self.navigationController?.pushViewController(nextVC, animated: true)
-//            self.present(nextVC, animated:true, completion:nil)
         }
+    }
+
+}
+
+// 로그인 관련
+extension HomeViewController {
+    
+    func loginAsDefaultUser() {
+        login(with: DEFAULT_USER_ID)
+    }
+    
+    func login(with id:Int){
+        let userReference = realReference.reference(withPath: "user")
+        userReference.child(String(id)).observe(.value) { snapshot in
+            let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            let addr: String = userDictionary["addr"] as! String
+            let age: Int = userDictionary["age"] as! Int
+            let challenges: [Int] = userDictionary["challenges"] as! [Int]
+            let friends: [Int] = userDictionary["friends"] as! [Int]
+            let email: String = userDictionary["email"] as! String
+            let name: String = userDictionary["name"] as! String
+            let nick: String = userDictionary["nick"] as! String
+            let passwd: String = userDictionary["passwd"] as! String
+            let phone: String = userDictionary["phone"] as! String
+            
+            user = User(customerId: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
+            self.updateAuthenticationStatus(to: .loggined)
+
+
+        }
+    }
+    
+    func updateAuthenticationStatus(to newStatus: AuthenticationStatus) {
+        authenticationStatus = newStatus
+        switch newStatus {
+            case .notLoggined:
+                navigationItem.rightBarButtonItem?.isEnabled = false
+                navigationItem.rightBarButtonItem?.tintColor = .gray
+            case .loggined:
+                navigationItem.rightBarButtonItem?.isEnabled = true
+                navigationItem.rightBarButtonItem?.tintColor = .label
+        }
+    }
+    
+}
+
+// 네비게이션 바 관련
+extension HomeViewController {
+    
+    func setNavigationBar() {
+        self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(tappedLogOut))
+
+//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedLogOut)
+        
+        // maybe Large Title Stuff
+        
+        // or hide on swipe things
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    /// Make View For Left Navigation Bar Item using User's profile image
+    private func makeNavigationBarItemWithImage() -> UIBarButtonItem{
+        let profileImageView = makeRoundImageView()
+        
+        let customView = UIButton()
+        customView.addSubview(profileImageView)
+        customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        customView.addTarget(self, action: #selector(tappedProfile), for: .touchUpInside)
+        
+        let item = UIBarButtonItem(customView: customView)
+        item.target = self
+//        item.action = #selector(tappedProfile)
+        
+        return item;
     }
-    */
-
+    
+    func makeRoundImageView() -> UIImageView{
+        let profileImage = (UIImage(named: "workout")?.withRenderingMode(.alwaysOriginal))!
+        let profileImageView = UIImageView(frame: CGRect(x: 0,y: 0,width: 32,height: 32)) // hardcoded
+        profileImageView.image = profileImage
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+        profileImageView.clipsToBounds = true
+        return profileImageView
+    }
+    
+    @objc func tappedProfile(){
+        switch authenticationStatus {
+            case .loggined:
+                // 로그인이 되어있는 경우, 세팅 화면으로 이동한다
+                performSegue(withIdentifier: "Setting", sender: nil)
+            case .notLoggined:
+                // 로그인이 안 되어있는 경우, 로그인 화면으로 이동한다
+                performSegue(withIdentifier: "Login", sender: nil)
+        }
+    }
+    
+    @objc func tappedLogOut() {
+        switch authenticationStatus {
+            case .loggined:
+                updateAuthenticationStatus(to: .notLoggined)
+            case .notLoggined:
+                return
+        }
+    }
 }
