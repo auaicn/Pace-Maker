@@ -9,6 +9,7 @@ import UIKit
 
 class FeedViewController: UIViewController {
  
+    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     private var numberOfCell = 20 {
@@ -37,14 +38,18 @@ class FeedViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
+        editProfileButton.layer.borderColor = UIColor.gray.cgColor
+        editProfileButton.layer.borderWidth = 1
+        editProfileButton.layer.cornerRadius = 8
+        
         
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         feedCollectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
         
-        feedCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
-        feedCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "default")
-        feedCollectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedCollectionHeader")
+        //feedCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
+        //feedCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "default")
+        //feedCollectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedCollectionHeader")
         
         
         setupFlowLayout()
@@ -64,7 +69,7 @@ class FeedViewController: UIViewController {
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
         self.feedCollectionView.collectionViewLayout = flowLayout
         
-        flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 200)
+        //flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 200)
     }
     
     /*
@@ -91,66 +96,6 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
         cell.imageView.image = feedStorys[indexPath.row]
         return cell
-    }
-    
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        var header : CollectionHeader?
-//
-//        if kind == UICollectionView.elementKindSectionHeader {
-//            header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath) as? CollectionHeader
-//        }
-//            //ofKind에 UICollectionView.elementKindSectionHeader로 헤더를 설정해주고
-//            //withReuseIdentifier에 헤더뷰 identifier를 넣어주고
-//            //생성한 헤더뷰로 캐스팅해준다.
-////            let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath) as? CollectionHeader
-//
-//            return header!
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView,
-//                                 viewForSupplementaryElementOfKind kind: String,
-//                                 at indexPath: IndexPath) -> UICollectionReusableView {
-//      // 1
-//      switch kind {
-//      // 2
-//      case UICollectionView.elementKindSectionHeader:
-//        // 3
-//        guard
-//          let headerView = collectionView.dequeueReusableSupplementaryView(
-//            ofKind: kind,
-//            withReuseIdentifier: "FeedCollectionHeader",
-//            for: indexPath) as? CollectionHeader
-//          else {
-//            fatalError("Invalid view type")
-//        }
-//        return headerView
-//      default:
-//        // 4
-//        assert(false, "Invalid element type")
-//      }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        switch kind {
-//            case UICollectionView.elementKindSectionHeader:
-//                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath)
-//                return headerView
-//        default:
-//            assert(false, "Error")
-//
-//        }
-//
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedCollectionHeader", for: indexPath) as? CollectionHeader else {
-            return UICollectionReusableView()
-        }
-        headerView.frame.size.height = 200
-        headerView.frame.size.width = collectionView.frame.width
-        // Configure the header view here if needed
-        return headerView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
