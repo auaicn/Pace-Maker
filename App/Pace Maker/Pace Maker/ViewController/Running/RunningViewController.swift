@@ -100,6 +100,7 @@ class RunningViewController: UIViewController{
     let alert = UIAlertController(title: "No Permission", message: "Geo Location Usages is denied", preferredStyle: .alert)
     
     /// 앱별로 위치정보 사용동의 값이 다를 수 있는데, 확인하고 각자 필요한 후처리를 해주는 함수.
+//    @available(iOS 14.0, *)
     func checkLocationAuthrization() {
         print("location usage permisson - \(locationManager.authorizationStatus.rawValue)")
         switch locationManager.authorizationStatus {
@@ -184,7 +185,7 @@ extension RunningViewController :CLLocationManagerDelegate{
         floorLabel.text = String(location.floor?.level ?? -4)
         horizontalAccuracyLabel.text = String(location.horizontalAccuracy)
         speedAccuracyLabel.text = String(location.speedAccuracy)
-        courseAccuracyLabel.text = String(location.courseAccuracy)
+        courseAccuracyLabel.text = String(location.courseAccuracy) // 필요없는.. 것 같은데
         timeStampLabel.text = String(format.string(from: location.timestamp))
 
         // calculated UI Labels
