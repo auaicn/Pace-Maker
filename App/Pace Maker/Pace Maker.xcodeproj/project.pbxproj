@@ -25,7 +25,6 @@
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
-		18B6F06926565CD200534D9D /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06826565CD100534D9D /* ChallengeViewController.swift */; };
 		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
 		18C646AE264EC07A00E3E71B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C646AD264EC07A00E3E71B /* HomeViewController.swift */; };
 		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
@@ -64,7 +63,6 @@
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18952183263F0D510089AE77 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
-		18B6F06826565CD100534D9D /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChallengeViewController.swift; path = "Pace Maker/ViewController/ChallengeViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18B6F06B26565D8400534D9D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = "Pace Maker/ViewController/ActivityViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18C646AD264EC07A00E3E71B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18D3C943265121B800EBA66A /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				18161573263B0D97008038C5 /* Feed.storyboard */,
 				18161570263B0D89008038C5 /* Setting.storyboard */,
 				1816156D263B0D59008038C5 /* Home.storyboard */,
-				18B6F06826565CD100534D9D /* ChallengeViewController.swift */,
 				18161569263B0D09008038C5 /* Social.storyboard */,
 				18161566263B0CFE008038C5 /* Activity.storyboard */,
 				18D3C94C265127C700EBA66A /* Login.storyboard */,
@@ -366,7 +363,6 @@
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
 				A6C37FA1265A349900B1183E /* FeedViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* User.swift in Sources */,
-				18B6F06926565CD200534D9D /* ChallengeViewController.swift in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
