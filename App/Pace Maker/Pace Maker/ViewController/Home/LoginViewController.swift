@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
             }
             else if snapshot.exists() {
                 print("Got data \(snapshot.value!)")
-                user = User(customerId: 3, name: "", email: inputEmail, age: 22, nickName: "", challenges: [], friends: [])
+                user = User(UID: 3, name: "", email: inputEmail, age: 22, nickName: "", challenges: [], friends: [])
             }
             else {
                 print("No data available")

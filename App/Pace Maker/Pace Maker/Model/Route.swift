@@ -8,6 +8,9 @@
 import Foundation
 
 struct Route{
-    var distance : String
-    var timeSpentInSeconds : String
+    var dateString: String
+    var distanceInKilometer: Double
+    var routeSavedPath: String
+    var runnerUID: Int
+    var timeSpentInSeconds : Double
 }
