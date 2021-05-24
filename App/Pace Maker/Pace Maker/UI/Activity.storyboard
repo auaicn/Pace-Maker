@@ -24,11 +24,13 @@
             </objects>
             <point key="canvasLocation" x="1571" y="-421"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--활동-->
         <scene sceneID="lQs-mo-wSu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PEP-VX-MEo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="활동" id="VWQ-ak-oVk"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FdC-4U-uAx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
