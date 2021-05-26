@@ -19,6 +19,7 @@
 		182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182B0228265B646E002C5195 /* HealthKit.framework */; };
 		1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C824264F05B100BC75F5 /* BadgeViewController.swift */; };
 		1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C827264F05C500BC75F5 /* ChallengeViewController.swift */; };
+		1840D179265E409F006956E7 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D178265E409F006956E7 /* Format.swift */; };
 		184D48252652759F00888675 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D48242652759F00888675 /* DatabaseSettings.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
@@ -60,6 +61,7 @@
 		182B0228265B646E002C5195 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1831C824264F05B100BC75F5 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		1831C827264F05C500BC75F5 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		1840D178265E409F006956E7 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		184D48242652759F00888675 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
 				188126CF261EE8A70073029F /* Info.plist */,
 				ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */,
+				1840D178265E409F006956E7 /* Format.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
+				1840D179265E409F006956E7 /* Format.swift in Sources */,
 				18D3C947265121CE00EBA66A /* Badge.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */,

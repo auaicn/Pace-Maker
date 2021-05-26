@@ -10,4 +10,3 @@ import Firebase
 
 let realReference = Database.database(url: "https://pace-maker-74452-default-rtdb.asia-southeast1.firebasedatabase.app/")
 let rootReference = Database.database().reference()
-

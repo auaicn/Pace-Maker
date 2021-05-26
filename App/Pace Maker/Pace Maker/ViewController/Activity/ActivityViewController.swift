@@ -10,41 +10,70 @@ import HealthKit
 import Charts
 import Firebase
 
-enum CurrentMetric{
-    case speed, respiration, beatsPerMinute, fourth
+enum CurrentMetric: String{
+    case distance, pace, beatsPerMinute, respiration
+    
+    static let allValues = [distance, pace, beatsPerMinute, respiration]
     
     var unit: String {
         switch self{
-            case .speed:
-                return "m/s"
-            case .respiration:
-                return "per minute"
+            case .distance:
+                return "km"
+            case .pace:
+                return "m:s per km"
             case .beatsPerMinute:
                 return "per minute"
-            case .fourth:
-                return "fourth Unit"
+            case .respiration:
+                return "per minute"
         }
     }
+    
+    var label: String {
+        switch self{
+            case .distance:
+                return "km"
+            case .pace:
+                return "m:s per km"
+            case .beatsPerMinute:
+                return "per minute"
+            case .respiration:
+                return "per minute"
+        }
+    }
+    
+    var prefix: String {
+        switch self{
+            case .distance:
+                return "총"
+            case .pace:
+                return "최대"
+            case .beatsPerMinute:
+                return ""
+            case .respiration:
+                return ""
+        }
+    }
+    
 }
 
-let currentMetric: CurrentMetric = .speed
+var currentMetric: CurrentMetric = .distance
 
 class ActivityViewController: UIViewController {
 
-    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var deviceNotAvailableLabel: UILabel!
     @IBOutlet weak var barChartView: BarChartView!
-    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var syncBarButtonItem: UIBarButtonItem!
     
-    @IBOutlet weak var totalMetrics: UILabel!
-    @IBOutlet weak var unitOfMetric: UILabel!
+    @IBOutlet weak var measureMessagePrefix: UILabel!
+    @IBOutlet weak var measuredPeriod: UILabel!
+    @IBOutlet weak var measuredTotalValue: UILabel!
+    @IBOutlet weak var measureUnit: UILabel!
     
     let syncMessage = UILabel(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-    let logs: [Route] = []
+    var logs: [Route] = []
     
     func setNavigationBar() {
-        refreshBarButtonItem.action = #selector(tappedRefreshBarButton)
+        // later
         syncMessage.backgroundColor = .blue
         syncBarButtonItem.customView?.addSubview(syncMessage)
         syncMessage.text = "sync 1d ago..."
@@ -52,109 +81,120 @@ class ActivityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentControl.selectedSegmentIndex = 0 // speed
         setNavigationBar()
-        authorizeHealtKitData()
         setChartView()
+        loadDatabase()
         updateUI()
     }
-
-    @objc
-    func tappedRefreshBarButton() {
-        print("tappedRefreshBarButton")
-        updateUI()
+    
+    func loadDatabase() {
+        loadLogs() // load data
+        loadHealthKitData()
+        loadWatchKitData()
     }
     
     func updateUI() {
         updateChart()
-        unitOfMetric.text = currentMetric.unit
+        updateTable()
+    }
+    
+    func updateTable(){
+        
+    }
+    
+    @IBAction func changedSegmentControlValue(_ sender: UISegmentedControl) {
+        let selectedIndex = sender.selectedSegmentIndex
+        print("selected \(selectedIndex) th semgent")
+        currentMetric = CurrentMetric.allValues[selectedIndex]
+        updateUI()
     }
 }
 
-
-
+// CHART
 extension ActivityViewController {
     
     func loadLogs(){
-
-        let logReferenceAsQuery = realReference.reference(withPath: "user").queryOrderedByKey()
-        
-        logReferenceAsQuery.getData { (error, snapshot) in
-            if let error = error {
-                print("Error getting data \(error)")
-                return;
+        let logReference = realReference.reference(withPath: "log")
+        logReference.queryOrdered(byChild: "runner")
+            .queryEqual(toValue: user?.UID)
+            .observe(.value) { snapshot in
+                let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
+                self.logs.removeAll()
+                // snapshot is an Array of Dictionary
+                for logDictonary in snapshot {
+                    let singleLog = logDictonary.value
+                    let date: String = singleLog["date"] as! String
+                    let distance: Double = singleLog["distance"] as! Double
+                    let route: String = singleLog["route"] as! String
+                    let runner: Int = singleLog["runner"] as! Int
+                    let time: Double = singleLog["time"] as! Double
+                    self.logs.append(Route(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runner, timeSpentInSeconds: time))
+                }
+                self.updateUI()
             }
-            else if snapshot.exists() {
-//                print("Got data \(snapshot.value!)")
-//                
-//                let logs = snapshot.value as? [String : AnyObject] ?? [:]
-//                
-//                print(logs["1"])
-//
-//                let addr: String = userDictionary["addr"] as! String
-//                let age: Int = userDictionary["age"] as! Int
-//                let challenges: [Int] = userDictionary["challenges"] as! [Int]
-//                let friends: [Int] = userDictionary["friends"] as! [Int]
-//                let email: String = userDictionary["email"] as! String
-//                let name: String = userDictionary["name"] as! String
-//                let nick: String = userDictionary["nick"] as! String
-//                let passwd: String = userDictionary["passwd"] as! String
-//                let phone: String = userDictionary["phone"] as! String
-//
-//                Route(dateString: <#T##String#>, distanceInKilometer: <#T##Double#>, routeSavedPath: <#T##String#>, runnerUID: <#T##Int#>, timeSpentInSeconds: <#T##Double#>)
-//
-//                user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
-//                self.updateAuthenticationStatus(to: .loggined)
-//
-//                print("logined with UID \(id)")
-                
-//                user = User(UID: 3, name: "", email: inputEmail, age: 22, nickName: "", challenges: [], friends: [])
-            }
-            else {
-                print("No data available")
-            }
-        }
     }
     
     func setChartView() {
-        
-        loadLogs()
-        
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        setChartData(dataPoints: months, values: unitsSold)
-        
         barChartView.noDataTextColor = .lightGray
         barChartView.rightAxis.enabled = false
-        
     }
     
-    func setChartData(dataPoints: [String], values: [Double]) {
+    func setChartData(with dates: [String],and values: [Double]) {
+        
         // 데이터 생성
         var dataEntries: [BarChartDataEntry] = []
-        for i in 0..<dataPoints.count {
+        for i in 0..<dates.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: "판매량")
-        
-        // 차트 컬러
-        chartDataSet.colors = [.systemBlue]
-        
-        // 데이터 삽입
-        let chartData = BarChartData(dataSet: chartDataSet)
-        barChartView.data = chartData
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: currentMetric.label)
+        chartDataSet.colors = [.cyan]
+        barChartView.data = BarChartData(dataSet: chartDataSet)
     }
+    
+    func setChartUI(with dateStrings: [String],and values: [Double]){
+        let totalDistance: Double = values.reduce(0) { $0 + $1 }
+        let dates: [Date] = dateStrings.map {
+            return dateFormatter.date(from: $0)!
+        }
+        
+        measuredTotalValue.text = String(format: "%.2f", totalDistance)
+        measureUnit.text = currentMetric.unit
+        if dateStrings.count != 1 {
+            measuredPeriod.text = "\(dateFormatter.string(from: dates.min()!)) "
+        }else{
+            measuredPeriod.text = "\(dateFormatter.string(from: dates.min()!)) ~ \(dateFormatter.string(from: dates.max()!))"
+        }
+    }
+    
     func updateChart(){
         
+        var dates: [String] = []
+        var values: [Double] = []
+        for log in logs{
+            dates.append(log.dateString)
+            values.append(log.distanceInKilometer)
+        }
+        
+        if logs.count != 0 {
+            setChartData(with: dates, and: values)
+            setChartUI(with: dates, and: values)
+        }
+        
+        // 그외 추가로 더 해줘야하는 것들
+        measureUnit.text = currentMetric.unit
     }
 }
 
+// HEALTH KIT
 extension ActivityViewController {
     
+    func loadHealthKitData(){
+        authorizeHealtKitData()
+    }
+    
     func authorizeHealtKitData() {
-        
         if HKHealthStore.isHealthDataAvailable() {
             let healthStore = HKHealthStore()
             
@@ -186,3 +226,14 @@ extension ActivityViewController {
     }
 }
 
+// WATCH KIT
+extension ActivityViewController {
+    func loadWatchKitData(){
+        
+    }
+}
+
+// TABLE VIEW
+extension ActivityViewController {
+    
+}
