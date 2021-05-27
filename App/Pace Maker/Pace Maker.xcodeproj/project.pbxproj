@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,18 +11,24 @@
 		18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18161563263B078D008038C5 /* LaunchingImages.xcassets */; };
 		18161567263B0CFE008038C5 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161566263B0CFE008038C5 /* Activity.storyboard */; };
 		1816156A263B0D09008038C5 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161569263B0D09008038C5 /* Social.storyboard */; };
-		1816156E263B0D59008038C5 /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1816156D263B0D59008038C5 /* Running.storyboard */; };
+		1816156E263B0D59008038C5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1816156D263B0D59008038C5 /* Home.storyboard */; };
 		18161571263B0D89008038C5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161570263B0D89008038C5 /* Setting.storyboard */; };
 		18161574263B0D97008038C5 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161573263B0D97008038C5 /* Feed.storyboard */; };
 		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
 		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
+		1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C824264F05B100BC75F5 /* BadgeViewController.swift */; };
+		1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C827264F05C500BC75F5 /* ChallengeViewController.swift */; };
+		184D48252652759F00888675 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D48242652759F00888675 /* DatabaseSettings.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
+		188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */; };
+		188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3F265A3A7E00DA24BE /* FeedCell.swift */; };
+		188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */; };
+		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
-		18952188263F0F720089AE77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952187263F0F720089AE77 /* HomeViewController.swift */; };
 		A6840E95265ED60600364995 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6840E93265ED60600364995 /* CollectionReusableView.swift */; };
 		A6840E96265ED60700364995 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6840E94265ED60600364995 /* CollectionReusableView.xib */; };
 		A6C37F902659E16700B1183E /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C37F8F2659E16700B1183E /* editProfileViewController.swift */; };
@@ -30,7 +36,18 @@
 		A6DA7CC026465E0F00E767A4 /* FeedStory.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6DA7CBF26465E0F00E767A4 /* FeedStory.xcassets */; };
 		A6DA7CC52646666000E767A4 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6DA7CC32646666000E767A4 /* FeedCell.swift */; };
 		A6DA7CC62646666000E767A4 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6DA7CC42646666000E767A4 /* FeedCell.xib */; };
-		EDF01DF426280C880057F450 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF01DF326280C880057F450 /* User.swift */; };
+		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
+		18C646AE264EC07A00E3E71B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C646AD264EC07A00E3E71B /* HomeViewController.swift */; };
+		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
+		18D3C947265121CE00EBA66A /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C946265121CE00EBA66A /* Badge.swift */; };
+		18D3C94A265121D800EBA66A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C949265121D800EBA66A /* User.swift */; };
+		18D3C94D265127C700EBA66A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C94C265127C700EBA66A /* Login.storyboard */; };
+		18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C94F2651293F00EBA66A /* RegisterViewController.swift */; };
+		18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C9552651299300EBA66A /* LoginViewController.swift */; };
+		18D3C98326523DD300EBA66A /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C98226523DD300EBA66A /* Running.storyboard */; };
+		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
+		4D2C20B48E35097D13B8B38B /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B621BB199F224D0D4A617B23 /* Pods_Pace_Maker.framework */; };
+		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +55,14 @@
 		18161563263B078D008038C5 /* LaunchingImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LaunchingImages.xcassets; sourceTree = "<group>"; };
 		18161566263B0CFE008038C5 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		18161569263B0D09008038C5 /* Social.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
-		1816156D263B0D59008038C5 /* Running.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Running.storyboard; sourceTree = "<group>"; };
+		1816156D263B0D59008038C5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18161570263B0D89008038C5 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		18161573263B0D97008038C5 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
+		1831C824264F05B100BC75F5 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
+		1831C827264F05C500BC75F5 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		184D48242652759F00888675 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +70,10 @@
 		188126CA261EE8A70073029F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionHeader.swift; sourceTree = "<group>"; };
+		188B6F3F265A3A7E00DA24BE /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
+		188B6F41265A3A7E00DA24BE /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		18952183263F0D510089AE77 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
 		18952187263F0F720089AE77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		48A5BB0A0A75DCC98999A782 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +87,15 @@
 		A6DA7CC42646666000E767A4 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		E8EF634B3EC17435D5DB03D0 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		EDF01DF326280C880057F450 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		18B6F06B26565D8400534D9D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = "Pace Maker/ViewController/Activity/ActivityViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18D3C943265121B800EBA66A /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		18D3C946265121CE00EBA66A /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		18D3C94C265127C700EBA66A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		18D3C94F2651293F00EBA66A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		18D3C9552651299300EBA66A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		18D3C98226523DD300EBA66A /* Running.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Running.storyboard; sourceTree = "<group>"; };
+		18FA7DC6264EDE4900C50554 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2C20B48E35097D13B8B38B /* Pods_Pace_Maker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +113,12 @@
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EDF01DF326280C880057F450 /* User.swift */,
 				18252B70261EFE79001A76DC /* Route.swift */,
+				18FA7DC6264EDE4900C50554 /* RoundedView.swift */,
+				18D3C943265121B800EBA66A /* Challenge.swift */,
+				18D3C946265121CE00EBA66A /* Badge.swift */,
+				18D3C949265121D800EBA66A /* User.swift */,
+				184D48242652759F00888675 /* DatabaseSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,11 +126,12 @@
 		18252B6E261EFE5C001A76DC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				188B6F3D265A3A6C00DA24BE /* Feeds */,
+				188B6F3C265A3A4300DA24BE /* Social */,
+				188B6F3B265A3A3C00DA24BE /* Activity */,
+				1831C823264F059900BC75F5 /* Running */,
+				1831C822264F059100BC75F5 /* Home */,
 				1816155F263B01F0008038C5 /* TabBarViewController.swift */,
-				18952187263F0F720089AE77 /* HomeViewController.swift */,
-				18952183263F0D510089AE77 /* RunningViewController.swift */,
-				A6C6F6462643625800FC11A4 /* FeedViewController.swift */,
-				A6C24D5C26465AD4007A72D1 /* Feed */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -104,9 +143,11 @@
 				188126C7261EE8A40073029F /* Main.storyboard */,
 				18161573263B0D97008038C5 /* Feed.storyboard */,
 				18161570263B0D89008038C5 /* Setting.storyboard */,
-				1816156D263B0D59008038C5 /* Running.storyboard */,
+				1816156D263B0D59008038C5 /* Home.storyboard */,
 				18161569263B0D09008038C5 /* Social.storyboard */,
 				18161566263B0CFE008038C5 /* Activity.storyboard */,
+				18D3C94C265127C700EBA66A /* Login.storyboard */,
+				18D3C98226523DD300EBA66A /* Running.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -117,6 +158,7 @@
 				188126C1261EE8A40073029F /* AppDelegate.swift */,
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
 				188126CF261EE8A70073029F /* Info.plist */,
+				ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -129,13 +171,33 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		1831C822264F059100BC75F5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				18C646AD264EC07A00E3E71B /* HomeViewController.swift */,
+				1831C824264F05B100BC75F5 /* BadgeViewController.swift */,
+				1831C827264F05C500BC75F5 /* ChallengeViewController.swift */,
+				18D3C94F2651293F00EBA66A /* RegisterViewController.swift */,
+				18D3C9552651299300EBA66A /* LoginViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1831C823264F059900BC75F5 /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				18952183263F0D510089AE77 /* RunningViewController.swift */,
+			);
+			path = Running;
+			sourceTree = "<group>";
+		};
 		188126B5261EE8A40073029F = {
 			isa = PBXGroup;
 			children = (
 				188126C0261EE8A40073029F /* Pace Maker */,
 				188126BF261EE8A40073029F /* Products */,
-				25F83B472DA95EB448256102 /* Pods */,
-				61EC1506DFD51CB47CA04B6C /* Frameworks */,
+				A975AC6F32DF66127DEAA009 /* Pods */,
+				8313350AC65827DF2B1EF891 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,30 +218,48 @@
 				18252B6E261EFE5C001A76DC /* ViewController */,
 				18252B6D261EFE53001A76DC /* Model */,
 				188126CA261EE8A70073029F /* Assets.xcassets */,
+				A6C37F9A265A347000B1183E /* FeedStory.xcassets */,
 				18161563263B078D008038C5 /* LaunchingImages.xcassets */,
-				A6DA7CBF26465E0F00E767A4 /* FeedStory.xcassets */,
 			);
 			path = "Pace Maker";
 			sourceTree = "<group>";
 		};
-		25F83B472DA95EB448256102 /* Pods */ = {
+		188B6F3B265A3A3C00DA24BE /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				E8EF634B3EC17435D5DB03D0 /* Pods-Pace Maker.debug.xcconfig */,
-				630913B8BBF8C5714DFB03C5 /* Pods-Pace Maker.release.xcconfig */,
+				18B6F06B26565D8400534D9D /* ActivityViewController.swift */,
 			);
-			path = Pods;
+			path = Activity;
 			sourceTree = "<group>";
 		};
-		61EC1506DFD51CB47CA04B6C /* Frameworks */ = {
+		188B6F3C265A3A4300DA24BE /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				48A5BB0A0A75DCC98999A782 /* Pods_Pace_Maker.framework */,
+			);
+			path = Social;
+			sourceTree = "<group>";
+		};
+		188B6F3D265A3A6C00DA24BE /* Feeds */ = {
+			isa = PBXGroup;
+			children = (
+				A6C37FA0265A349900B1183E /* FeedViewController.swift */,
+				188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */,
+				188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */,
+				188B6F3F265A3A7E00DA24BE /* FeedCell.swift */,
+				188B6F41265A3A7E00DA24BE /* FeedCell.xib */,
+			);
+			path = Feeds;
+			sourceTree = "<group>";
+		};
+		8313350AC65827DF2B1EF891 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B621BB199F224D0D4A617B23 /* Pods_Pace_Maker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A6C24D5C26465AD4007A72D1 /* Feed */ = {
+		A975AC6F32DF66127DEAA009 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				A6DA7CC32646666000E767A4 /* FeedCell.swift */,
@@ -187,8 +267,10 @@
 				A6C37F8F2659E16700B1183E /* editProfileViewController.swift */,
 				A6840E93265ED60600364995 /* CollectionReusableView.swift */,
 				A6840E94265ED60600364995 /* CollectionReusableView.xib */,
+				CECCB8724FC33D5DB6F633E6 /* Pods-Pace Maker.debug.xcconfig */,
+				7653612BECB4FA3FBA91C02F /* Pods-Pace Maker.release.xcconfig */,
 			);
-			path = Feed;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,10 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188126D2261EE8A70073029F /* Build configuration list for PBXNativeTarget "Pace Maker" */;
 			buildPhases = (
-				3D4AD9F7E6F9CF51F9CA7F8B /* [CP] Check Pods Manifest.lock */,
+				13E0BC66F2A8751711147325 /* [CP] Check Pods Manifest.lock */,
 				188126BA261EE8A40073029F /* Sources */,
 				188126BB261EE8A40073029F /* Frameworks */,
 				188126BC261EE8A40073029F /* Resources */,
+				BFAFF90BE297502EA9D11DA8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,15 +334,18 @@
 			files = (
 				A6840E96265ED60700364995 /* CollectionReusableView.xib in Resources */,
 				18161574263B0D97008038C5 /* Feed.storyboard in Resources */,
-				1816156E263B0D59008038C5 /* Running.storyboard in Resources */,
+				188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */,
+				18D3C98326523DD300EBA66A /* Running.storyboard in Resources */,
+				1816156E263B0D59008038C5 /* Home.storyboard in Resources */,
 				18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */,
-				A6DA7CC026465E0F00E767A4 /* FeedStory.xcassets in Resources */,
 				18161567263B0CFE008038C5 /* Activity.storyboard in Resources */,
 				188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */,
 				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
 				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
 				1816156A263B0D09008038C5 /* Social.storyboard in Resources */,
-				A6DA7CC62646666000E767A4 /* FeedCell.xib in Resources */,
+				A6C37F9B265A347000B1183E /* FeedStory.xcassets in Resources */,
+				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
+				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
 			);
@@ -268,7 +354,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3D4AD9F7E6F9CF51F9CA7F8B /* [CP] Check Pods Manifest.lock */ = {
+		13E0BC66F2A8751711147325 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -290,6 +376,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BFAFF90BE297502EA9D11DA8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -297,17 +400,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				A6840E95265ED60600364995 /* CollectionReusableView.swift in Sources */,
+				18D3C947265121CE00EBA66A /* Badge.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
-				EDF01DF426280C880057F450 /* User.swift in Sources */,
-				A6C37F902659E16700B1183E /* editProfileViewController.swift in Sources */,
+				18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */,
+				18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */,
+				18D3C944265121B800EBA66A /* Challenge.swift in Sources */,
 				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
+				18C646AE264EC07A00E3E71B /* HomeViewController.swift in Sources */,
+				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
+				A6C37FA1265A349900B1183E /* FeedViewController.swift in Sources */,
+				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
+				18D3C94A265121D800EBA66A /* User.swift in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
-				18952188263F0F720089AE77 /* HomeViewController.swift in Sources */,
-				A6C6F6472643625800FC11A4 /* FeedViewController.swift in Sources */,
+				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
+				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
+				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
-				A6DA7CC52646666000E767A4 /* FeedCell.swift in Sources */,
+				188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */,
+				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +497,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -439,7 +552,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -451,22 +564,17 @@
 		};
 		188126D3261EE8A70073029F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E8EF634B3EC17435D5DB03D0 /* Pods-Pace Maker.debug.xcconfig */;
+			baseConfigurationReference = CECCB8724FC33D5DB6F633E6 /* Pods-Pace Maker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M594W3F27J;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"-framework,",
-					"Pace\\ Maker",
-				);
-				"OTHER_LDFLAGS[arch=*]" = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -476,12 +584,12 @@
 		};
 		188126D4261EE8A70073029F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 630913B8BBF8C5714DFB03C5 /* Pods-Pace Maker.release.xcconfig */;
+			baseConfigurationReference = 7653612BECB4FA3FBA91C02F /* Pods-Pace Maker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = M594W3F27J;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
