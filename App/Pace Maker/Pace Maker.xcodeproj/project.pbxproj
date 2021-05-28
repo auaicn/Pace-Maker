@@ -30,7 +30,6 @@
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
-		188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */; };
 		188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3F265A3A7E00DA24BE /* FeedCell.swift */; };
 		188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */; };
 		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
@@ -77,7 +76,6 @@
 		188126CA261EE8A70073029F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionHeader.swift; sourceTree = "<group>"; };
 		188B6F3F265A3A7E00DA24BE /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		188B6F41265A3A7E00DA24BE /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
@@ -243,7 +241,6 @@
 				18653ECB265F8FBF001D9A68 /* CollectionReusableView.swift */,
 				18653ECC265F8FBF001D9A68 /* CollectionReusableView.xib */,
 				18653ECD265F8FBF001D9A68 /* FeedViewController.swift */,
-				188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */,
 				188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */,
 				188B6F3F265A3A7E00DA24BE /* FeedCell.swift */,
 				188B6F41265A3A7E00DA24BE /* FeedCell.xib */,
@@ -416,7 +413,6 @@
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
 				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
-				188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */,
 				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

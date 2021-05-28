@@ -22,24 +22,14 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="cWU-Vf-AuR">
             <objects>
-                <viewController id="6wF-QM-5n9" customClass="editProfileViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editProfileViewController" id="6wF-QM-5n9" customClass="editProfileViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yha-o9-eDk">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w8G-Nr-eO4">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="JQQ-H4-eRV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="JQQ-H4-eRV" firstAttribute="trailing" secondItem="w8G-Nr-eO4" secondAttribute="trailing" id="64L-ey-0Gl"/>
-                            <constraint firstItem="JQQ-H4-eRV" firstAttribute="bottom" secondItem="w8G-Nr-eO4" secondAttribute="bottom" id="G6X-HY-SgK"/>
-                            <constraint firstItem="w8G-Nr-eO4" firstAttribute="leading" secondItem="Yha-o9-eDk" secondAttribute="leading" id="fVM-s5-5ll"/>
-                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="fKM-xC-qQh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hUJ-C9-KT6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -48,7 +38,7 @@
         <!--User Name-->
         <scene sceneID="Wzq-XN-vHN">
             <objects>
-                <viewController title="User Name" id="sbo-hA-gjk" customClass="FeedViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedViewController" title="User Name" id="sbo-hA-gjk" customClass="FeedViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QVe-jq-8K7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

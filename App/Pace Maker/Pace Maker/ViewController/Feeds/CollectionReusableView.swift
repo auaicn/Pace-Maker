@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: AnyObject {
+    func touchEditButton()
+}
+
 class CollectionReusableView: UICollectionReusableView {
 
     @IBOutlet weak var feedImage: UIImageView!
@@ -17,6 +21,7 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var story: UITextField!
     @IBOutlet weak var editButton: UIButton!
     
+    var delegate: HeaderViewDelegate?
        
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,8 +52,11 @@ class CollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
     }
        
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    @IBAction func touchEditButton(_ sender: UIButton) {
+        delegate?.touchEditButton()
     }
     
+     required init?(coder: NSCoder) {
+         super.init(coder: coder)
+     }
 }

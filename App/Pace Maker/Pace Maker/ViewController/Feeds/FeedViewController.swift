@@ -80,7 +80,7 @@ class FeedViewController: UIViewController {
 
 }
 
-extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, HeaderViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCell
     }
@@ -106,9 +106,17 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedHeader", for: indexPath) as! CollectionReusableView
             // do any programmatic customization, if any, here
             header.configure()
+            header.delegate = self
             return header
         }
         fatalError("Unexpected kind")
+    }
+
+    func touchEditButton() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "editProfileViewController")
+        //vc?.modalTransitionStyle = .coverVertical
+        self.present(vc!, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
