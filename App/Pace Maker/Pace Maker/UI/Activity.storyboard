@@ -36,14 +36,14 @@
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujB-Lx-V8t">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ujB-Lx-V8t">
                                 <rect key="frame" x="0.0" y="195" width="414.5" height="618"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u66-iC-8Rq">
-                                        <rect key="frame" x="0.0" y="0.0" width="414.5" height="1000"/>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u66-iC-8Rq">
+                                        <rect key="frame" x="0.0" y="0.0" width="414.5" height="1400"/>
                                         <subviews>
-                                            <stackView contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="E0m-qP-5lZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="414.5" height="1000"/>
+                                            <stackView contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="E0m-qP-5lZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="414.5" height="1400"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cJ4-K2-0gs" userLabel="Chart View">
                                                         <rect key="frame" x="0.0" y="0.0" width="414.5" height="362.5"/>
@@ -156,15 +156,14 @@
                                                             <constraint firstAttribute="height" constant="256" id="vFi-c4-mhQ"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-6K-9cS" userLabel="Surplus View">
-                                                        <rect key="frame" x="0.0" y="650.5" width="414.5" height="349.5"/>
+                                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-6K-9cS" userLabel="Surplus View">
+                                                        <rect key="frame" x="0.0" y="650.5" width="414.5" height="749.5"/>
                                                     </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1000" id="Li4-hD-0qe"/>
                                             <constraint firstAttribute="trailing" secondItem="E0m-qP-5lZ" secondAttribute="trailing" id="X0i-Ej-yva"/>
                                             <constraint firstAttribute="bottom" secondItem="E0m-qP-5lZ" secondAttribute="bottom" id="jLL-QF-jTI"/>
                                             <constraint firstItem="E0m-qP-5lZ" firstAttribute="leading" secondItem="u66-iC-8Rq" secondAttribute="leading" id="lhY-Mf-Ohm"/>

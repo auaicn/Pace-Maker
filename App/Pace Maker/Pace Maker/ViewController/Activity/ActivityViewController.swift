@@ -130,17 +130,19 @@ extension ActivityViewController {
                     let time: Double = singleLog["time"] as! Double
                     self.logs.append(Route(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runner, timeSpentInSeconds: time))
                 }
+                print("1")
                 self.updateUI()
             }
+        print("2")
     }
     
     func setChartView() {
         barChartView.noDataTextColor = .lightGray
         barChartView.rightAxis.enabled = false
+        barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 3.0)
     }
     
     func setChartData(with dates: [String],and values: [Double]) {
-        
         // 데이터 생성
         var dataEntries: [BarChartDataEntry] = []
         for i in 0..<dates.count {
@@ -149,8 +151,13 @@ extension ActivityViewController {
         }
         
         let chartDataSet = BarChartDataSet(entries: dataEntries, label: currentMetric.label)
-        chartDataSet.colors = [.cyan]
+        chartDataSet.colors = [.systemRed,.systemBlue,.systemTeal]
         barChartView.data = BarChartData(dataSet: chartDataSet)
+        
+        // X축 레이블 위치 조정
+        barChartView.xAxis.labelPosition = .bottom
+        // X축 레이블 포맷 지정
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dates)
     }
     
     func setChartUI(with dateStrings: [String],and values: [Double]){
@@ -166,6 +173,10 @@ extension ActivityViewController {
         }else{
             measuredPeriod.text = "\(dateFormatter.string(from: dates.min()!)) ~ \(dateFormatter.string(from: dates.max()!))"
         }
+        
+        let averageLine = ChartLimitLine(limit: totalDistance / Double(dateStrings.count), label: "평균")
+        barChartView.leftAxis.addLimitLine(averageLine)
+        
     }
     
     func updateChart(){

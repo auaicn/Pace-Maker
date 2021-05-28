@@ -21,6 +21,10 @@
 		1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C827264F05C500BC75F5 /* ChallengeViewController.swift */; };
 		1840D179265E409F006956E7 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D178265E409F006956E7 /* Format.swift */; };
 		184D48252652759F00888675 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D48242652759F00888675 /* DatabaseSettings.swift */; };
+		184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */; };
+		18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */; };
+		18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */; };
+		18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
@@ -63,6 +67,10 @@
 		1831C827264F05C500BC75F5 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		1840D178265E409F006956E7 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		184D48242652759F00888675 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
+		184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitorViewController.swift; path = "Pace Maker/ViewController/Running/CompetitorViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectViewController.swift; sourceTree = "<group>"; };
+		18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,7 +191,11 @@
 		1831C823264F059900BC75F5 /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */,
+				18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */,
 				18952183263F0D510089AE77 /* RunningViewController.swift */,
+				18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */,
+				18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -393,6 +405,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				1840D179265E409F006956E7 /* Format.swift in Sources */,
@@ -408,11 +421,14 @@
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
 				18D3C94A265121D800EBA66A /* User.swift in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
+				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
+				18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */,
 				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */,
+				18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */,
 				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,13 +580,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Pace Maker/Pace Maker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = M594W3F27J;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.pacemaker;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -587,13 +603,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Pace Maker/Pace Maker.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4QG3GC35LA;
+				DEVELOPMENT_TEAM = M594W3F27J;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.pacemaker;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

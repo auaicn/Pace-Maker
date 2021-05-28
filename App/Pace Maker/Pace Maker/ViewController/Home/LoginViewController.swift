@@ -24,24 +24,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginAction(_ sender: Any) {
         guard let inputEmail = email.text else {return}
-        
-//        var ref: DatabaseReference!
-////        ref = Database.database().reference()
-//
-//        let myTopPostsQuery = (ref.child("user").child(inputEmail)).queryOrdered(byChild: "email")
-//        myTopPostsQuery.getData { (error, snapshot) in
-//            if let error = error {
-//                print("Error getting data \(error)")
-//                return;
-//            }
-//            else if snapshot.exists() {
-//                print("Got data \(snapshot.value!)")
-//                user = User(UID: 3, name: "", email: inputEmail, age: 22, nickName: "", challenges: [], friends: [])
-//            }
-//            else {
-//                print("No data available")
-//            }
-//        }
         performSegue(withIdentifier: "unwindToHomeVC", sender: nil)
     }
     @IBAction func registerAction(_ sender: Any) {
