@@ -17,14 +17,14 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ml-k2-qDk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2346" y="1354"/>
+            <point key="canvasLocation" x="2362" y="1352"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="cWU-Vf-AuR">
             <objects>
                 <viewController id="6wF-QM-5n9" customClass="editProfileViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yha-o9-eDk">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w8G-Nr-eO4">
@@ -103,6 +103,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="feedCollectionView" destination="WN9-W8-B5l" id="r3N-X5-yNR"/>
+                        <segue destination="6wF-QM-5n9" kind="presentation" identifier="presentEditProfile" id="MXk-cm-g5x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRS-4X-Tby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

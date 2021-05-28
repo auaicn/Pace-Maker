@@ -91,6 +91,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     
         cell.imageView.image = feedStorys[indexPath.row]
+        cell.configure()
         return cell
     }
     

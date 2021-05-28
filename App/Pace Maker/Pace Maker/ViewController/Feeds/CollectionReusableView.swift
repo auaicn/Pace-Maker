@@ -24,7 +24,15 @@ class CollectionReusableView: UICollectionReusableView {
     }
        
     func configure() {
-        feedImage.image = UIImage(named: "1")
+        //feedImage = makeRoundImageView()
+        
+        
+        let profileImage = (UIImage(named: "2")?.withRenderingMode(.alwaysOriginal))!
+        feedImage.image = profileImage
+        feedImage.contentMode = .scaleAspectFill
+        feedImage.layer.cornerRadius = feedImage.frame.width / 2
+        feedImage.clipsToBounds = true
+        
         distance.text = "총 달린 거리 : "
         time.text = "총 달린 시간 : "
         badge.text = "획득 뱃지 : "
