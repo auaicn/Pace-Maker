@@ -47,6 +47,7 @@
 		4D2C20B48E35097D13B8B38B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6A0993CA786200FF05026B40 /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */; };
 		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
+		EDE87BC7265F920C002AAC30 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87BC6265F920C002AAC30 /* SocialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC27687A2039436E00C13A78 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDE87BC6265F920C002AAC30 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,8 +124,8 @@
 		18252B6E261EFE5C001A76DC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EDE87BC5265F91FD002AAC30 /* Social */,
 				188B6F3D265A3A6C00DA24BE /* Feeds */,
-				188B6F3C265A3A4300DA24BE /* Social */,
 				188B6F3B265A3A3C00DA24BE /* Activity */,
 				1831C823264F059900BC75F5 /* Running */,
 				1831C822264F059100BC75F5 /* Home */,
@@ -228,13 +230,6 @@
 			path = Activity;
 			sourceTree = "<group>";
 		};
-		188B6F3C265A3A4300DA24BE /* Social */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Social;
-			sourceTree = "<group>";
-		};
 		188B6F3D265A3A6C00DA24BE /* Feeds */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +258,14 @@
 				0101A50A5B99565845D7D9EA /* Pods-Pace Maker.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EDE87BC5265F91FD002AAC30 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				EDE87BC6265F920C002AAC30 /* SocialViewController.swift */,
+			);
+			path = Social;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
