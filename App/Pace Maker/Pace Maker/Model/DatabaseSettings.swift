@@ -42,3 +42,27 @@ func uploadProfileImage(img: UIImage){
         }
     }
 }
+
+//Social에서 follow할 friends searching 기능 구현 위한 함수
+//보여주는 것도 비동기 코드 안에서 해야할 것처럼 보임
+//Social UI 짠 이후에 이동시킬 예정
+func searchUserByContains(_ inputString: String){
+    let input = inputString.lowercased()
+    let refer = realReference.reference(withPath: "user")
+    let users = refer.queryOrdered(byChild: "nick")
+    users.observe(.value, with: {snapshot in
+        var retUserCandidate: [DataSnapshot] = []
+        for child in snapshot.children.allObjects as! [DataSnapshot]{
+            let nickName = child.childSnapshot(forPath: "nick").value as! String
+            let realName = child.childSnapshot(forPath: "name").value as! String
+            
+            let nick = nickName.lowercased()
+            let name = realName.lowercased()
+            
+            if (nick.contains(input)) || (name.contains(input)){
+                retUserCandidate.append(child)
+            }
+        }
+        print(retUserCandidate)
+    })
+}

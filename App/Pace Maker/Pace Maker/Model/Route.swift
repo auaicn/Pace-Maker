@@ -8,6 +8,20 @@
 import Foundation
 
 struct Route{
-    var distance : String
-    var timeSpentInSeconds : String
+    var dateString: String
+    var distanceInKilometer: Double
+    var routeSavedPath: String
+    var runnerUID: Int
+    var timeSpentInSeconds : Double
+    
+    var pace: Int {
+        let paceInSeconds: Int = Int(timeSpentInSeconds / distanceInKilometer)
+        return paceInSeconds
+    }
+    
+    var paceString: String {
+        let min = pace / 60
+        let second = pace % 60
+        return "\(min):\(second)"
+    }
 }
