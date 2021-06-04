@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="socialCell" id="uj2-NG-Sb9" customClass="socialFeedCell" customModule="Pace_Maker" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" reuseIdentifier="socialCell" id="uj2-NG-Sb9" customClass="socialFeedCell" customModule="Pace_Maker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="346"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="c2D-nM-gJc">
@@ -83,7 +83,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bd-XM-1Jy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1276.8115942028987" y="220.98214285714286"/>
+            <point key="canvasLocation" x="1190" y="221"/>
         </scene>
         <!--User Search Table Table View Controller-->
         <scene sceneID="RUP-Hy-No9">
@@ -117,7 +117,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdX-Sg-GhH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2355" y="221"/>
+            <point key="canvasLocation" x="2023" y="221"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jpk-px-PVG">
