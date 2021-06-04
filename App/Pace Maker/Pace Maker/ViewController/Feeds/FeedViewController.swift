@@ -9,7 +9,6 @@ import UIKit
 
 class FeedViewController: UIViewController {
  
-    @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     private var numberOfCell = 20 {
@@ -36,21 +35,18 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        
-        editProfileButton.layer.borderColor = UIColor.gray.cgColor
-        editProfileButton.layer.borderWidth = 1
-        editProfileButton.layer.cornerRadius = 8
+    
         
         
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         feedCollectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
         
+      
         //feedCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
         //feedCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "default")
-        //feedCollectionView.register(CollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedCollectionHeader")
-        
+        //feedCollectionView.register(CollectionReusableView.self, forSuppl ementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedHeader")
+        feedCollectionView.register(UINib(nibName: "CollectionReusableView", bundle: nil), forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedHeader")
         
         setupFlowLayout()
         
@@ -65,11 +61,14 @@ class FeedViewController: UIViewController {
         flowLayout.minimumInteritemSpacing = 2
         flowLayout.minimumLineSpacing = 2
         
-        let halfWidth = (feedCollectionView.bounds.width - 4) / 3
-        flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
-        self.feedCollectionView.collectionViewLayout = flowLayout
         
-        //flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 200)
+        flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 262)
+        
+        let width = feedCollectionView.frame.width / 3 - 2
+        //let width: CGFloat = self.feedCollectionView.frame.width / 3.0 - 2.0
+        //let width = UIScreen.main.size.width / 3 - 2
+        flowLayout.itemSize = CGSize(width: width, height: width)
+        self.feedCollectionView.collectionViewLayout = flowLayout
     }
     
     /*
@@ -84,7 +83,7 @@ class FeedViewController: UIViewController {
 
 }
 
-extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, HeaderViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberOfCell
     }
@@ -95,6 +94,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     
         cell.imageView.image = feedStorys[indexPath.row]
+        cell.configure()
         return cell
     }
     
@@ -104,5 +104,22 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: width, height: height)
     }
 
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FeedHeader", for: indexPath) as! CollectionReusableView
+            // do any programmatic customization, if any, here
+            header.configure()
+            header.delegate = self
+            return header
+        }
+        fatalError("Unexpected kind")
+    }
+
+    func touchEditButton() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "editProfileViewController")
+        //vc?.modalTransitionStyle = .coverVertical
+        self.present(vc!, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

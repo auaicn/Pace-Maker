@@ -11,14 +11,23 @@
         <!--Social-->
         <scene sceneID="Pr6-6O-cKq">
             <objects>
-                <viewController title="Social" id="JNQ-IM-c2o" sceneMemberID="viewController">
+                <viewController title="Social" id="JNQ-IM-c2o" customClass="SocialViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rq9-3K-3id">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN5-vz-t13">
+                                <rect key="frame" x="41" y="202" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kfV-Rm-SLz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rQD-ew-f84"/>
+                    <connections>
+                        <outlet property="imgview" destination="mN5-vz-t13" id="g8W-jq-20a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bd-XM-1Jy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
