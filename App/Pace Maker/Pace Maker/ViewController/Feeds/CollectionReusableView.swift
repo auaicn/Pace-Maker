@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HeaderViewDelegate: AnyObject {
+    func touchEditButton()
+}
+
 class CollectionReusableView: UICollectionReusableView {
 
     @IBOutlet weak var feedImage: UIImageView!
@@ -17,6 +21,7 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var story: UITextField!
     @IBOutlet weak var editButton: UIButton!
     
+    var delegate: HeaderViewDelegate?
        
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +29,15 @@ class CollectionReusableView: UICollectionReusableView {
     }
        
     func configure() {
-        feedImage.image = UIImage(named: "1")
+        //feedImage = makeRoundImageView()
+        
+        
+        let profileImage = (UIImage(named: "2")?.withRenderingMode(.alwaysOriginal))!
+        feedImage.image = profileImage
+        feedImage.contentMode = .scaleAspectFill
+        feedImage.layer.cornerRadius = feedImage.frame.width / 2
+        feedImage.clipsToBounds = true
+        
         distance.text = "총 달린 거리 : "
         time.text = "총 달린 시간 : "
         badge.text = "획득 뱃지 : "
@@ -39,8 +52,11 @@ class CollectionReusableView: UICollectionReusableView {
         super.layoutSubviews()
     }
        
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    @IBAction func touchEditButton(_ sender: UIButton) {
+        delegate?.touchEditButton()
     }
     
+     required init?(coder: NSCoder) {
+         super.init(coder: coder)
+     }
 }

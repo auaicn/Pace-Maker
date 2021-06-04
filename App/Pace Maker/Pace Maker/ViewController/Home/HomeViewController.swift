@@ -71,9 +71,10 @@ extension HomeViewController {
             let passwd: String = userDictionary["passwd"] as! String
             let phone: String = userDictionary["phone"] as! String
             
-            user = User(customerId: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
+            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
-
+            
+            print("logined with UID \(id)")
 
         }
     }

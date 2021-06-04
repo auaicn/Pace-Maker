@@ -14,5 +14,18 @@ class FeedCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func configure() {
+        imageView.contentMode = .scaleAspectFill
+    }
 
 }

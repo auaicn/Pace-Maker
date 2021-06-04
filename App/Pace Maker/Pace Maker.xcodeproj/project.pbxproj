@@ -15,9 +15,16 @@
 		18161574263B0D97008038C5 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161573263B0D97008038C5 /* Feed.storyboard */; };
 		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
 		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
+		182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182B0228265B646E002C5195 /* HealthKit.framework */; };
 		1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C824264F05B100BC75F5 /* BadgeViewController.swift */; };
 		1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831C827264F05C500BC75F5 /* ChallengeViewController.swift */; };
+		1840D179265E409F006956E7 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1840D178265E409F006956E7 /* Format.swift */; };
 		184D48252652759F00888675 /* DatabaseSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D48242652759F00888675 /* DatabaseSettings.swift */; };
+		184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */; };
+		18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */; };
+		18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */; };
+		18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */; };
+		1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */; };
 		18653EC8265F8EAB001D9A68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653EC7265F8EAB001D9A68 /* User.swift */; };
 		18653ECA265F8F92001D9A68 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653EC9265F8F92001D9A68 /* HomeViewController.swift */; };
 		18653ECE265F8FBF001D9A68 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ECB265F8FBF001D9A68 /* CollectionReusableView.swift */; };
@@ -29,7 +36,6 @@
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
 		188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126CC261EE8A70073029F /* LaunchScreen.storyboard */; };
-		188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */; };
 		188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3F265A3A7E00DA24BE /* FeedCell.swift */; };
 		188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */; };
 		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
@@ -62,9 +68,17 @@
 		18161573263B0D97008038C5 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
+		182B0227265B646E002C5195 /* Pace Maker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pace Maker.entitlements"; sourceTree = "<group>"; };
+		182B0228265B646E002C5195 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1831C824264F05B100BC75F5 /* BadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeViewController.swift; sourceTree = "<group>"; };
 		1831C827264F05C500BC75F5 /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
+		1840D178265E409F006956E7 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		184D48242652759F00888675 /* DatabaseSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseSettings.swift; sourceTree = "<group>"; };
+		184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitorViewController.swift; path = "Pace Maker/ViewController/Running/CompetitorViewController.swift"; sourceTree = SOURCE_ROOT; };
+		18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectViewController.swift; sourceTree = "<group>"; };
+		18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
+		1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMetric.swift; sourceTree = "<group>"; };
 		18653EC7265F8EAB001D9A68 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		18653EC9265F8F92001D9A68 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		18653ECB265F8FBF001D9A68 /* CollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
@@ -78,7 +92,6 @@
 		188126CA261EE8A70073029F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188126CD261EE8A70073029F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionHeader.swift; sourceTree = "<group>"; };
 		188B6F3F265A3A7E00DA24BE /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		188B6F41265A3A7E00DA24BE /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
@@ -104,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D2C20B48E35097D13B8B38B /* Pods_Pace_Maker.framework in Frameworks */,
+				182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */,
 				4D2C20B48E35097D13B8B38B /* (null) in Frameworks */,
 				6A0993CA786200FF05026B40 /* Pods_Pace_Maker.framework in Frameworks */,
 			);
@@ -161,6 +176,7 @@
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
 				188126CF261EE8A70073029F /* Info.plist */,
 				ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */,
+				1840D178265E409F006956E7 /* Format.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -188,7 +204,11 @@
 		1831C823264F059900BC75F5 /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */,
+				18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */,
 				18952183263F0D510089AE77 /* RunningViewController.swift */,
+				18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */,
+				18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -214,6 +234,7 @@
 		188126C0261EE8A40073029F /* Pace Maker */ = {
 			isa = PBXGroup;
 			children = (
+				182B0227265B646E002C5195 /* Pace Maker.entitlements */,
 				182919752627679E00EE6A50 /* Fonts */,
 				18252B73261EFEC3001A76DC /* Supported Files */,
 				18252B6F261EFE62001A76DC /* UI */,
@@ -230,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				18B6F06B26565D8400534D9D /* ActivityViewController.swift */,
+				1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -240,7 +262,6 @@
 				18653ECB265F8FBF001D9A68 /* CollectionReusableView.swift */,
 				18653ECC265F8FBF001D9A68 /* CollectionReusableView.xib */,
 				18653ECD265F8FBF001D9A68 /* FeedViewController.swift */,
-				188B6F3E265A3A7E00DA24BE /* collectionHeader.swift */,
 				188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */,
 				188B6F3F265A3A7E00DA24BE /* FeedCell.swift */,
 				188B6F41265A3A7E00DA24BE /* FeedCell.xib */,
@@ -251,6 +272,8 @@
 		8313350AC65827DF2B1EF891 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				182B0228265B646E002C5195 /* HealthKit.framework */,
+				B621BB199F224D0D4A617B23 /* Pods_Pace_Maker.framework */,
 				AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */,
 			);
 			name = Frameworks;
@@ -401,10 +424,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */,
+				1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */,
 				18653ED0265F8FBF001D9A68 /* FeedViewController.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18653ECE265F8FBF001D9A68 /* CollectionReusableView.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
+				1840D179265E409F006956E7 /* Format.swift in Sources */,
 				18D3C947265121CE00EBA66A /* Badge.swift in Sources */,
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */,
@@ -419,12 +445,15 @@
 				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* (null) in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
+				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
 				ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */,
+				18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */,
 				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				188B6F42265A3A7E00DA24BE /* collectionHeader.swift in Sources */,
+				18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */,
 				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,15 +610,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Pace Maker/Pace Maker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M594W3F27J;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.pacemaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -601,15 +633,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Pace Maker/Pace Maker.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M594W3F27J;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				INFOPLIST_FILE = "$(SRCROOT)/Pace Maker/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.auaicn.Pace-Maker";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codershigh.pacemaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
