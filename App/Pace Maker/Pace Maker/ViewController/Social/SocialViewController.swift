@@ -10,9 +10,16 @@ import Firebase
 
 class SocialViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
-    
     @IBOutlet weak var socialCollectionView: UICollectionView!
     
+    var logOfFriends: [DataSnapshot] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.loadFriends()
+        self.setupFlowLayout()
+    }
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -28,26 +35,17 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell
     }
     
-    
-    var logOfFriends: [DataSnapshot] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupFlowLayout()
-        self.loadFriends()
-    }
-    
     private func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumInteritemSpacing = 2
-        flowLayout.minimumLineSpacing = 2
+        flowLayout.minimumInteritemSpacing = 1
+        flowLayout.minimumLineSpacing = 1
         
-        let halfWidth = (socialCollectionView.bounds.width - 4)
+        let halfWidth = (socialCollectionView.bounds.width)
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
         self.socialCollectionView.collectionViewLayout = flowLayout
         
-        flowLayout.headerReferenceSize = CGSize(width: self.socialCollectionView.frame.size.width, height: 0)
+        //flowLayout.headerReferenceSize = CGSize(width: self.socialCollectionView.frame.size.width, height: 0)
     }
     
     //Load Friends List From Firebase
@@ -79,9 +77,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
 }
 
 class socialFeedCell: UICollectionViewCell{
-    
     @IBOutlet weak var imgView: UIImageView!
-    
     @IBOutlet weak var label: UILabel!
 }
 
