@@ -10,7 +10,6 @@
 		18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816155F263B01F0008038C5 /* TabBarViewController.swift */; };
 		18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18161563263B078D008038C5 /* LaunchingImages.xcassets */; };
 		18161567263B0CFE008038C5 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161566263B0CFE008038C5 /* Activity.storyboard */; };
-		1816156A263B0D09008038C5 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161569263B0D09008038C5 /* Social.storyboard */; };
 		1816156E263B0D59008038C5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1816156D263B0D59008038C5 /* Home.storyboard */; };
 		18161571263B0D89008038C5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161570263B0D89008038C5 /* Setting.storyboard */; };
 		18161574263B0D97008038C5 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161573263B0D97008038C5 /* Feed.storyboard */; };
@@ -53,8 +52,10 @@
 		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
 		4D2C20B48E35097D13B8B38B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6A0993CA786200FF05026B40 /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */; };
+		ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F040C2669E9C1000B3C86 /* Social.storyboard */; };
+		ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */; };
+		ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */; };
 		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
-		EDE87BC7265F920C002AAC30 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87BC6265F920C002AAC30 /* SocialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +63,6 @@
 		1816155F263B01F0008038C5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Pace Maker/ViewController/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18161563263B078D008038C5 /* LaunchingImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LaunchingImages.xcassets; sourceTree = "<group>"; };
 		18161566263B0CFE008038C5 /* Activity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
-		18161569263B0D09008038C5 /* Social.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
 		1816156D263B0D59008038C5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18161570263B0D89008038C5 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		18161573263B0D97008038C5 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
@@ -106,8 +106,10 @@
 		18FA7DC6264EDE4900C50554 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC27687A2039436E00C13A78 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
+		ED3F040B2669E9C1000B3C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
+		ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableTableViewController.swift; sourceTree = "<group>"; };
+		ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EDE87BC6265F920C002AAC30 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,7 @@
 				18161573263B0D97008038C5 /* Feed.storyboard */,
 				18161570263B0D89008038C5 /* Setting.storyboard */,
 				1816156D263B0D59008038C5 /* Home.storyboard */,
-				18161569263B0D09008038C5 /* Social.storyboard */,
+				ED3F040C2669E9C1000B3C86 /* Social.storyboard */,
 				18161566263B0CFE008038C5 /* Activity.storyboard */,
 				18D3C94C265127C700EBA66A /* Login.storyboard */,
 				18D3C98226523DD300EBA66A /* Running.storyboard */,
@@ -289,7 +291,8 @@
 		EDE87BC5265F91FD002AAC30 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				EDE87BC6265F920C002AAC30 /* SocialViewController.swift */,
+				ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */,
+				ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -363,7 +366,7 @@
 				188126CE261EE8A70073029F /* LaunchScreen.storyboard in Resources */,
 				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
 				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
-				1816156A263B0D09008038C5 /* Social.storyboard in Resources */,
+				ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */,
 				18653ECF265F8FBF001D9A68 /* CollectionReusableView.xib in Resources */,
 				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
 				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
@@ -439,11 +442,13 @@
 				18C646AE264EC07A00E3E71B /* (null) in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
+				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* (null) in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
+				ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */,
 				18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */,
 				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
@@ -470,6 +475,14 @@
 				188126CD261EE8A70073029F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		ED3F040C2669E9C1000B3C86 /* Social.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ED3F040B2669E9C1000B3C86 /* Base */,
+			);
+			name = Social.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

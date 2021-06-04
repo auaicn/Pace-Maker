@@ -53,7 +53,7 @@
         <scene sceneID="hLh-rv-Kor">
             <objects>
                 <viewControllerPlaceholder storyboardName="Social" id="uyz-Uh-gOY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5V1-He-D3I"/>
+                    <tabBarItem key="tabBarItem" title="" id="5V1-He-D3I"/>
                     <navigationItem key="navigationItem" id="Yx6-aO-vG2"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9P-Ji-wgi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
