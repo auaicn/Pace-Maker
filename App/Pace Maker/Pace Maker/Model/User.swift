@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 let DEFAULT_USER_ID: Int = 1
 var user: User? = nil
+var profileImage: UIImage? = nil
 
 struct User {
     
@@ -28,6 +30,8 @@ struct User {
         self.nickName = nickName
         self.challenges = challenges
         self.friends = friends
+        
+        profileImage = UIImage(systemName: "person.crop.circle.badge.xmark")
     }
 }
 
