@@ -25,6 +25,7 @@
 		18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */; };
 		18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */; };
 		18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */; };
+		1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126C9261EE8A40073029F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188126C7261EE8A40073029F /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectViewController.swift; sourceTree = "<group>"; };
 		18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
+		1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMetric.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				18B6F06B26565D8400534D9D /* ActivityViewController.swift */,
+				1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */,
+				1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				1840D179265E409F006956E7 /* Format.swift in Sources */,

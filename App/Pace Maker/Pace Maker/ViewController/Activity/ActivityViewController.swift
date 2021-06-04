@@ -10,54 +10,6 @@ import HealthKit
 import Charts
 import Firebase
 
-enum CurrentMetric: String{
-    case distance, pace, beatsPerMinute, respiration
-    
-    static let allValues = [distance, pace, beatsPerMinute, respiration]
-    
-    var unit: String {
-        switch self{
-            case .distance:
-                return "km"
-            case .pace:
-                return "m:s per km"
-            case .beatsPerMinute:
-                return "per minute"
-            case .respiration:
-                return "per minute"
-        }
-    }
-    
-    var label: String {
-        switch self{
-            case .distance:
-                return "km"
-            case .pace:
-                return "m:s per km"
-            case .beatsPerMinute:
-                return "per minute"
-            case .respiration:
-                return "per minute"
-        }
-    }
-    
-    var prefix: String {
-        switch self{
-            case .distance:
-                return "총"
-            case .pace:
-                return "최대"
-            case .beatsPerMinute:
-                return ""
-            case .respiration:
-                return ""
-        }
-    }
-    
-}
-
-var currentMetric: CurrentMetric = .distance
-
 class ActivityViewController: UIViewController {
 
     @IBOutlet weak var deviceNotAvailableLabel: UILabel!
