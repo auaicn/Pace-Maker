@@ -47,8 +47,8 @@
 		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
 		4D2C20B48E35097D13B8B38B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		6A0993CA786200FF05026B40 /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */; };
+		ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */; };
 		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
-		EDE87BC7265F920C002AAC30 /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE87BC6265F920C002AAC30 /* SocialViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,8 +93,8 @@
 		18FA7DC6264EDE4900C50554 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		AF8952251549A4109056EF00 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC27687A2039436E00C13A78 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
+		ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		EDE87BC6265F920C002AAC30 /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +266,7 @@
 		EDE87BC5265F91FD002AAC30 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				EDE87BC6265F920C002AAC30 /* SocialViewController.swift */,
+				ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -413,6 +413,7 @@
 				18C646AE264EC07A00E3E71B /* (null) in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
+				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* (null) in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
