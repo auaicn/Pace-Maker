@@ -14,7 +14,7 @@ var profileImage: UIImage? = nil
 
 struct User {
     
-    let customerId :Int // PK, 회원 번호
+    let UID :Int // PK, 회원 번호
     let name: String
     let email : String
     let age: Int
@@ -22,8 +22,8 @@ struct User {
     let challenges : [Int]
     let friends : [Int]
     
-    init(customerId : Int, name: String, email: String, age: Int, nickName: String, challenges: [Int], friends:[Int]) {
-        self.customerId = customerId
+    init(UID : Int, name: String, email: String, age: Int, nickName: String, challenges: [Int], friends:[Int]) {
+        self.UID = UID
         self.name = name
         self.email = email
         self.age = age
