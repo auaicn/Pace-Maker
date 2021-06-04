@@ -44,8 +44,6 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         let halfWidth = (socialCollectionView.bounds.width)
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
         self.socialCollectionView.collectionViewLayout = flowLayout
-        
-        //flowLayout.headerReferenceSize = CGSize(width: self.socialCollectionView.frame.size.width, height: 0)
     }
     
     //Load Friends List From Firebase
