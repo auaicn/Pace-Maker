@@ -13,6 +13,15 @@ let realReference = Database.database(url: "https://pace-maker-74452-default-rtd
 let storage = Storage.storage()
 let storageUrlBase = "gs://pace-maker-74452.appspot.com/"
 
+//func downloadProfileImage(with iamgeview: UIImageView){
+//    let imageUrl = storageUrlBase + "profiles/" + String(DEFAULT_USER_ID)
+//    storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+//        let data = NSData(contentsOf: url!)
+//        let image = UIImage(data: data! as Data)
+//        imgview.image = image
+//    }
+//}
+
 func getProfileImage(imgview: UIImageView){
     let imageUrl = storageUrlBase + "profiles/" + String(DEFAULT_USER_ID)
     storage.reference(forURL: imageUrl).downloadURL { (url, error) in

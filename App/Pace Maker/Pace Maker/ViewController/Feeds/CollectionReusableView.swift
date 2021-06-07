@@ -18,7 +18,7 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var badge: UILabel!
     @IBOutlet weak var following: UILabel!
-    @IBOutlet weak var story: UITextField!
+
     @IBOutlet weak var editButton: UIButton!
     
     var delegate: HeaderViewDelegate?
@@ -29,11 +29,8 @@ class CollectionReusableView: UICollectionReusableView {
     }
        
     func configure() {
-        //feedImage = makeRoundImageView()
         
-        
-        let profileImage = (UIImage(named: "2")?.withRenderingMode(.alwaysOriginal))!
-        feedImage.image = profileImage
+        feedImage.image = profileImage != nil ? profileImage! : defaultProfileImage!
         feedImage.contentMode = .scaleAspectFill
         feedImage.layer.cornerRadius = feedImage.frame.width / 2
         feedImage.clipsToBounds = true
