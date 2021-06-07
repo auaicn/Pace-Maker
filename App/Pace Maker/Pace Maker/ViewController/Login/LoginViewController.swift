@@ -16,34 +16,40 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     
-//    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+
     let underKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
     
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
     @IBAction func loginAction(_ sender: Any) {
-        guard let inputEmail = email.text else {return}
+        guard let inputEmail = email.text else { return }
         performSegue(withIdentifier: "unwindToHomeVC", sender: nil)
     }
-    @IBAction func registerAction(_ sender: Any) {
-        
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+//        setNavigationBar()
         setupProviderLoginView()
         underKeyboardLayoutConstraint.setup(bottomLayoutConstraint, view: view)
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.backgroundColor = .systemBackground
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        performExistingAccountSetupFlows()
+//        performExistingAccountSetupFlows()
     }
     
     /// - Tag: add_appleid_button
     func setupProviderLoginView() {
-        let authorizationButton = ASAuthorizationAppleIDButton()
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signUp, style: .whiteOutline)
+
+//        let authorizationButton = ASAuthorizationAppleIDButton()
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         self.loginProviderStackView.addArrangedSubview(authorizationButton)
     }
@@ -86,6 +92,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 let userIdentifier = appleIDCredential.user
                 let fullName = appleIDCredential.fullName
                 let email = appleIDCredential.email
+                
+                print("User ID : \(userIdentifier)")
+                print("User Email : \(email ?? "")")
+                print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
                 
                 // For the purpose of this demo app, store the `userIdentifier` in the keychain.
 //                self.saveUserInKeychain(userIdentifier)

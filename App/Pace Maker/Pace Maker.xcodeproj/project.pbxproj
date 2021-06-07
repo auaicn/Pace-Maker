@@ -30,6 +30,8 @@
 		18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */; };
 		18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */; };
 		18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */; };
+		1866A409266DF278001CE029 /* UnderlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A408266DF278001CE029 /* UnderlineLabel.swift */; };
+		1866A40B266DF874001CE029 /* RegisterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1866A40A266DF874001CE029 /* RegisterDetailViewController.swift */; };
 		1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */; };
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
@@ -83,6 +85,8 @@
 		18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteSelectViewController.swift; sourceTree = "<group>"; };
 		18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientPathRenderer.swift; sourceTree = "<group>"; };
+		1866A408266DF278001CE029 /* UnderlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineLabel.swift; sourceTree = "<group>"; };
+		1866A40A266DF874001CE029 /* RegisterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDetailViewController.swift; sourceTree = "<group>"; };
 		1876B4B12669D5A000ED2EC0 /* CurrentMetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentMetric.swift; sourceTree = "<group>"; };
 		188126BE261EE8A40073029F /* Pace Maker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pace Maker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188126C1261EE8A40073029F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1866A408266DF278001CE029 /* UnderlineLabel.swift */,
 				18653EC7265F8EAB001D9A68 /* User.swift */,
 				18252B70261EFE79001A76DC /* Route.swift */,
 				18FA7DC6264EDE4900C50554 /* RoundedView.swift */,
@@ -142,6 +147,7 @@
 		18252B6E261EFE5C001A76DC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1866A40C266DF87A001CE029 /* Login */,
 				EDE87BC5265F91FD002AAC30 /* Social */,
 				188B6F3D265A3A6C00DA24BE /* Feeds */,
 				188B6F3B265A3A3C00DA24BE /* Activity */,
@@ -194,8 +200,6 @@
 				18653EC9265F8F92001D9A68 /* HomeViewController.swift */,
 				1831C824264F05B100BC75F5 /* BadgeViewController.swift */,
 				1831C827264F05C500BC75F5 /* ChallengeViewController.swift */,
-				18D3C94F2651293F00EBA66A /* RegisterViewController.swift */,
-				18D3C9552651299300EBA66A /* LoginViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -210,6 +214,16 @@
 				18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */,
 			);
 			path = Running;
+			sourceTree = "<group>";
+		};
+		1866A40C266DF87A001CE029 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				18D3C9552651299300EBA66A /* LoginViewController.swift */,
+				18D3C94F2651293F00EBA66A /* RegisterViewController.swift */,
+				1866A40A266DF874001CE029 /* RegisterDetailViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		188126B5261EE8A40073029F = {
@@ -428,6 +442,7 @@
 				18653ED0265F8FBF001D9A68 /* FeedViewController.swift in Sources */,
 				ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
+				1866A40B266DF874001CE029 /* RegisterDetailViewController.swift in Sources */,
 				18653ECE265F8FBF001D9A68 /* CollectionReusableView.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
 				1840D179265E409F006956E7 /* Format.swift in Sources */,
@@ -441,6 +456,7 @@
 				18653EC8265F8EAB001D9A68 /* User.swift in Sources */,
 				18C646AE264EC07A00E3E71B /* (null) in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
+				1866A409266DF278001CE029 /* UnderlineLabel.swift in Sources */,
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
 				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* (null) in Sources */,
