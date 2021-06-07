@@ -51,6 +51,7 @@
 		18D3C98326523DD300EBA66A /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C98226523DD300EBA66A /* Running.storyboard */; };
 		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
 		54EADBBA114B7C58B9DE1B2D /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2230849988EBCF407E79A9 /* Pods_Pace_Maker.framework */; };
+		ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E0C68266E0742002FB13D /* UsersCell.swift */; };
 		ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F040C2669E9C1000B3C86 /* Social.storyboard */; };
 		ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */; };
 		ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */; };
@@ -105,6 +106,7 @@
 		43C65E468B8DE5A81515660E /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
 		4BA694909B4C326BC0F00F27 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		DA2230849988EBCF407E79A9 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED1E0C68266E0742002FB13D /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		ED3F040B2669E9C1000B3C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
 		ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableTableViewController.swift; sourceTree = "<group>"; };
 		ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */,
 				ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */,
+				ED1E0C68266E0742002FB13D /* UsersCell.swift */,
 			);
 			path = Social;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */,
 				1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */,
 				18653ED0265F8FBF001D9A68 /* FeedViewController.swift in Sources */,
+				ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
 				18653ECE265F8FBF001D9A68 /* CollectionReusableView.swift in Sources */,
 				18252B71261EFE79001A76DC /* Route.swift in Sources */,
