@@ -32,7 +32,7 @@ class HomeViewController: UIViewController{
         super.viewDidLoad()
         updateAuthenticationStatus(to: .notLoggined)
         setNavigationBar()
-        loginAsDefaultUser()
+//        loginAsDefaultUser()
         updateUI()
     }
     
@@ -98,7 +98,7 @@ extension HomeViewController {
     
     func setNavigationBar() {
         self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(tappedLogOut))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(tappedLogOut))
 
 //        self.navigationItem.rightBarButtonItem?.action = #selector(tappedLogOut)
         
@@ -110,7 +110,8 @@ extension HomeViewController {
     
     /// Make View For Left Navigation Bar Item using User's profile image
     private func makeNavigationBarItemWithImage() -> UIBarButtonItem{
-        let profileImageView = makeRoundImageView()
+
+        let profileImageView = profileImage != nil ? makeRoundImageView(with: profileImage!) : UIImageView(image: defaultProfileImage)
         
         let customView = UIButton()
         customView.addSubview(profileImageView)
@@ -124,10 +125,10 @@ extension HomeViewController {
         return item;
     }
     
-    func makeRoundImageView() -> UIImageView{
-        let profileImage = (UIImage(named: "workout")?.withRenderingMode(.alwaysOriginal))!
+    func makeRoundImageView(with image: UIImage) -> UIImageView {
+        let renderedProfileImage = image.withRenderingMode(.alwaysOriginal)
         let profileImageView = UIImageView(frame: CGRect(x: 0,y: 0,width: 32,height: 32)) // hardcoded
-        profileImageView.image = profileImage
+        profileImageView.image = renderedProfileImage
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.clipsToBounds = true
