@@ -64,9 +64,7 @@ class FeedViewController: UIViewController {
         
         flowLayout.headerReferenceSize = CGSize(width: self.feedCollectionView.frame.size.width, height: 262)
         
-        let width = feedCollectionView.frame.width / 3 - 2
-        //let width: CGFloat = self.feedCollectionView.frame.width / 3.0 - 2.0
-        //let width = UIScreen.main.size.width / 3 - 2
+        let width = UIScreen.main.bounds.size.width / 3 - 2
         flowLayout.itemSize = CGSize(width: width, height: width)
         self.feedCollectionView.collectionViewLayout = flowLayout
     }
