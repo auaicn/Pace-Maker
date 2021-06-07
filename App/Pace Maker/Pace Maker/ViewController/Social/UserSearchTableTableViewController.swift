@@ -20,6 +20,22 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
         userTableView.delegate = self
         userTableView.dataSource = self
     }
+    
+    func getProfileImage(imgview: UIImageView, id: String){
+        let imageUrl = storageUrlBase + "profiles/" + id + ".jpg"
+        storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+            if let error = error {
+                //let image = UIImage()
+                //imgview.image = image
+            }
+            else{
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)
+                imgview.image = image
+                
+            }
+        }
+    }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
@@ -64,8 +80,8 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
 
         let candidate =  self.userCandidate[indexPath.row]
         
-        let img = UIImage(named: "feed-1")
-        cell.imgView?.image = img
+        //let id = candidate.childSnapshot(forPath: )
+        self.getProfileImage(imgview: cell.imgView, id: candidate.key)
         
         let nick = candidate.childSnapshot(forPath: "nick").value as! String
         let name = candidate.childSnapshot(forPath: "name").value as! String
