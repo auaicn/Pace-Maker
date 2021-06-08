@@ -9,9 +9,10 @@ import UIKit
 import Firebase
 
 class SocialViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+
     
     @IBOutlet weak var socialCollectionView: UICollectionView!
-
+    
     var infoOfFriends: [DataSnapshot] = []
     var logOfFriends: [DataSnapshot] = []
 
@@ -19,10 +20,11 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         self.loadLogsOfFriends()
         self.setupFlowLayout()
+        print(self.logOfFriends.count)
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.logOfFriends.count)
         return self.logOfFriends.count
     }
     
@@ -31,24 +33,32 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     socialFeedCell else {
                 return UICollectionViewCell()
             }
+        
+        cell.contentView.layer.masksToBounds = true
+        
         let img = UIImage(named: "feed-1")
         cell.imgView?.image = img
         let tmpLog = logOfFriends[indexPath.row]
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
         let date = tmpLog.childSnapshot(forPath: "date").value as! String
-        let distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64
-        let time = tmpLog.childSnapshot(forPath: "time").value as! Float64
-        cell.label.text = "\(nick) \(date) 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
+        var distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64
+        distance = round(distance * 1000) / 1000
+        var time = tmpLog.childSnapshot(forPath: "time").value as! Float64
+        time = round(time * 1000) / 1000
+        cell.label.numberOfLines = 3
+        cell.label.text = " \(nick) \(date) \n 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
         return cell
     }
     
     private func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumInteritemSpacing = 1
-        flowLayout.minimumLineSpacing = 1
+        let width = socialCollectionView.bounds.width
+        let space = width / 20
+        flowLayout.sectionInset = UIEdgeInsets(top: space, left: space, bottom: 0, right: 0)
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
         
-        let halfWidth = (socialCollectionView.bounds.width)
+        let halfWidth =  (socialCollectionView.bounds.width - space * 2)
         flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
         self.socialCollectionView.collectionViewLayout = flowLayout
     }
@@ -64,7 +74,9 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self.logOfFriends.append(child)
                 }
             }
+            print("here")
             self.socialCollectionView.reloadData()
+            print("here done")
         })
         
     }
