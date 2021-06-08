@@ -59,7 +59,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         let logOrderByDate = refer.queryOrdered(byChild: "date")
         logOrderByDate.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
-                let val = child.childSnapshot(forPath: "runner").value as! Int
+                let val = child.childSnapshot(forPath: "runner").value as! String
                 if ((user?.friends.contains(val)) != nil) {
                     self.logOfFriends.append(child)
                 }

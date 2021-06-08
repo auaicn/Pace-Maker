@@ -18,10 +18,9 @@ var homeScreenChallengeIndex : Int = 0
 class HomeViewController: UIViewController{
 
     var userIdentifierString: String?
-    var userId : Int?
     
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var screenImageView: UIImageView!
     
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
@@ -32,8 +31,11 @@ class HomeViewController: UIViewController{
         super.viewDidLoad()
         updateAuthenticationStatus(to: .notLoggined)
         setNavigationBar()
-//        loginAsDefaultUser()
         updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        login()
     }
     
     func updateUI(){
@@ -52,29 +54,28 @@ class HomeViewController: UIViewController{
 // 로그인 관련
 extension HomeViewController {
     
-    func loginAsDefaultUser() {
-        login(with: DEFAULT_USER_ID)
-    }
-    
-    func login(with id:Int){
+    func login(){
+        guard let userId = userId else {
+            print("failed to login")
+            return
+        }
         let userReference = realReference.reference(withPath: "user")
-        userReference.child(String(id)).observe(.value) { snapshot in
+        userReference.child(userId).observeSingleEvent(of: .value) { snapshot in
             let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
             
-            let addr: String = userDictionary["addr"] as! String
             let age: Int = userDictionary["age"] as! Int
-            let challenges: [Int] = userDictionary["challenges"] as! [Int]
-            let friends: [Int] = userDictionary["friends"] as! [Int]
             let email: String = userDictionary["email"] as! String
             let name: String = userDictionary["name"] as! String
             let nick: String = userDictionary["nick"] as! String
-            let passwd: String = userDictionary["passwd"] as! String
-            let phone: String = userDictionary["phone"] as! String
             
-            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
+            let friends: [String] = userDictionary["friends"] as? [String] ?? []
+            let challenges: [String] = userDictionary["challenges"] as? [String] ?? []
+            // let passwd: String = userDictionary["passwd"] as! String 로그인시에는 필요없어 보인다
+            
+            user = User(UID: userId, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
             
-            print("logined with UID \(id)")
+            print("logined with UID \(userId)")
 
         }
     }
@@ -89,6 +90,7 @@ extension HomeViewController {
                 navigationItem.rightBarButtonItem?.isEnabled = true
                 navigationItem.rightBarButtonItem?.tintColor = .label
         }
+        updateUI()
     }
     
 }
@@ -98,9 +100,9 @@ extension HomeViewController {
     
     func setNavigationBar() {
         self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(tappedLogOut))
+        self.navigationItem.rightBarButtonItem = makeCameraScreenshotImage()
 
-//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedLogOut)
+//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedCamera)
         
         // maybe Large Title Stuff
         
@@ -109,9 +111,30 @@ extension HomeViewController {
     }
     
     /// Make View For Left Navigation Bar Item using User's profile image
-    private func makeNavigationBarItemWithImage() -> UIBarButtonItem{
-
-        let profileImageView = profileImage != nil ? makeRoundImageView(with: profileImage!) : UIImageView(image: defaultProfileImage)
+    private func makeCameraScreenshotImage() -> UIBarButtonItem {
+        
+        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
+        
+        let customView = UIButton()
+        customView.addSubview(profileImageView)
+        customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        customView.addTarget(self, action: #selector(tappedCamera), for: .touchUpInside)
+        
+        let item = UIBarButtonItem(customView: customView)
+        item.target = self
+        
+        return item;
+    }
+    
+    @objc func tappedCamera(){
+        print("tappedCamera")
+        screenImageView.image = view.takeScreenshot()
+    }
+    
+    /// Make View For Left Navigation Bar Item using User's profile image
+    private func makeNavigationBarItemWithImage() -> UIBarButtonItem {
+        
+        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
         
         let customView = UIButton()
         customView.addSubview(profileImageView)
@@ -153,5 +176,27 @@ extension HomeViewController {
             case .notLoggined:
                 return
         }
+    }
+}
+
+extension UIView {
+    
+    func takeScreenshot() -> UIImage {
+        
+        // Begin context
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        // Draw view in that context
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        // And finally, get image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if (image != nil)
+        {
+            return image!
+        }
+        return UIImage()
     }
 }

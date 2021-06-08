@@ -30,7 +30,7 @@ class CollectionReusableView: UICollectionReusableView {
        
     func configure() {
         
-        feedImage.image = profileImage != nil ? profileImage! : defaultProfileImage!
+        feedImage.image = user?.profileImage != nil ? user?.profileImage! : defaultProfileImage!
         feedImage.contentMode = .scaleAspectFill
         feedImage.layer.cornerRadius = feedImage.frame.width / 2
         feedImage.clipsToBounds = true
