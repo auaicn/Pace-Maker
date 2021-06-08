@@ -61,15 +61,13 @@ extension HomeViewController {
         userReference.child(String(id)).observe(.value) { snapshot in
             let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
             
-            let addr: String = userDictionary["addr"] as! String
             let age: Int = userDictionary["age"] as! Int
             let challenges: [Int] = userDictionary["challenges"] as! [Int]
             let friends: [Int] = userDictionary["friends"] as! [Int]
             let email: String = userDictionary["email"] as! String
             let name: String = userDictionary["name"] as! String
             let nick: String = userDictionary["nick"] as! String
-            let passwd: String = userDictionary["passwd"] as! String
-            let phone: String = userDictionary["phone"] as! String
+            //let passwd: String = userDictionary["passwd"] as! String
             
             user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
