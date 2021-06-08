@@ -35,6 +35,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
         
         cell.contentView.layer.masksToBounds = true
+        cell.roundView.layer.masksToBounds = true
         
         let img = UIImage(named: "feed-1")
         cell.imgView?.image = img
@@ -42,11 +43,13 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
         let date = tmpLog.childSnapshot(forPath: "date").value as! String
         var distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64
-        distance = round(distance * 1000) / 1000
+        distance = round(distance * 100) / 100
         var time = tmpLog.childSnapshot(forPath: "time").value as! Float64
-        time = round(time * 1000) / 1000
-        cell.label.numberOfLines = 3
-        cell.label.text = " \(nick) \(date) \n 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
+        time = round(time * 100) / 100
+        cell.userLabel.numberOfLines = 1
+        cell.userLabel.text = " \(nick)"
+        cell.infoLog.numberOfLines = 3
+        cell.infoLog.text = " \(date) \n 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
         return cell
     }
     
@@ -54,12 +57,12 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         let flowLayout = UICollectionViewFlowLayout()
         let width = socialCollectionView.bounds.width
         let space = width / 20
-        flowLayout.sectionInset = UIEdgeInsets(top: space, left: space, bottom: 0, right: 0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: space, bottom: 0, right: 0)
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         
-        let halfWidth =  (socialCollectionView.bounds.width - space * 2)
-        flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
+        let halfWidth = width
+        flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth * 1.2)
         self.socialCollectionView.collectionViewLayout = flowLayout
     }
     
@@ -85,7 +88,9 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 class socialFeedCell: UICollectionViewCell{
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var infoLog: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var roundView: RoundedView!
 }
 
 
