@@ -90,6 +90,7 @@
                                                                             <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Frg-cJ-nGj" userLabel="Bar Chart Holding View">
                                                                                 <rect key="frame" x="0.0" y="111" width="366" height="203.5"/>
                                                                                 <subviews>
+
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGP-dd-JXz" customClass="BarChartView" customModule="Charts">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="203.5"/>
                                                                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -309,7 +310,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="barChartView" destination="tGP-dd-JXz" id="2BB-ue-KlR"/>
+                        <outlet property="chartView" destination="tGP-dd-JXz" id="2BB-ue-KlR"/>
                         <outlet property="deviceNotAvailableLabel" destination="17C-os-Yp9" id="Mmd-Yh-nu1"/>
                         <outlet property="measureMessagePrefix" destination="mVd-Cd-5gg" id="oUH-AV-kxw"/>
                         <outlet property="measureUnit" destination="Sf3-0u-h4r" id="psx-1w-OWv"/>

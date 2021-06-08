@@ -18,10 +18,9 @@ var homeScreenChallengeIndex : Int = 0
 class HomeViewController: UIViewController{
 
     var userIdentifierString: String?
-    var userId : Int?
     
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var screenImageView: UIImageView!
     
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
@@ -32,8 +31,11 @@ class HomeViewController: UIViewController{
         super.viewDidLoad()
         updateAuthenticationStatus(to: .notLoggined)
         setNavigationBar()
-        loginAsDefaultUser()
         updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        login()
     }
     
     func updateUI(){
@@ -72,7 +74,7 @@ extension HomeViewController {
             user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: [], friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
             
-            print("logined with UID \(id)")
+            print("logined with UID \(userId)")
 
         }
     }
@@ -87,6 +89,7 @@ extension HomeViewController {
                 navigationItem.rightBarButtonItem?.isEnabled = true
                 navigationItem.rightBarButtonItem?.tintColor = .label
         }
+        updateUI()
     }
     
 }
@@ -96,9 +99,9 @@ extension HomeViewController {
     
     func setNavigationBar() {
         self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(tappedLogOut))
+        self.navigationItem.rightBarButtonItem = makeCameraScreenshotImage()
 
-//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedLogOut)
+//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedCamera)
         
         // maybe Large Title Stuff
         
@@ -107,8 +110,30 @@ extension HomeViewController {
     }
     
     /// Make View For Left Navigation Bar Item using User's profile image
-    private func makeNavigationBarItemWithImage() -> UIBarButtonItem{
-        let profileImageView = makeRoundImageView()
+    private func makeCameraScreenshotImage() -> UIBarButtonItem {
+        
+        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
+        
+        let customView = UIButton()
+        customView.addSubview(profileImageView)
+        customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        customView.addTarget(self, action: #selector(tappedCamera), for: .touchUpInside)
+        
+        let item = UIBarButtonItem(customView: customView)
+        item.target = self
+        
+        return item;
+    }
+    
+    @objc func tappedCamera(){
+        print("tappedCamera")
+        screenImageView.image = view.takeScreenshot()
+    }
+    
+    /// Make View For Left Navigation Bar Item using User's profile image
+    private func makeNavigationBarItemWithImage() -> UIBarButtonItem {
+        
+        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
         
         let customView = UIButton()
         customView.addSubview(profileImageView)
@@ -122,10 +147,10 @@ extension HomeViewController {
         return item;
     }
     
-    func makeRoundImageView() -> UIImageView{
-        let profileImage = (UIImage(named: "workout")?.withRenderingMode(.alwaysOriginal))!
+    func makeRoundImageView(with image: UIImage) -> UIImageView {
+        let renderedProfileImage = image.withRenderingMode(.alwaysOriginal)
         let profileImageView = UIImageView(frame: CGRect(x: 0,y: 0,width: 32,height: 32)) // hardcoded
-        profileImageView.image = profileImage
+        profileImageView.image = renderedProfileImage
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
         profileImageView.clipsToBounds = true
@@ -150,5 +175,27 @@ extension HomeViewController {
             case .notLoggined:
                 return
         }
+    }
+}
+
+extension UIView {
+    
+    func takeScreenshot() -> UIImage {
+        
+        // Begin context
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        // Draw view in that context
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        // And finally, get image
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if (image != nil)
+        {
+            return image!
+        }
+        return UIImage()
     }
 }

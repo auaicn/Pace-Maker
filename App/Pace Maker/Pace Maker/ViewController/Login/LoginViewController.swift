@@ -13,37 +13,89 @@ import UnderKeyboard
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
-    
-//    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     let underKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
     
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
-    @IBAction func loginAction(_ sender: Any) {
-        guard let inputEmail = email.text else {return}
-        performSegue(withIdentifier: "unwindToHomeVC", sender: nil)
-    }
-    @IBAction func registerAction(_ sender: Any) {
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        activityIndicator.hidesWhenStopped = true
         setupProviderLoginView()
         underKeyboardLayoutConstraint.setup(bottomLayoutConstraint, view: view)
-
-        // Do any additional setup after loading the view.
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        performExistingAccountSetupFlows()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //        performExistingAccountSetupFlows()
+    }
+    
+    @IBAction func loginAction(_ sender: Any) {
+        guard let _ = email.text,
+              let password = password.text else { return }
+        activityIndicator.startAnimating()
+        
+        _ = realReference.reference(withPath: "user")
+            .queryOrdered(byChild: "email")
+            .queryEqual(toValue: email.text)
+            .observeSingleEvent(of: .value) { snapshot in
+                
+                if snapshot.childrenCount == 0 {
+                    // no corresponding email
+                    self.handleLoginDidFailure()
+                }else {
+                    let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
+                    print(snapshot.keys)
+                    let userPrivacies = snapshot.first?.value as? [String : AnyObject] ?? [:]
+                    let userCredential: String =  userPrivacies["passwd"] as! String
+                    
+                    if userCredential == password{
+                        let UID = snapshot.first!.key
+                        self.handleLoginDidSuccess(with: UID)
+                        // login success
+                    }else {
+                        self.handleLoginDidFailure()
+                        // login fail
+                    }
+                }
+                self.activityIndicator.stopAnimating()
+            }
+    }
+    
+    func handleLoginDidFailure() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+        
+        let message = "이메일 또는 패스워드가 잘못되었습니다. 다시 한 번 확인해 주세요"
+        let alertController = UIAlertController(title: "로그인 실패",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "다시 입력", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func handleLoginDidSuccess(with user: String?) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        guard let user = user else { return }
+        userId = user
+        performSegue(withIdentifier: "unwindToHome", sender: nil)
+    }
+}
+
+//
+extension LoginViewController: ASAuthorizationControllerDelegate {
     /// - Tag: add_appleid_button
     func setupProviderLoginView() {
-        let authorizationButton = ASAuthorizationAppleIDButton()
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signUp, style: .whiteOutline)
+        
+        //        let authorizationButton = ASAuthorizationAppleIDButton()
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         self.loginProviderStackView.addArrangedSubview(authorizationButton)
     }
@@ -74,9 +126,7 @@ class LoginViewController: UIViewController {
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-}
-
-extension LoginViewController: ASAuthorizationControllerDelegate {
+    
     /// - Tag: did_complete_authorization
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
@@ -86,6 +136,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 let userIdentifier = appleIDCredential.user
                 let fullName = appleIDCredential.fullName
                 let email = appleIDCredential.email
+                
+                print("User ID : \(userIdentifier)")
+                print("User Email : \(email ?? "")")
+                print("User Name : \((fullName?.givenName ?? "") + (fullName?.familyName ?? ""))")
                 
                 // For the purpose of this demo app, store the `userIdentifier` in the keychain.
 //                self.saveUserInKeychain(userIdentifier)

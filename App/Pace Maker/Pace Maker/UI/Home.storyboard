@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z2S-EZ-4dD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z2S-EZ-4dD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EBb-l7-b7w">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2430"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVu-Xb-nEa" userLabel="빈 뷰">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
@@ -134,8 +134,14 @@
                                                             <constraint firstAttribute="trailing" secondItem="J93-4V-miS" secondAttribute="trailing" constant="16" id="vCj-Mz-AcZ"/>
                                                         </constraints>
                                                     </view>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yia-gW-tl7">
+                                                        <rect key="frame" x="0.0" y="284.5" width="414" height="414"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Yia-gW-tl7" secondAttribute="height" multiplier="1:1" id="oqb-N1-alv"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aT6-Ef-xiW" userLabel="챌린지">
-                                                        <rect key="frame" x="0.0" y="284.5" width="414" height="794.5"/>
+                                                        <rect key="frame" x="0.0" y="714.5" width="414" height="794.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="현재 참여중인 챌린지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkW-Qx-cVy" userLabel="현재 참여중인 챌린지">
                                                                 <rect key="frame" x="24" y="8" width="366" height="492"/>
@@ -149,7 +155,7 @@
                                                                     <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-Vn-Is2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q1g-0G-JKq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="287"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="ups-Ne-bdx" userLabel="challenge Image">
@@ -243,7 +249,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFh-5i-6Cl" userLabel="오늘의 팁">
-                                                        <rect key="frame" x="0.0" y="1095" width="414" height="158.5"/>
+                                                        <rect key="frame" x="0.0" y="1525" width="414" height="158.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-Rt-f3Q" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="382" height="158.5"/>
@@ -306,7 +312,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVo-Hw-ZmE" userLabel="오늘의 팁">
-                                                        <rect key="frame" x="0.0" y="1269.5" width="414" height="158.5"/>
+                                                        <rect key="frame" x="0.0" y="1699.5" width="414" height="158.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-L5-Hho" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="382" height="158.5"/>
@@ -369,7 +375,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-VJ-bhW" userLabel="빈 뷰">
-                                                        <rect key="frame" x="0.0" y="1444" width="414" height="556"/>
+                                                        <rect key="frame" x="0.0" y="1874" width="414" height="556"/>
                                                     </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -487,9 +493,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Iun-3s-wO2">
                         <barButtonItem key="leftBarButtonItem" image="person.crop.circle.badge.xmark" catalog="system" id="Auq-zi-voS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="camera" catalog="system" id="uvX-yC-ZBh"/>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="Auq-zi-voS" id="qME-yV-JvE"/>
+                        <outlet property="screenImageView" destination="Yia-gW-tl7" id="vxs-v1-37n"/>
                         <segue destination="cbt-kK-7Me" kind="show" identifier="Setting" id="n1X-US-etP"/>
                         <segue destination="ek3-95-ndM" kind="show" identifier="Login" id="noU-YG-DMQ"/>
                     </connections>
@@ -591,11 +599,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Cqq-Wi-uRL"/>
+        <segue reference="60Q-xB-cgU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="3" width="3136" height="1762"/>
         <image name="ProtoType_Only_Badge" width="726" height="422"/>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="figure.walk.diamond" catalog="system" width="128" height="122"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>

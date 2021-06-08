@@ -13,7 +13,7 @@ import Firebase
 class ActivityViewController: UIViewController {
 
     @IBOutlet weak var deviceNotAvailableLabel: UILabel!
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var chartView: CombinedChartView!
     @IBOutlet weak var syncBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var measureMessagePrefix: UILabel!
@@ -27,9 +27,8 @@ class ActivityViewController: UIViewController {
     
     // Data
     var logs: [Route] = []
-//    var heartRateData: HKSampleType? = nil
-//    var heartRateData: HKQuantitySample? = HKQuantitySample(type: ., quantity: , start: .distantPast, end: .distantFuture)
-//    var activeEnergyBurnedData: HKSampleType? = nil
+    var heartRateData: [(date: Date, value: Double)] = []
+    var activeEnergyBurnedData: [(date: Date, value: Double)] = []
     
     func setNavigationBar() {
         // later
@@ -92,37 +91,54 @@ extension ActivityViewController {
             }
     }
     
+    /// initial setting for chart view
     func setChartView() {
-        barChartView.noDataTextColor = .lightGray
-        barChartView.rightAxis.enabled = false
-        barChartView.animate(xAxisDuration: 1.0, yAxisDuration: 3.0)
+        chartView.noDataTextColor = .lightGray
+        chartView.rightAxis.enabled = false
+        chartView.leftAxis.enabled = false
     }
     
-    func setChartData(with dates: [String],and values: [Double]) {
-        // 데이터 생성
-        var dataEntries: [BarChartDataEntry] = []
-        for i in 0..<dates.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
+    func updateBarChartData(with dataEntries:[(String,Double)]){
+        if dataEntries.count == 0 { return }
+        
+        let data: CombinedChartData = CombinedChartData()
+        
+        data.calcMinMax()
+
+        var barChartDataEntries: [BarChartDataEntry] = []
+        for i in 0..<dataEntries.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: dataEntries[i].1)
+            barChartDataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries, label: currentMetric.label)
-        chartDataSet.colors = [.systemRed,.systemBlue,.systemTeal]
-        barChartView.data = BarChartData(dataSet: chartDataSet)
+        let barChartDataSet = BarChartDataSet(entries: barChartDataEntries, label: currentMetric.label)
+        let barChartData = BarChartData(dataSet: barChartDataSet)
+        chartView.data = barChartData
         
-        // X축 레이블 위치 조정
-        barChartView.xAxis.labelPosition = .bottom
-        // X축 레이블 포맷 지정
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dates)
     }
     
-    func setChartUI(with dateStrings: [String],and values: [Double]){
-        if dateStrings.count == 0 || values.count == 0 { return }
+    func updateLineChartData(with dataEntries:[(String,Double)]){
+        if dataEntries.count == 0 { return }
+
+        var lineChartDataEntries: [ChartDataEntry] = []
+        for i in 0..<dataEntries.count {
+            let dataEntry = ChartDataEntry(x: Double(i), y: dataEntries[i].1)
+            lineChartDataEntries.append(dataEntry)
+        }
         
-        let valueSum: Double = values.reduce(0) { $0 + $1 }
-        let averageValue = valueSum / Double(dateStrings.count)
-        let dates: [Date] = dateStrings.map {
-            return dateFormatter.date(from: $0)!
+        let lineChartDataSet = LineChartDataSet(entries: lineChartDataEntries, label: currentMetric.label)
+        let lineChartData = LineChartData(dataSet: lineChartDataSet)
+        chartView.data = lineChartData
+        
+    }
+    
+    func updateChartUI(with dataEntries:[(String,Double)]){
+        if dataEntries.count == 0 { return }
+        
+        let valueSum: Double = dataEntries.reduce(0) { $0 + $1.1 }
+        let averageValue = valueSum / Double(dataEntries.count)
+        let dates: [Date] = dataEntries.map {
+            return dateFormatter.date(from: $0.0)!
         }
         
         // Chart 위에 레이블들 설정
@@ -132,50 +148,65 @@ extension ActivityViewController {
         measuredPeriod.text = (distantDateString == recentDateString) ? distantDateString : "\(distantDateString) ~ \(recentDateString)"
         
         if currentMetric == .pace {
-            let pacesInSeconds = Int(values.max()!) // 함수 초입에서 count 가 0 인지 확인해서 괜찮다.
+            // 최고기록을 뽑아낸다
+            let bestRecord: Double = dataEntries.reduce(Double.greatestFiniteMagnitude) {
+                ($0 < $1.1) ? $0 : $1.1
+            }
+            let pacesInSeconds = Int(bestRecord)
             summary.text = String(format: currentMetric.summaryFormat, pacesInSeconds/60, pacesInSeconds%60)
         }else {
             summary.text = String(format: currentMetric.summaryFormat, currentMetric == .distance ? valueSum : averageValue)
         }
         
-        // Chart
-        let averageLine = ChartLimitLine(limit: averageValue, label: "평균")
-        barChartView.leftAxis.addLimitLine(averageLine)
-        
+        // in-Chart limit lines
+        let averageLine = ChartLimitLine(limit: averageValue, label: currentMetric.limitLineLabel)
+        chartView.leftAxis.removeAllLimitLines()
+        chartView.leftAxis.addLimitLine(averageLine)
+//        chartView.leftAxis.zeroLineColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        chartView.data?.dataSets.first?.setColor(currentMetric.colorSet)
+        chartView.xAxis.labelPosition = .top // X축 레이블 위치 조정
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataEntries.map({$0.0})) // X축 레이블 포맷 지정
+        chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.8)
     }
     
     func updateChart(){
         
-        var dates: [String] = []
-        var values: [Double] = []
+        var chartEntries: [(String,Double)] = []
         switch currentMetric {
             case .distance:
                 for log in logs{
-                    dates.append(log.dateString)
-                    values.append(log.distanceInKilometer)
+                    chartEntries.append((log.dateString,log.distanceInKilometer))
                 }
-                if logs.count != 0 {
-                    setChartData(with: dates, and: values)
-                    setChartUI(with: dates, and: values)
-                }
+                updateBarChartData(with: chartEntries)
+                updateChartUI(with: chartEntries)
             case .pace:
                 for log in logs{
-                    dates.append(log.dateString)
-                    values.append(Double(log.pace))
+                    chartEntries.append((log.dateString, Double(log.pace)))
                 }
-                if logs.count != 0 {
-                    setChartData(with: dates, and: values)
-                    setChartUI(with: dates, and: values)
-                }
+                updateBarChartData(with: chartEntries)
+                updateChartUI(with: chartEntries)
             case .heartRate:
-                let i = 1
+                for heartRate in heartRateData {
+                    chartEntries.append((dateFormatter.string(from: heartRate.date), heartRate.value))
+                }
+                updateLineChartData(with: chartEntries)
+                updateChartUI(with: chartEntries)
             case .activeEnergyBurned:
-                let i = 1
+                for activeEneryBurned in activeEnergyBurnedData {
+                    chartEntries.append((dateFormatter.string(from: activeEneryBurned.date), activeEneryBurned.value))
+                }
+                updateLineChartData(with: chartEntries)
+                updateChartUI(with: chartEntries)
         }
         // 그외 추가로 더 해줘야하는 것들
         measureMessagePrefix.text = currentMetric.prefix
         measureUnit.text = currentMetric.unit
     }
+}
+
+struct HKData{
+    let loggedDate: Date
+    let value: Double
 }
 
 // HEALTH KIT
@@ -187,58 +218,91 @@ extension ActivityViewController {
     }
     
     func requestHealthKitData(){
-//        loadHeertRateData()
-//        loadActiveEnergyBurnedData()
-        
         guard HKHealthStore.isHealthDataAvailable() else {
             print("HealthKit Data not available")
-//            completion(false, HealthkitSetupError.notAvailableOnDevice)
             return
         }
         
-        guard let dateOfBirth = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
-              let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType),
-              let biologicalSex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
-              let bodyMassIndex = HKObjectType.quantityType(forIdentifier: .bodyMassIndex),
-              let height = HKObjectType.quantityType(forIdentifier: .height),
-              let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass),
-              let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else {
-//            completion(false, HealthkitSetupError.dataTypeNotAvailable)
-            print("HealthKit Data Type Setting not available")
-            return
-        }
-        
-        getMostRecentSample(for: activeEnergy) { (samples: [HKSample]?, error : Error?) in
-            if let error = error {
-                print("getMostRecentSample error")
-                print(error)
-                return
+        requestActiveEnergyBurnedData()
+        requestHeartRateData()
+    }
+    
+    func requestHeartRateData(){
+        guard let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
+
+        getSamples(for: heartRate) { (samples: [HKSample]?, error : Error?) in
+            if let _ = error { return }
+            guard let samples = samples else { return }
+            print("loaded \(samples.count) heartRate data")
+            
+            // remove unnecessory sample data. only extract date / heartrate value
+            let samplesByDate = samples.map { sample -> HKData in
+                guard let quantitySample: HKQuantitySample = sample as? HKQuantitySample else { return HKData(loggedDate: Date(), value: 0) }
+                return HKData(loggedDate: quantitySample.startDate, value: quantitySample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute())))
             }
-            guard let samples = samples else {
-                print("No data available")
-                return
+            
+            // group bpm value by date
+            let calendar = Calendar.current
+            let samplesGrouped = Dictionary(grouping: samplesByDate, by: {
+                [calendar.component(.year, from: $0.loggedDate),
+                 calendar.component(.month, from: $0.loggedDate),
+                 calendar.component(.day, from: $0.loggedDate)]
+            })
+            print("samplesGrouped.count",samplesGrouped.count)
+            
+            // set datasource
+            self.heartRateData = []
+            for sampleOneDay in samplesGrouped {
+                let date: Date = dateFormatter.date(from: "\(sampleOneDay.key[0])-\(sampleOneDay.key[1])-\(sampleOneDay.key[2])")!
+                let heartRate: Double = sampleOneDay.value.reduce(0.0){$0 + $1.value} / Double(sampleOneDay.value.count)
+                print(date, heartRate)
+                self.heartRateData.append((date, heartRate))
             }
-            print("samples.count", samples.count)
-            for sample in samples{
-                guard let ch:HKQuantitySample = sample as? HKQuantitySample else { return }
-//                print(quantitySample.quantity)
-//                quantitySample.startDate
-                    
-//                let calorie = sample.val .doubleValue(for: HKUnit.kilocalorie())
-//                print("calorie",calorie)
-            }
-            return
+            self.heartRateData.sort { $0.date < $1.date }
         }
     }
     
-    func getMostRecentSample(for sampleType: HKSampleType, completion: @escaping ([HKSample]?, Error?) -> Swift.Void) {
-        //1. Use HKQuery to load the most recent samples.
-        let mostRecentPredicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
-        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-//        let limit = 1
-        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: mostRecentPredicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+    func requestActiveEnergyBurnedData(){
+        guard let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else { return }
+        
+        getSamples(for: activeEnergy) { (samples: [HKSample]?, error : Error?) in
+            if let _ = error { return }
+            guard let samples = samples else { return }
+            print("loaded \(samples.count) active enery burned data")
             
-            //2. Always dispatch to the main thread when complete.
+            // remove unnecessory sample data. only extract date / kilocalories value
+            let samplesByDate = samples.map { sample -> HKData in
+                guard let quantitySample: HKQuantitySample = sample as? HKQuantitySample else { return HKData(loggedDate: Date(), value: 0) }
+                return HKData(loggedDate: quantitySample.startDate, value: quantitySample.quantity.doubleValue(for: HKUnit.kilocalorie()))
+            }
+            
+            // group kilocalories value by date
+            let calendar = Calendar.current
+            let samplesGrouped = Dictionary(grouping: samplesByDate, by: {
+                                    [calendar.component(.year, from: $0.loggedDate),
+                                     calendar.component(.month, from: $0.loggedDate),
+                                     calendar.component(.day, from: $0.loggedDate)]
+            })
+            print("samplesGrouped.count",samplesGrouped.count)
+            
+            // set datasource
+            self.activeEnergyBurnedData = []
+            for sampleOneDay in samplesGrouped {
+                let date:Date = dateFormatter.date(from: "\(sampleOneDay.key[0])-\(sampleOneDay.key[1])-\(sampleOneDay.key[2])")!
+                let kiloCalories = sampleOneDay.value.reduce(0.0){$0 + $1.value}
+                self.activeEnergyBurnedData.append((date, kiloCalories))
+            }
+            self.activeEnergyBurnedData.sort { $0.date < $1.date }
+        }
+    }
+    
+    func getSamples(for sampleType: HKSampleType, completion: @escaping ([HKSample]?, Error?) -> Swift.Void) {
+        // 1. Use HKQuery to load the most recent samples.
+        let predicate = HKQuery.predicateForSamples(withStart: Date.distantPast, end: Date(), options: .strictEndDate)
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+            
+            // 2. Always dispatch to the main thread when complete.
             DispatchQueue.main.async {
                 guard let samples = samples else {
                     completion(nil, error)
@@ -250,21 +314,13 @@ extension ActivityViewController {
         HKHealthStore().execute(sampleQuery)
     }
     
-    func loadHeertRateData(){
-        
-    }
-    
-    func saveDistanceWalkingRunning(){
-        let healthStore = HKHealthStore()
-        
+//    func saveDistanceWalkingRunning(){
+//        let healthStore = HKHealthStore()
+//
 //        if let status = healthStore.authorizationStatus(for: HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)){
 //
 //        }
-    }
-    
-    func loadActiveEnergyBurnedData(){
-        
-    }
+//    }
     
     func authorizeHealtKitData() {
         

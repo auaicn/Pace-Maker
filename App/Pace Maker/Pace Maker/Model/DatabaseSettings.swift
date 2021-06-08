@@ -13,12 +13,16 @@ let realReference = Database.database(url: "https://pace-maker-74452-default-rtd
 let storage = Storage.storage()
 let storageUrlBase = "gs://pace-maker-74452.appspot.com/"
 
-func getProfileImage(imgview: UIImageView){
-    let imageUrl = storageUrlBase + "profiles/" + String(DEFAULT_USER_ID)
+func downloadProfileImage() {
+    guard let _ = user?.profileImage,
+          let userId = userId else { return }
+    
+    let imageUrl = storageUrlBase + "profiles/\(userId)"
     storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+        if let _ = error { user?.profileImage = nil}
         let data = NSData(contentsOf: url!)
         let image = UIImage(data: data! as Data)
-        imgview.image = image
+        user?.profileImage = image
     }
 }
 
@@ -44,7 +48,6 @@ func uploadProfileImage(img: UIImage){
     let imageUrl = "profiles/" + String(DEFAULT_USER_ID)
     let metaData = StorageMetadata()
     metaData.contentType = "image/png"
-    
     storage.reference().child(imageUrl).putData(data, metadata: metaData){
         (metaData, error) in
         if let error = error {
@@ -56,4 +59,3 @@ func uploadProfileImage(img: UIImage){
         }
     }
 }
-

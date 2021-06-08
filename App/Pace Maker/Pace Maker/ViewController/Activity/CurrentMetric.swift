@@ -6,22 +6,36 @@
 //
 
 import Foundation
+import UIKit
 
 enum CurrentMetric: String{
     case distance, pace, heartRate, activeEnergyBurned
     
     static let allValues = [distance, pace, heartRate, activeEnergyBurned]
     
+    var colorSet: UIColor {
+        switch self{
+            case .distance:
+                return UIColor(named: "AppColor-1")!
+            case .pace:
+                return UIColor(named: "AppColor-2")!
+            case .heartRate:
+                return UIColor(named: "AppColor-3")!
+            case .activeEnergyBurned:
+                return UIColor(named: "AppColor-4")!
+        }
+    }
+    
     var unit: String {
         switch self{
             case .distance:
                 return "km"
             case .pace:
-                return "m:s per km"
+                return "m:s / km"
             case .heartRate:
-                return "per minute"
+                return "bpm"
             case .activeEnergyBurned:
-                return "per minute"
+                return "kcal"
         }
     }
     
@@ -30,11 +44,11 @@ enum CurrentMetric: String{
             case .distance:
                 return "km"
             case .pace:
-                return "m:s per km"
+                return "m:s / km"
             case .heartRate:
-                return "per minute"
+                return "bpm"
             case .activeEnergyBurned:
-                return "per minute"
+                return "kcal"
         }
     }
     
@@ -43,8 +57,21 @@ enum CurrentMetric: String{
             case .distance:
                 return "총"
             case .pace:
-                return "최대"
+                return "최고 기록"
             default:
+                return "평균"
+        }
+    }
+    
+    var limitLineLabel: String {
+        switch self{
+            case .distance:
+                return "평균"
+            case .pace:
+                return "평균"
+            case .heartRate:
+                return "평균"
+            case .activeEnergyBurned:
                 return "평균"
         }
     }

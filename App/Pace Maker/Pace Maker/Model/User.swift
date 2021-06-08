@@ -9,18 +9,22 @@ import Foundation
 import UIKit
 
 let DEFAULT_USER_ID: Int = 1
+var userId: String? = nil
 var user: User? = nil
-var profileImage: UIImage? = nil
+
+let defaultProfileImage = UIImage(systemName: "person.crop.circle.badge.xmark")
 
 struct User {
     
-    let UID : String // PK, 회원 번호
+    let UID :String // PK, 회원 번호
     let name: String
-    let email : String
+    let email: String
     let age: Int
     let nickName: String
-    let challenges : [String]
-    let friends : [String]
+    let challenges: [String]
+    let friends: [String]
+    
+    var profileImage: UIImage?
     
     init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String]) {
         self.UID = UID
@@ -30,15 +34,17 @@ struct User {
         self.nickName = nickName
         self.challenges = challenges
         self.friends = friends
-        
-        profileImage = UIImage(systemName: "person.crop.circle.badge.xmark")
+        self.profileImage = nil
+    }
+    
+    init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String], profileImage: UIImage?) {
+        self.UID = UID
+        self.name = name
+        self.email = email
+        self.age = age
+        self.nickName = nickName
+        self.challenges = challenges
+        self.friends = friends
+        self.profileImage = profileImage
     }
 }
-
-/// LastName 성 = given name = familyname
-/// FirstName 이름
-struct FullName {
-    let givenFamilyName: String
-    let firstName: String
-}
-
