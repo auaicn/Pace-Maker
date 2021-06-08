@@ -52,7 +52,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="Q3b-f9-Goz"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ki-Lr-wsw">
                                                         <rect key="frame" x="0.0" y="53" width="340" height="45"/>
@@ -60,7 +60,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="0dH-NF-ZvY"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -77,7 +77,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="loginAction:" destination="X1e-jr-fHF" eventType="touchUpInside" id="0I2-dv-KEY"/>
-                                                    <segue destination="NQk-pH-gnt" kind="unwind" unwindAction="unwindToHome:" id="CaA-IM-HJV"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -125,10 +124,19 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="2bY-Hz-kA1">
+                                <rect key="frame" x="173" y="400" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AAo-FG-DE1"/>
+                                    <constraint firstAttribute="width" constant="44" id="QTB-GZ-GOX"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5B1-3P-1mZ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="2bY-Hz-kA1" firstAttribute="centerX" secondItem="ejk-d9-n4d" secondAttribute="centerX" id="5GO-qv-aBs"/>
+                            <constraint firstItem="2bY-Hz-kA1" firstAttribute="centerY" secondItem="ejk-d9-n4d" secondAttribute="centerY" id="RUa-VY-YMb"/>
                             <constraint firstItem="smD-Ax-wzx" firstAttribute="leading" secondItem="5B1-3P-1mZ" secondAttribute="leading" id="XfJ-Ik-y7z"/>
                             <constraint firstItem="5B1-3P-1mZ" firstAttribute="trailing" secondItem="smD-Ax-wzx" secondAttribute="trailing" id="f1h-XI-iBJ"/>
                             <constraint firstItem="5B1-3P-1mZ" firstAttribute="bottom" secondItem="smD-Ax-wzx" secondAttribute="bottom" constant="180" id="oXP-xu-g4L"/>
@@ -139,16 +147,18 @@
                         <barButtonItem key="leftBarButtonItem" title="Home" image="chevron.backward" catalog="system" id="JOn-cX-e7M">
                             <color key="tintColor" name="AccentColor"/>
                             <connections>
-                                <segue destination="NQk-pH-gnt" kind="unwind" unwindAction="unwindToHome:" id="aC0-uN-w7b"/>
+                                <segue destination="NQk-pH-gnt" kind="unwind" unwindAction="unwindToHome:" id="XSC-hC-z0f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="2bY-Hz-kA1" id="lvm-3Z-YKW"/>
                         <outlet property="bottomLayoutConstraint" destination="oXP-xu-g4L" id="38m-XX-gZZ"/>
                         <outlet property="email" destination="wmY-8K-1a4" id="tZh-xt-zLg"/>
                         <outlet property="loginProviderStackView" destination="M5C-bI-y7U" id="5kw-r4-yp8"/>
                         <outlet property="password" destination="8Ki-Lr-wsw" id="w1b-s6-mEv"/>
+                        <segue destination="NQk-pH-gnt" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="NBH-Hw-phj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osc-vC-hhc" sceneMemberID="firstResponder"/>
@@ -230,7 +240,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="ZPq-ie-SZW"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                         <connections>
                                                             <action selector="editingDidEnd:" destination="x7J-Ar-3xb" eventType="editingDidEnd" id="iml-Z4-SIu"/>
                                                         </connections>
@@ -277,11 +287,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="12L-af-OTE">
                         <barButtonItem key="backBarButtonItem" title="ID 및 비밀번호" id="G7v-dU-lXO"/>
-                        <barButtonItem key="rightBarButtonItem" title="SKIP" id="p5M-eh-MsN">
-                            <connections>
-                                <segue destination="7g2-CZ-gfd" kind="show" id="j99-a9-0ei"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="EEU-6S-Jbb" id="bop-Bx-ulU"/>
@@ -365,7 +370,7 @@
                                                             <constraint firstAttribute="height" constant="45" id="JgS-jp-x3J"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -382,7 +387,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="registerNewUser:" destination="7g2-CZ-gfd" eventType="touchUpInside" id="Du4-mU-hXd"/>
-                                                    <segue destination="iuW-kj-M5Q" kind="unwind" unwindAction="unwindToHome:" id="CGM-99-9Lh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -390,21 +394,32 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ldd-oA-ILl">
+                                <rect key="frame" x="173" y="400" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="6UQ-Bz-z0d"/>
+                                    <constraint firstAttribute="height" constant="44" id="JSV-ty-Qp2"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SQy-wR-hg3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ldd-oA-ILl" firstAttribute="centerY" secondItem="HqH-nE-6Oa" secondAttribute="centerY" id="6NW-Uu-o7H"/>
                             <constraint firstItem="SQy-wR-hg3" firstAttribute="bottom" secondItem="4tD-ZK-qvx" secondAttribute="bottom" constant="180" id="OaO-wv-Dzf"/>
                             <constraint firstItem="4tD-ZK-qvx" firstAttribute="leading" secondItem="SQy-wR-hg3" secondAttribute="leading" id="dzT-gL-L2W"/>
                             <constraint firstItem="4tD-ZK-qvx" firstAttribute="trailing" secondItem="SQy-wR-hg3" secondAttribute="trailing" id="oEW-bc-tUV"/>
+                            <constraint firstItem="Ldd-oA-ILl" firstAttribute="centerX" secondItem="HqH-nE-6Oa" secondAttribute="centerX" id="qIi-Na-rxx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0v6-wJ-7dS"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Ldd-oA-ILl" id="M5b-km-o0R"/>
                         <outlet property="age" destination="g15-a9-ep2" id="q2D-Jx-2wp"/>
                         <outlet property="bottomLayoutConstraint" destination="OaO-wv-Dzf" id="0k0-Qm-zwC"/>
                         <outlet property="name" destination="qAh-du-Pqu" id="Cph-Nl-VsP"/>
                         <outlet property="nickname" destination="4tJ-L8-hQc" id="EGe-zg-Jbu"/>
+                        <segue destination="iuW-kj-M5Q" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="FQQ-OJ-bFE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lpP-ij-5Ji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -432,9 +447,6 @@
             <point key="canvasLocation" x="-3340" y="158.53080568720378"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="RNN-NV-9TU"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <namedColor name="AccentColor">

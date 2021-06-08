@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         underKeyboardLayoutConstraint.setup(bottomLayoutConstraint, view: view)
         activityIndicator.hidesWhenStopped = true
-//        registerButton.isEnabled = false
+        registerButton.isEnabled = false
 
         self.email.delegate = self
         self.password.delegate = self
@@ -38,9 +38,9 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func editingDidEnd(_ sender: Any) {
-//        registerButton.isEnabled = false
+        registerButton.isEnabled = false
         guard isCorrectFormat else { return }
-//        registerButton.isEnabled = true
+        registerButton.isEnabled = true
         
     }
     
@@ -67,7 +67,7 @@ class RegisterViewController: UIViewController {
         _ = realReference.reference(withPath: "user")
             .queryOrdered(byChild: "email")
             .queryEqual(toValue: self.email.text)
-            .observe(.value) { snapshot in
+            .observeSingleEvent(of: .value) { snapshot in
                 self.activityIndicator.stopAnimating()
                 
                 let found: Bool = snapshot.childrenCount != 0
@@ -90,11 +90,13 @@ class RegisterViewController: UIViewController {
     
     func alertDuplicateEmail(){
         let message = "이미 이메일 \"(\(email.text!))\"\n 로 등록된 사용자가 있습니다."
+        print(message)
         let alertController = UIAlertController(title: "이미 가입된 이메일",
                                                 message: message,
                                                 preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "패스워드 찾기", style: .default, handler: nil))
+//        alertController.addAction(UIAlertAction(title: "패스워드 찾기", style: .default, handler: nil))
         alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "패스워드 찾기", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -103,7 +105,6 @@ class RegisterViewController: UIViewController {
         // continue registering
         performSegue(withIdentifier: "ContinueRegister", sender: nil)
     }
-    
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,13 +152,6 @@ extension String {
         return matches[0].url?.scheme == "mailto"
     }
     
-    func isValidPhone() -> Bool {
-        let phoneRegex = "^[0-9+]{0,1}+[0-9]{5,16}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: self)
-    }
-    
-    //validate Password
     var isValidPassword: Bool {
         do {
             let regex = try NSRegularExpression(pattern: "^[a-zA-Z_0-9\\-_,;.:#+*?=!§$%&/()@]+$", options: .caseInsensitive)
