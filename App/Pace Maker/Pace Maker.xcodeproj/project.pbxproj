@@ -41,16 +41,16 @@
 		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
 		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
-		18C646AE264EC07A00E3E71B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		18C646AE264EC07A00E3E71B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
 		18D3C947265121CE00EBA66A /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C946265121CE00EBA66A /* Badge.swift */; };
-		18D3C94A265121D800EBA66A /* (null) in Sources */ = {isa = PBXBuildFile; };
+		18D3C94A265121D800EBA66A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
 		18D3C94D265127C700EBA66A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C94C265127C700EBA66A /* Login.storyboard */; };
 		18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C94F2651293F00EBA66A /* RegisterViewController.swift */; };
 		18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C9552651299300EBA66A /* LoginViewController.swift */; };
 		18D3C98326523DD300EBA66A /* Running.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C98226523DD300EBA66A /* Running.storyboard */; };
 		18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FA7DC6264EDE4900C50554 /* RoundedView.swift */; };
-		54EADBBA114B7C58B9DE1B2D /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2230849988EBCF407E79A9 /* Pods_Pace_Maker.framework */; };
+		9487AE2366A29A83E005E266 /* Pods_Pace_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C946A6BD4947E99FB7089B42 /* Pods_Pace_Maker.framework */; };
 		ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E0C68266E0742002FB13D /* UsersCell.swift */; };
 		ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F040C2669E9C1000B3C86 /* Social.storyboard */; };
 		ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */; };
@@ -103,9 +103,9 @@
 		18D3C9552651299300EBA66A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		18D3C98226523DD300EBA66A /* Running.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Running.storyboard; sourceTree = "<group>"; };
 		18FA7DC6264EDE4900C50554 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
-		43C65E468B8DE5A81515660E /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
-		4BA694909B4C326BC0F00F27 /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
-		DA2230849988EBCF407E79A9 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29225A64EFE25C92CD1597CC /* Pods-Pace Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.debug.xcconfig"; sourceTree = "<group>"; };
+		9AB50CA3F3C888DC803647BD /* Pods-Pace Maker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pace Maker.release.xcconfig"; path = "Target Support Files/Pods-Pace Maker/Pods-Pace Maker.release.xcconfig"; sourceTree = "<group>"; };
+		C946A6BD4947E99FB7089B42 /* Pods_Pace_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pace_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED1E0C68266E0742002FB13D /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		ED3F040B2669E9C1000B3C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
 		ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableTableViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */,
-				C9CDA00F978D3FDD98A509D7 /* Pods_Pace_Maker.framework in Frameworks */,
+				9487AE2366A29A83E005E266 /* Pods_Pace_Maker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				182B0228265B646E002C5195 /* HealthKit.framework */,
-				3273969B98091744D8D685A8 /* Pods_Pace_Maker.framework */,
+				C946A6BD4947E99FB7089B42 /* Pods_Pace_Maker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 		A975AC6F32DF66127DEAA009 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				72C43949BCA60222D1EFE9D5 /* Pods-Pace Maker.debug.xcconfig */,
-				2FC047EE4623E0CFACADC522 /* Pods-Pace Maker.release.xcconfig */,
+				29225A64EFE25C92CD1597CC /* Pods-Pace Maker.debug.xcconfig */,
+				9AB50CA3F3C888DC803647BD /* Pods-Pace Maker.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -303,11 +303,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188126D2261EE8A70073029F /* Build configuration list for PBXNativeTarget "Pace Maker" */;
 			buildPhases = (
-				8A57EA8C26E57FE3E127DDD9 /* [CP] Check Pods Manifest.lock */,
+				BFEC3B59EEE10117CA2BB17B /* [CP] Check Pods Manifest.lock */,
 				188126BA261EE8A40073029F /* Sources */,
 				188126BB261EE8A40073029F /* Frameworks */,
 				188126BC261EE8A40073029F /* Resources */,
-				8B0956B27A655CE8B40C3431 /* [CP] Embed Pods Frameworks */,
+				A337B708686053F19B6C9D1E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,7 +377,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8A57EA8C26E57FE3E127DDD9 /* [CP] Check Pods Manifest.lock */ = {
+		A337B708686053F19B6C9D1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFEC3B59EEE10117CA2BB17B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,23 +414,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B0956B27A655CE8B40C3431 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pace Maker/Pods-Pace Maker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -439,11 +439,11 @@
 				18D3C944265121B800EBA66A /* Challenge.swift in Sources */,
 				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
 				18653EC8265F8EAB001D9A68 /* User.swift in Sources */,
-				18C646AE264EC07A00E3E71B /* (null) in Sources */,
+				18C646AE264EC07A00E3E71B /* BuildFile in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
 				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
-				18D3C94A265121D800EBA66A /* (null) in Sources */,
+				18D3C94A265121D800EBA66A /* BuildFile in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
@@ -605,7 +605,7 @@
 		};
 		188126D3261EE8A70073029F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72C43949BCA60222D1EFE9D5 /* Pods-Pace Maker.debug.xcconfig */;
+			baseConfigurationReference = 29225A64EFE25C92CD1597CC /* Pods-Pace Maker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -628,7 +628,7 @@
 		};
 		188126D4261EE8A70073029F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FC047EE4623E0CFACADC522 /* Pods-Pace Maker.release.xcconfig */;
+			baseConfigurationReference = 9AB50CA3F3C888DC803647BD /* Pods-Pace Maker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

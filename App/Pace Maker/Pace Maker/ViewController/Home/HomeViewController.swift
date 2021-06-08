@@ -53,23 +53,23 @@ class HomeViewController: UIViewController{
 extension HomeViewController {
     
     func loginAsDefaultUser() {
-        login(with: DEFAULT_USER_ID)
+        login(with: String(DEFAULT_USER_ID))
     }
     
-    func login(with id:Int){
+    func login(with id:String){
         let userReference = realReference.reference(withPath: "user")
-        userReference.child(String(id)).observe(.value) { snapshot in
+        userReference.child(id).observe(.value) { snapshot in
             let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
             
             let age: Int = userDictionary["age"] as! Int
-            let challenges: [Int] = userDictionary["challenges"] as! [Int]
-            let friends: [Int] = userDictionary["friends"] as! [Int]
+//            let challenges: [String] = userDictionary["challenges"] as! [String]
+            let friends: [String] = userDictionary["friends"] as! [String]
             let email: String = userDictionary["email"] as! String
             let name: String = userDictionary["name"] as! String
             let nick: String = userDictionary["nick"] as! String
             //let passwd: String = userDictionary["passwd"] as! String
             
-            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
+            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: [], friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
             
             print("logined with UID \(id)")

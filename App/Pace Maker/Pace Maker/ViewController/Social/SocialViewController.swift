@@ -22,11 +22,9 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         self.loadLogsOfFriends()
         self.setupFlowLayout()
-        print(self.logOfFriends.count)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.logOfFriends.count)
         return self.logOfFriends.count
     }
     
@@ -41,6 +39,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         let img = UIImage(named: "feed-1")
         cell.imgView?.image = img
+        
         let tmpLog = logOfFriends[indexPath.row]
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
         let date = tmpLog.childSnapshot(forPath: "date").value as! String
@@ -90,13 +89,14 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         let logOrderByDate = refer.queryOrdered(byChild: "date").queryLimited(toLast: 30)
         logOrderByDate.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
-                let val = child.childSnapshot(forPath: "runner").value as! Int
+                let val = child.childSnapshot(forPath: "runner").value as! String
                 if ((user?.friends.contains(val)) != nil) {
                     self.logOfFriends.append(child)
                 }
             }
             self.logOfFriends.reverse()
             print("here")
+            print(self.logOfFriends)
             self.socialCollectionView.reloadData()
             print("here done")
         })

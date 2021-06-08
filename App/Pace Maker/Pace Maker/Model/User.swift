@@ -14,15 +14,15 @@ var profileImage: UIImage? = nil
 
 struct User {
     
-    let UID :Int // PK, 회원 번호
+    let UID : String // PK, 회원 번호
     let name: String
     let email : String
     let age: Int
     let nickName: String
-    let challenges : [Int]
-    let friends : [Int]
+    let challenges : [String]
+    let friends : [String]
     
-    init(UID : Int, name: String, email: String, age: Int, nickName: String, challenges: [Int], friends:[Int]) {
+    init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String]) {
         self.UID = UID
         self.name = name
         self.email = email

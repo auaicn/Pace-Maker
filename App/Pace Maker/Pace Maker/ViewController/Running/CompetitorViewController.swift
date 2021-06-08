@@ -16,7 +16,7 @@ enum Category: String {
 class CompetitorViewController: UIViewController {
     
     let categoryWithIndex: [Category] = [Category.myself,Category.celebrities,Category.friends]
-    var followers: [String:[String:Int]] = [Category.myself.rawValue:[user!.name:user!.UID] ,
+    var followers: [String:[String:String]] = [Category.myself.rawValue:[user!.name:user!.UID] ,
                                             Category.celebrities.rawValue:[:],
                                             Category.friends.rawValue:[:]]
     

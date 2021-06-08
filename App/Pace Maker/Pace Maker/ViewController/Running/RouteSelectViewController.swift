@@ -74,7 +74,7 @@ class RouteSelectViewController: UIViewController {
                     let date: String = singleLog["date"] as! String
                     let distance: Double = singleLog["distance"] as! Double
                     let route: String = singleLog["route"] as! String
-                    let runner: Int = singleLog["runner"] as! Int
+                    let runner: String = singleLog["runner"] as! String
                     let time: Double = singleLog["time"] as! Double
                     self.routes.append(Route(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runner, timeSpentInSeconds: time))
                 }
