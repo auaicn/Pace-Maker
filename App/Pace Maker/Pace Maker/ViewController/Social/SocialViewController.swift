@@ -15,6 +15,8 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var infoOfFriends: [DataSnapshot] = []
     var logOfFriends: [DataSnapshot] = []
+    
+    let today = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +53,22 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.userLabel.numberOfLines = 1
         cell.userLabel.text = "\(nick)"
         
-        cell.infoLog.numberOfLines = 3
-        cell.infoLog.text = " \(date) \n 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDate = dateFormatter.date(from: date)!
+        let daysCount = self.days(from: startDate)
+        
+        cell.dateLabel.textAlignment = .center
+        cell.dateLabel.numberOfLines = 1
+        cell.dateLabel.text = "\(daysCount)일 전"
+        
+        cell.infoLog.numberOfLines = 1
+        cell.infoLog.text = " \(distance) (km) / \(time) (seconds)"
         return cell
+    }
+    
+    func days(from date:Date) -> Int{
+        return Calendar.current.dateComponents([.day], from:date, to:self.today).day! + 1
     }
     
     private func setupFlowLayout() {
@@ -72,7 +87,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     //Load Logs Of Friends
     private func loadLogsOfFriends(){
         let refer = realReference.reference(withPath: "log")
-        let logOrderByDate = refer.queryOrdered(byChild: "date")
+        let logOrderByDate = refer.queryOrdered(byChild: "date").queryLimited(toLast: 30)
         logOrderByDate.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let val = child.childSnapshot(forPath: "runner").value as! Int
@@ -80,6 +95,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self.logOfFriends.append(child)
                 }
             }
+            self.logOfFriends.reverse()
             print("here")
             self.socialCollectionView.reloadData()
             print("here done")
@@ -93,6 +109,7 @@ class socialFeedCell: UICollectionViewCell{
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var infoLog: UILabel!
     @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var roundView: RoundedView!
 }
 
