@@ -119,7 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */,
-				54EADBBA114B7C58B9DE1B2D /* Pods_Pace_Maker.framework in Frameworks */,
+				C9CDA00F978D3FDD98A509D7 /* Pods_Pace_Maker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				182B0228265B646E002C5195 /* HealthKit.framework */,
-				DA2230849988EBCF407E79A9 /* Pods_Pace_Maker.framework */,
+				3273969B98091744D8D685A8 /* Pods_Pace_Maker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,8 +280,8 @@
 		A975AC6F32DF66127DEAA009 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4BA694909B4C326BC0F00F27 /* Pods-Pace Maker.debug.xcconfig */,
-				43C65E468B8DE5A81515660E /* Pods-Pace Maker.release.xcconfig */,
+				72C43949BCA60222D1EFE9D5 /* Pods-Pace Maker.debug.xcconfig */,
+				2FC047EE4623E0CFACADC522 /* Pods-Pace Maker.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -303,11 +303,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 188126D2261EE8A70073029F /* Build configuration list for PBXNativeTarget "Pace Maker" */;
 			buildPhases = (
-				7C29B713F3FBE905093FB0C1 /* [CP] Check Pods Manifest.lock */,
+				8A57EA8C26E57FE3E127DDD9 /* [CP] Check Pods Manifest.lock */,
 				188126BA261EE8A40073029F /* Sources */,
 				188126BB261EE8A40073029F /* Frameworks */,
 				188126BC261EE8A40073029F /* Resources */,
-				CD9A9FB2C9441B2FC8EB58BF /* [CP] Embed Pods Frameworks */,
+				8B0956B27A655CE8B40C3431 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -377,7 +377,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7C29B713F3FBE905093FB0C1 /* [CP] Check Pods Manifest.lock */ = {
+		8A57EA8C26E57FE3E127DDD9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,7 +399,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD9A9FB2C9441B2FC8EB58BF /* [CP] Embed Pods Frameworks */ = {
+		8B0956B27A655CE8B40C3431 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -605,7 +605,7 @@
 		};
 		188126D3261EE8A70073029F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BA694909B4C326BC0F00F27 /* Pods-Pace Maker.debug.xcconfig */;
+			baseConfigurationReference = 72C43949BCA60222D1EFE9D5 /* Pods-Pace Maker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -628,7 +628,7 @@
 		};
 		188126D4261EE8A70073029F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43C65E468B8DE5A81515660E /* Pods-Pace Maker.release.xcconfig */;
+			baseConfigurationReference = 2FC047EE4623E0CFACADC522 /* Pods-Pace Maker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

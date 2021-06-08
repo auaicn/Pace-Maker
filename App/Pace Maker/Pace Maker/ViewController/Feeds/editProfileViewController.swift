@@ -7,7 +7,8 @@
 
 import UIKit
 
-class editProfileViewController: UIViewController {
+
+class editProfileViewController: UIViewController, UITextViewDelegate {
     
     let imagePicker = UIImagePickerController()
     
@@ -16,11 +17,18 @@ class editProfileViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var mobile: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var profileStory: UITextView!
     @IBOutlet weak var saveButton: UIButton!
+    
+    @IBOutlet weak var profileStack: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pickImage(tapGestureRecognizer:)))
+        profileImage.addGestureRecognizer(tapGestureRecognizer)
+        profileImage.isUserInteractionEnabled = true
+        
         saveButton.isEnabled = false
 
         self.imagePicker.sourceType = .photoLibrary // 앨범에서 가져옴
@@ -28,6 +36,23 @@ class editProfileViewController: UIViewController {
         self.imagePicker.delegate = self // picker delegate
         // Do any additional setup after loading the view.
         
+        let nowImage = (UIImage(named: "2"))
+                            //?.withRenderingMode(.alwaysOriginal))!
+        
+        profileImage.image = nowImage
+        profileImage.contentMode = .scaleAspectFill
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.clipsToBounds = true
+        
+        profileStory.delegate = self
+        profileStory.text = "story"
+        self.profileStory.layer.borderWidth = 1.0
+        self.profileStory.layer.borderColor = UIColor.black.cgColor
+
+        
+        //profileStack.addArrangedSubview(profileImage)
+        
+
     }
     
     
@@ -41,7 +66,7 @@ class editProfileViewController: UIViewController {
     }
     */
     
-    @objc func pickImage(){
+    @objc func pickImage(tapGestureRecognizer: UITapGestureRecognizer){
         self.present(self.imagePicker, animated: true)
     }
 
