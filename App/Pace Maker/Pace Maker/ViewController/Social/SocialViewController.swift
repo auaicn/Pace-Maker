@@ -34,6 +34,9 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                 return UICollectionViewCell()
             }
         
+        
+        
+        
         cell.contentView.layer.masksToBounds = true
         cell.roundView.layer.masksToBounds = true
         

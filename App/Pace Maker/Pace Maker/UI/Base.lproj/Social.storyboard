@@ -37,13 +37,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6p-oP-wRk" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                    <rect key="frame" x="87" y="11" width="240" height="128"/>
+                                                    <rect key="frame" x="10" y="11" width="232" height="128"/>
                                                     <subviews>
                                                         <stackView contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FNC-tQ-VDy">
-                                                            <rect key="frame" x="-79" y="-101" width="398" height="588"/>
+                                                            <rect key="frame" x="-79" y="-101" width="384.5" height="588"/>
                                                             <subviews>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-G4-pEe" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="405.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="405.5"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RXk-aF-y6w">
                                                                             <rect key="frame" x="0.0" y="0.0" width="398" height="398"/>
@@ -53,6 +53,10 @@
                                                                         </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="RXk-aF-y6w" firstAttribute="width" secondItem="AaL-G4-pEe" secondAttribute="width" id="Jvm-3F-nwD"/>
+                                                                        <constraint firstItem="RXk-aF-y6w" firstAttribute="height" secondItem="AaL-G4-pEe" secondAttribute="height" id="xXQ-8J-o3J"/>
+                                                                    </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                             <real key="value" value="8"/>
@@ -69,10 +73,10 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="743-Hh-7pI" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="410.5" width="398" height="53"/>
+                                                                    <rect key="frame" x="0.0" y="410.5" width="384.5" height="53"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdI-9S-d13">
-                                                                            <rect key="frame" x="8" y="8" width="382" height="54"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="368.5" height="53"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -82,8 +86,8 @@
                                                                     <constraints>
                                                                         <constraint firstItem="zdI-9S-d13" firstAttribute="leading" secondItem="743-Hh-7pI" secondAttribute="leading" constant="8" id="7ZO-Ck-YcG"/>
                                                                         <constraint firstAttribute="trailing" secondItem="zdI-9S-d13" secondAttribute="trailing" constant="8" id="JeD-4F-xSH"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="zdI-9S-d13" secondAttribute="bottom" constant="-9" id="tUF-DT-0Ur"/>
-                                                                        <constraint firstItem="zdI-9S-d13" firstAttribute="top" secondItem="743-Hh-7pI" secondAttribute="top" constant="8" id="zSK-CD-gb9"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="zdI-9S-d13" secondAttribute="bottom" id="tUF-DT-0Ur"/>
+                                                                        <constraint firstItem="zdI-9S-d13" firstAttribute="top" secondItem="743-Hh-7pI" secondAttribute="top" id="zSK-CD-gb9"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -92,10 +96,10 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-Qv-uzc" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="468.5" width="398" height="119.5"/>
+                                                                    <rect key="frame" x="0.0" y="468.5" width="384.5" height="119.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHi-zx-buz">
-                                                                            <rect key="frame" x="8" y="8" width="382" height="112"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="368.5" height="119.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -105,8 +109,8 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="DHi-zx-buz" secondAttribute="trailing" constant="8" id="4K2-jC-Bpk"/>
                                                                         <constraint firstItem="DHi-zx-buz" firstAttribute="leading" secondItem="1K1-Qv-uzc" secondAttribute="leading" constant="8" id="Boq-Iq-i9p"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="DHi-zx-buz" secondAttribute="bottom" constant="-0.5" id="Pz8-yG-D33"/>
-                                                                        <constraint firstItem="DHi-zx-buz" firstAttribute="top" secondItem="1K1-Qv-uzc" secondAttribute="top" constant="8" id="lpu-bk-Jwu"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="DHi-zx-buz" secondAttribute="bottom" id="Pz8-yG-D33"/>
+                                                                        <constraint firstItem="DHi-zx-buz" firstAttribute="top" secondItem="1K1-Qv-uzc" secondAttribute="top" id="lpu-bk-Jwu"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -148,10 +152,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="N6p-oP-wRk" firstAttribute="top" secondItem="GdI-4r-7TD" secondAttribute="top" constant="11" id="5B5-Ij-s7D"/>
-                                                <constraint firstItem="N6p-oP-wRk" firstAttribute="width" secondItem="GdI-4r-7TD" secondAttribute="width" multiplier="0.57971" id="6uC-fg-jF9"/>
-                                                <constraint firstItem="N6p-oP-wRk" firstAttribute="leading" secondItem="GdI-4r-7TD" secondAttribute="leading" constant="87" id="7lE-A8-ECd"/>
+                                                <constraint firstItem="N6p-oP-wRk" firstAttribute="width" secondItem="GdI-4r-7TD" secondAttribute="width" multiplier="0.56" id="6uC-fg-jF9"/>
+                                                <constraint firstItem="N6p-oP-wRk" firstAttribute="leading" secondItem="GdI-4r-7TD" secondAttribute="leading" constant="10" id="7lE-A8-ECd"/>
                                                 <constraint firstItem="N6p-oP-wRk" firstAttribute="height" secondItem="GdI-4r-7TD" secondAttribute="height" multiplier="0.206119" id="Dpb-fd-zyq"/>
-                                                <constraint firstAttribute="trailing" secondItem="N6p-oP-wRk" secondAttribute="trailing" constant="87" id="WqF-AA-DU8"/>
+                                                <constraint firstAttribute="trailing" secondItem="N6p-oP-wRk" secondAttribute="trailing" constant="10" id="WqF-AA-DU8"/>
                                                 <constraint firstAttribute="bottom" secondItem="N6p-oP-wRk" secondAttribute="bottom" constant="482" id="r0i-7f-c0g"/>
                                             </constraints>
                                         </collectionViewCellContentView>
