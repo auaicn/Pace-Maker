@@ -17,6 +17,8 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     var logOfFriends: [DataSnapshot] = []
     
     let today = Date()
+    
+    var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +39,12 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.contentView.layer.masksToBounds = true
         cell.roundView.layer.masksToBounds = true
         
-        let img = UIImage(named: "feed-1")
-        cell.imgView?.image = img
+        self.index = (self.index + 1) % 5
+
+        //let img = UIImage(named: "feed-1")
+        //cell.imgView?.image = img
+        
+        getLogImage(imgview: cell.imgView, logName: "\(self.index)")
         
         let tmpLog = logOfFriends[indexPath.row]
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
@@ -95,10 +101,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                 }
             }
             self.logOfFriends.reverse()
-            print("here")
-            print(self.logOfFriends)
             self.socialCollectionView.reloadData()
-            print("here done")
         })
         
     }

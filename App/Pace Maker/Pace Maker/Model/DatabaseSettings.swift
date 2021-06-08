@@ -22,6 +22,20 @@ func getProfileImage(imgview: UIImageView){
     }
 }
 
+func getLogImage(imgview: UIImageView, logName: String){
+    let imageUrl = storageUrlBase + "log_images/" + logName + ".png"
+    storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+        if let error = error{
+            print(error.localizedDescription)
+        }
+        else{
+            let data = NSData(contentsOf: url!)
+            let image = UIImage(data: data! as Data)
+            imgview.image = image
+        }
+    }
+}
+
 func uploadProfileImage(img: UIImage){
     print("uploadProfileImage")
     var data = Data()
