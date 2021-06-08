@@ -33,10 +33,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     socialFeedCell else {
                 return UICollectionViewCell()
             }
-        
-        
-        
-        
+
         cell.contentView.layer.masksToBounds = true
         cell.roundView.layer.masksToBounds = true
         
@@ -49,8 +46,11 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         distance = round(distance * 100) / 100
         var time = tmpLog.childSnapshot(forPath: "time").value as! Float64
         time = round(time * 100) / 100
+        
+        cell.userLabel.textAlignment = .center
         cell.userLabel.numberOfLines = 1
-        cell.userLabel.text = " \(nick)"
+        cell.userLabel.text = "\(nick)"
+        
         cell.infoLog.numberOfLines = 3
         cell.infoLog.text = " \(date) \n 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
         return cell

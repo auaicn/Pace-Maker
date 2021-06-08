@@ -76,7 +76,7 @@
                                                                     <rect key="frame" x="0.0" y="410.5" width="384.5" height="53"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdI-9S-d13">
-                                                                            <rect key="frame" x="8" y="0.0" width="368.5" height="53"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="41.5" height="53"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                                                     <rect key="frame" x="0.0" y="468.5" width="384.5" height="119.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHi-zx-buz">
-                                                                            <rect key="frame" x="8" y="0.0" width="368.5" height="119.5"/>
+                                                                            <rect key="frame" x="8" y="0.0" width="41.5" height="119.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                                                                 <constraint firstItem="1K1-Qv-uzc" firstAttribute="width" secondItem="FNC-tQ-VDy" secondAttribute="width" id="gwG-Nf-3wm"/>
                                                                 <constraint firstItem="743-Hh-7pI" firstAttribute="height" secondItem="FNC-tQ-VDy" secondAttribute="height" multiplier="0.09" id="mzo-0z-yTb"/>
                                                                 <constraint firstItem="AaL-G4-pEe" firstAttribute="height" secondItem="FNC-tQ-VDy" secondAttribute="height" multiplier="0.69" id="rBN-EL-MBY"/>
-                                                                <constraint firstItem="743-Hh-7pI" firstAttribute="width" secondItem="FNC-tQ-VDy" secondAttribute="width" id="uCD-r4-PNV"/>
+                                                                <constraint firstItem="743-Hh-7pI" firstAttribute="width" secondItem="FNC-tQ-VDy" secondAttribute="width" multiplier="0.25" id="uCD-r4-PNV"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
