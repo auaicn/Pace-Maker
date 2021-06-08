@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -192,6 +193,22 @@
             </objects>
             <point key="canvasLocation" x="2589.2307692307691" y="1788.6255924170616"/>
         </scene>
+        <!--Contents View Controller-->
+        <scene sceneID="1Zh-3x-cCD">
+            <objects>
+                <viewController storyboardIdentifier="ContentsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1wD-wb-dAH" customClass="ContentsViewController" customModule="Pace_Maker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9oo-N9-GQT">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mTg-4H-7db"/>
+                        <color key="backgroundColor" name="AccentColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Ay-tT-AUv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dco-qC-xAx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2589" y="2527"/>
+        </scene>
         <!--User Name-->
         <scene sceneID="Wzq-XN-vHN">
             <objects>
@@ -201,7 +218,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WN9-W8-B5l">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="624"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="311-5T-5tp">
                                     <size key="itemSize" width="128" height="128"/>
@@ -217,6 +234,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <segue destination="1wD-wb-dAH" kind="show" identifier="contentsSegue" id="zEH-Um-2lZ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="FeedHeader" id="sdW-up-bii" customClass="CollectionReusableView" customModule="Pace_Maker" customModuleProvider="target">
@@ -257,11 +277,13 @@
             </objects>
             <point key="canvasLocation" x="1826.1538461538462" y="1789.3364928909953"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--피드-->
         <scene sceneID="uhH-1w-xxy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L4A-TZ-QyW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="피드" id="H1h-IS-7Wg"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQq-AC-jdT">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -278,6 +300,9 @@
     </scenes>
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.14900000393390656" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

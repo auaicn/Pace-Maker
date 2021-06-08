@@ -51,17 +51,19 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     func loadProfile() {
         editProfileImage.image = user?.profileImage != nil ? user?.profileImage! : defaultProfileImage!
         editName.text = user?.name
-        print(user?.name)
         editNickName.text = user?.nickName
         editEmail.text = user?.email
-        editProfileStory.text = "Description"
+        
     }
     
     func placeholderSetting() {
         editProfileStory.delegate = self // txtvReview가 유저가 선언한 outlet
-        editProfileStory.text = "Description"
-        editProfileStory.textColor = UIColor.systemGray3
-            
+        if user?.discription == nil {
+            editProfileStory.text = "Description"
+            editProfileStory.textColor = UIColor.systemGray3
+        } else {
+            editProfileStory.text = user?.discription
+        }
     }
         
     // TextView Place Holder
@@ -83,9 +85,13 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
 
     
     func verifyCorrectInputFormat() -> Bool {
+        guard let nameString = editName.text else { return false }
         guard let nickNameString = editNickName.text else { return false }
         guard let passwordString = editPassword.text else { return false }
-        if nickNameString == "" {
+        if nameString == "" {
+            alertIncorrectInputFormt(with: "이름")
+            return false
+        } else if nickNameString == "" {
             alertIncorrectInputFormt(with: "닉네임")
             return false
         } else if !passwordString.isValidPassword {
@@ -122,10 +128,29 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         guard verifyCorrectInputFormat() else { return }
         //uploadProfileImage(img: editProfileImage.image!)
         
-        
-        //Save User.init
+        updateUser()
+        dismiss(animated: true, completion: nil)
     }
     
+    func updateUser() {
+        guard let user = user else { return }
+            
+        // 바꿀 값
+        let values: [String: Any] = [
+            "email": user.email,
+            "passwd": String(editPassword.text!),
+            "name": String(editName.text!),
+            "nick": String(editNickName.text!),
+            "age": user.age,
+            "challenges": user.challenges,
+            "friends": user.friends
+        ]
+            
+        // 바꾸는쿼리
+        let userReference = realReference.reference().child("user")
+            .child(user.UID)
+            .setValue(values)
+    }
 }
 
 extension editProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -141,7 +166,9 @@ extension editProfileViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
         self.editProfileImage.image = newImage // 받아온 이미지를 update
+        uploadProfileImage()
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
+        
         
     }
 }

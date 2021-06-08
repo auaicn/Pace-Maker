@@ -197,6 +197,7 @@
             </constraints>
             <connections>
                 <outlet property="badge" destination="Eyc-BV-8Wm" id="baM-Eg-uy0"/>
+                <outlet property="discription" destination="C7o-Jk-Q5z" id="HFa-yL-ANJ"/>
                 <outlet property="distance" destination="VR6-gV-J1r" id="6b4-Jd-An4"/>
                 <outlet property="editButton" destination="6W1-KQ-h6B" id="R9v-lV-7br"/>
                 <outlet property="feedImage" destination="6JU-OJ-YOD" id="Y27-fS-Jtc"/>

@@ -18,7 +18,8 @@ class CollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var badge: UILabel!
     @IBOutlet weak var following: UILabel!
-
+    @IBOutlet weak var discription: UILabel!
+    
     @IBOutlet weak var editButton: UIButton!
     
     var delegate: HeaderViewDelegate?
@@ -39,6 +40,7 @@ class CollectionReusableView: UICollectionReusableView {
         time.text = "총 달린 시간 : "
         badge.text = "획득 뱃지 : "
         following.text = "팔로잉 : "
+        discription.text = user?.discription != nil ? user?.discription! : ""
         
         editButton.layer.borderColor = UIColor.gray.cgColor
         editButton.layer.borderWidth = 1
