@@ -49,6 +49,8 @@
 		18A1EA322670BF3100037636 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A1EA2F2670BF3100037636 /* LaunchScreen.storyboard */; };
 		18A1EA332670BF3100037636 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A1EA302670BF3100037636 /* Main.storyboard */; };
 		18A1EA342670BF3100037636 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A1EA312670BF3100037636 /* Social.storyboard */; };
+		18A1EA362670DEF700037636 /* RunningResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A1EA352670DEF700037636 /* RunningResultViewController.swift */; };
+		18A1EA382670E0BE00037636 /* BlackHanSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18A1EA372670E0BE00037636 /* BlackHanSans.ttf */; };
 		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
 		18C646AE264EC07A00E3E71B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
@@ -112,6 +114,8 @@
 		18A1EA2F2670BF3100037636 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A1EA302670BF3100037636 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		18A1EA312670BF3100037636 /* Social.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Social.storyboard; sourceTree = "<group>"; };
+		18A1EA352670DEF700037636 /* RunningResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningResultViewController.swift; sourceTree = "<group>"; };
+		18A1EA372670E0BE00037636 /* BlackHanSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BlackHanSans.ttf; sourceTree = "<group>"; };
 		18B6F06B26565D8400534D9D /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = "Pace Maker/ViewController/Activity/ActivityViewController.swift"; sourceTree = SOURCE_ROOT; };
 		18D3C943265121B800EBA66A /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		18D3C946265121CE00EBA66A /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				1824F46F266F411E00D8B9BC /* Uni Sans Heavy.otf */,
+				18A1EA372670E0BE00037636 /* BlackHanSans.ttf */,
 				1824F471266F412500D8B9BC /* Uni Sans Heavy Italic.otf */,
 				1824F46B266F410200D8B9BC /* coolvetica rg it.ttf */,
 				1824F46D266F411600D8B9BC /* Uni Sans Thin Italic.otf */,
@@ -246,6 +251,7 @@
 		188126B5261EE8A40073029F = {
 			isa = PBXGroup;
 			children = (
+				18A1EA352670DEF700037636 /* RunningResultViewController.swift */,
 				188126C0261EE8A40073029F /* Pace Maker */,
 				188126BF261EE8A40073029F /* Products */,
 				A975AC6F32DF66127DEAA009 /* Pods */,
@@ -400,6 +406,7 @@
 				18A1EA322670BF3100037636 /* LaunchScreen.storyboard in Resources */,
 				18161564263B078D008038C5 /* LaunchingImages.xcassets in Resources */,
 				18161571263B0D89008038C5 /* Setting.storyboard in Resources */,
+				18A1EA382670E0BE00037636 /* BlackHanSans.ttf in Resources */,
 				18653ECF265F8FBF001D9A68 /* CollectionReusableView.xib in Resources */,
 				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
@@ -472,6 +479,7 @@
 				188126C2261EE8A40073029F /* AppDelegate.swift in Sources */,
 				18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */,
 				18653ECA265F8F92001D9A68 /* HomeViewController.swift in Sources */,
+				18A1EA362670DEF700037636 /* RunningResultViewController.swift in Sources */,
 				18FA7DC7264EDE4900C50554 /* RoundedView.swift in Sources */,
 				18D3C944265121B800EBA66A /* Challenge.swift in Sources */,
 				18161560263B01F0008038C5 /* TitleViewController.swift in Sources */,

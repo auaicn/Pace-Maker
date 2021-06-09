@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>"$(PRODUCT_NAME)" 에서 달리기에 필요한 사용자의 건강 정보를 가져오기 위해 다음과 같은 권한이 필요합니다.</string>
+	<string>&quot;$(PRODUCT_NAME)&quot; 에서 달리기에 필요한 사용자의 건강 정보를 가져오기 위해 다음과 같은 권한이 필요합니다.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>"$(PRODUCT_NAME)" 에서 측정한 운동 기록이 아이폰 "건강" 앱 데이터에 반영되기 위해서는 해당 권한이 필요합니다.</string>
+	<string>&quot;$(PRODUCT_NAME)&quot; 에서 측정한 운동 기록이 아이폰 &quot;건강&quot; 앱 데이터에 반영되기 위해서는 해당 권한이 필요합니다.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>운동 기록을 추적하고 기록하기 위해서, 백그라운드에서 사용자의 위치 정보에 대한 수집이 필요합니다.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -38,6 +38,7 @@
 	<array>
 		<string>BinggraeMelona-Bold.ttf</string>
 		<string>Uni Sans Heavy.otf</string>
+		<string>BlackHanSans.ttf</string>
 		<string>Uni Sans Heavy Italic.otf</string>
 		<string>coolvetica rg it.ttf</string>
 		<string>Uni Sans Thin Italic.otf</string>
