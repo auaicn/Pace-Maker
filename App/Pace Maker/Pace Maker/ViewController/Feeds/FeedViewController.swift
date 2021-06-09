@@ -78,6 +78,12 @@ class FeedViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.feedCollectionView.reloadData()
+        print("reload")
+    }
 
 }
 
@@ -118,6 +124,10 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
         //vc?.modalTransitionStyle = .coverVertical
         self.present(vc!, animated: true, completion: nil)
         //self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "contentsSegue", sender: self)
     }
     
 }

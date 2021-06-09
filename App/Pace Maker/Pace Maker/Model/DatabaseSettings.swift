@@ -30,12 +30,26 @@ func downloadProfileImage() {
     }
 }
 
-func uploadProfileImage() {
-    guard let profileImage = user?.profileImage,
-          let userId = userId else { return }
-    
-    let imageUrl = storageUrlBase + "profiles/\(userId)"
-    let data = profileImage.pngData()!
+func getLogImage(imgview: UIImageView, logName: String){
+    let imageUrl = storageUrlBase + "log_images/" + logName + ".png"
+    storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+        if let error = error{
+            print(error.localizedDescription)
+        }
+        else{
+            let data = NSData(contentsOf: url!)
+            let image = UIImage(data: data! as Data)
+            imgview.image = image
+        }
+    }
+}
+
+func uploadProfileImage(img: UIImage){
+    print("uploadProfileImage")
+    var data = Data()
+    data = img.pngData()!
+    //pngData()와 jpegData() 2개가 있음
+    let imageUrl = "profiles/" + String(DEFAULT_USER_ID)
     let metaData = StorageMetadata()
     metaData.contentType = "image/png"
     storage.reference().child(imageUrl).putData(data, metadata: metaData){
