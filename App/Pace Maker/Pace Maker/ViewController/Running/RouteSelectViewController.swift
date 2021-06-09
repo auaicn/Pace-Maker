@@ -97,7 +97,7 @@ class RouteSelectViewController: UIViewController {
     
     func loadLogs(){
         
-        let logReference = realReference.reference(withPath: "log")
+        let logReference = realtimeReference.reference(withPath: "log")
         logReference.queryOrdered(byChild: "date")
             .observeSingleEvent(of: .value) { snapshot in
                 let snapshot = snapshot.value as? [[String : AnyObject]] ?? []
@@ -110,12 +110,11 @@ class RouteSelectViewController: UIViewController {
                     let time: Double = log["time"] as! Double
                     let nickname: String = log["nick"] as! String
                     
-                    let runner: Int = log["runner"] as! Int
-                    let runnerString = String(runner)
+                    let runnerId: String = log["runner"] as! String
                     
-                    let fetchedLog = Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerString, nickname: nickname, timeSpentInSeconds: time)
+                    let fetchedLog = Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerId, nickname: nickname, timeSpentInSeconds: time)
                     
-                    if runnerString == user?.UID {
+                    if runnerId == user?.UID {
                         self.routesBySelf.append(fetchedLog)
                     } else {
                         self.routes.append(fetchedLog)

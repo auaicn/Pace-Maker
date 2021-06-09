@@ -111,7 +111,7 @@ class RegisterViewController: UIViewController {
 
     func verifyNotDuplicatedEmail() {
         activityIndicator.startAnimating()
-        _ = realReference.reference(withPath: "user")
+        _ = realtimeReference.reference(withPath: "user")
             .queryOrdered(byChild: "email")
             .queryEqual(toValue: self.email.text)
             .observeSingleEvent(of: .value) { snapshot in

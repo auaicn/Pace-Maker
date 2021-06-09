@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DsO-D7-b7m">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -299,7 +300,9 @@
         <scene sceneID="Jpk-px-PVG">
             <objects>
                 <navigationController storyboardIdentifier="Social" automaticallyAdjustsScrollViewInsets="NO" id="DsO-D7-b7m" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="소셜" image="wifi" catalog="system" id="O2a-yH-bnN"/>
+                    <tabBarItem key="tabBarItem" title="소셜" id="O2a-yH-bnN">
+                        <imageReference key="image" image="wifi" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jbl-wD-Nr0">

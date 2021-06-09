@@ -38,9 +38,9 @@ class CollectionReusableView: UICollectionReusableView {
         
         distance.text = "총 달린 거리 : "
         time.text = "총 달린 시간 : "
-        badge.text = "획득 뱃지 : "
-        following.text = "팔로잉 : "
-        discription.text = user?.discription != nil ? user?.discription! : ""
+//        badge.text = "획득 뱃지 : "
+        following.text = "팔로잉 : \(user?.friends.count)"
+        discription.text = user?.description
         
         editButton.layer.borderColor = UIColor.gray.cgColor
         editButton.layer.borderWidth = 1

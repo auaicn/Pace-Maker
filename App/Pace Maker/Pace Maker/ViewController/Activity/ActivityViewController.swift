@@ -13,7 +13,6 @@ import Firebase
 class ActivityViewController: UIViewController {
 
     @IBOutlet weak var deviceNotAvailableLabel: UILabel!
-    @IBOutlet weak var chartView: CombinedChartView!
     @IBOutlet weak var syncBarButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var measureMessagePrefix: UILabel!
@@ -21,25 +20,18 @@ class ActivityViewController: UIViewController {
     @IBOutlet weak var summary: UILabel!
     @IBOutlet weak var measureUnit: UILabel!
     
+    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet weak var lineChartView: LineChartView!
+    
     @IBOutlet weak var tableView: UITableView!
-    
-    let syncMessage = UILabel(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-    
+        
     // Data
     var logs: [Log] = []
     var heartRateData: [(date: Date, value: Double)] = []
     var activeEnergyBurnedData: [(date: Date, value: Double)] = []
     
-    func setNavigationBar() {
-        // later
-        syncMessage.backgroundColor = .blue
-        syncBarButtonItem.customView?.addSubview(syncMessage)
-        syncMessage.text = "sync 1d ago..."
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         setChartView()
         loadDatabase()
         updateUI()
@@ -71,7 +63,7 @@ class ActivityViewController: UIViewController {
 extension ActivityViewController {
     
     func loadLogs(){
-        let logReference = realReference.reference(withPath: "log")
+        let logReference = realtimeReference.reference(withPath: "log")
         logReference.queryOrdered(byChild: "runner")
             .queryEqual(toValue: user?.UID)
             .observe(.value) { snapshot in
@@ -87,10 +79,9 @@ extension ActivityViewController {
                     let time: Double = singleLog["time"] as! Double
                     let nickname: String = singleLog["nick"] as! String
                     
-                    let runnerId: Int = singleLog["runner"] as! Int
-                    let runnerString = String(runnerId)
+                    let runnerId: String = singleLog["runner"] as! String
                     
-                    self.logs.append(Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerString, nickname: nickname, timeSpentInSeconds: time))
+                    self.logs.append(Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerId, nickname: nickname, timeSpentInSeconds: time))
                 }
                 self.updateUI()
             }
@@ -98,18 +89,36 @@ extension ActivityViewController {
     
     /// initial setting for chart view
     func setChartView() {
-        chartView.noDataTextColor = .lightGray
-        chartView.rightAxis.enabled = false
-        chartView.leftAxis.enabled = false
+        setBarChartView()
+        setLineChartView()
     }
+    
+    func setBarChartView() {
+        barChartView.dragXEnabled = true
+        barChartView.dragYEnabled = false
+        barChartView.isHidden = true
+        barChartView.noDataTextColor = .lightGray
+        barChartView.rightAxis.enabled = false
+        barChartView.leftAxis.enabled = true
+        barChartView.leftAxis.axisMinimum = 0
+        barChartView.maxVisibleCount = 10
+    }
+    
+    func setLineChartView() {
+        lineChartView.dragXEnabled = true
+        lineChartView.dragYEnabled = false
+        lineChartView.isHidden = true
+        lineChartView.noDataTextColor = .lightGray
+        lineChartView.rightAxis.enabled = false
+        lineChartView.leftAxis.enabled = true
+        lineChartView.leftAxis.axisMinimum = 0
+        lineChartView.maxVisibleCount = 10
+        lineChartView.moveViewToX(lineChartView.chartXMax)
+    } 
     
     func updateBarChartData(with dataEntries:[(String,Double)]){
         if dataEntries.count == 0 { return }
         
-        let data: CombinedChartData = CombinedChartData()
-        
-        data.calcMinMax()
-
         var barChartDataEntries: [BarChartDataEntry] = []
         for i in 0..<dataEntries.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: dataEntries[i].1)
@@ -117,9 +126,9 @@ extension ActivityViewController {
         }
         
         let barChartDataSet = BarChartDataSet(entries: barChartDataEntries, label: currentMetric.label)
+        barChartDataSet.drawValuesEnabled = true
         let barChartData = BarChartData(dataSet: barChartDataSet)
-        chartView.data = barChartData
-        
+        barChartView.data = barChartData
     }
     
     func updateLineChartData(with dataEntries:[(String,Double)]){
@@ -132,9 +141,22 @@ extension ActivityViewController {
         }
         
         let lineChartDataSet = LineChartDataSet(entries: lineChartDataEntries, label: currentMetric.label)
+        lineChartDataSet.drawValuesEnabled = true
+
+        lineChartDataSet.circleRadius = 0
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        chartView.data = lineChartData
+
+        // additional
+        let gradientColors = [UIColor.cyan.cgColor, UIColor.clear.cgColor] as CFArray // Colors of the gradient
+        let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
+        let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
+        lineChartDataSet.fill = Fill.fillWithLinearGradient(gradient!, angle: 90.0) // Set the Gradient
+        lineChartDataSet.drawFilledEnabled = true // Draw the Gradient
         
+        lineChartDataSet.circleRadius = 1
+        lineChartDataSet.mode = .cubicBezier
+        
+        lineChartView.data = lineChartData
     }
     
     func updateChartUI(with dataEntries:[(String,Double)]){
@@ -146,7 +168,7 @@ extension ActivityViewController {
             return dateFormatter.date(from: $0.0)!
         }
         
-        // Chart 위에 레이블들 설정
+        // Chart Description Labels
         measureUnit.text = currentMetric.unit
         let distantDateString = dateFormatter.string(from: dates.min()!)
         let recentDateString = dateFormatter.string(from: dates.max()!)
@@ -163,49 +185,76 @@ extension ActivityViewController {
             summary.text = String(format: currentMetric.summaryFormat, currentMetric == .distance ? valueSum : averageValue)
         }
         
-        // in-Chart limit lines
+        // Charts
+        // Switch Current ChartView
+        var chartView: BarLineChartViewBase? = nil
+        switch currentMetric {
+            case .pace, .distance:
+                lineChartView.isHidden = true
+                barChartView.isHidden = false
+                chartView = barChartView as BarLineChartViewBase
+            case .heartRate, .activeEnergyBurned:
+                barChartView.isHidden = true
+                lineChartView.isHidden = false
+                chartView = lineChartView as BarLineChartViewBase
+        }
+        
+        guard let chartView = chartView else { return }
+        
+        // limit lines
         let averageLine = ChartLimitLine(limit: averageValue, label: currentMetric.limitLineLabel)
+        averageLine.lineWidth = 2
+        averageLine.label = "\(currentMetric.limitLineLabel)"
+        
         chartView.leftAxis.removeAllLimitLines()
         chartView.leftAxis.addLimitLine(averageLine)
-//        chartView.leftAxis.zeroLineColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         chartView.data?.dataSets.first?.setColor(currentMetric.colorSet)
-        chartView.xAxis.labelPosition = .top // X축 레이블 위치 조정
+        chartView.xAxis.labelPosition = .bottom // X축 레이블 위치 조정
+        chartView.xAxis.axisMinimum = 0
+//        chartView.xAxis.setLabelCount(5, force: true)
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataEntries.map({$0.0})) // X축 레이블 포맷 지정
         chartView.animate(xAxisDuration: 1.0, yAxisDuration: 1.8)
+        
     }
     
     func updateChart(){
         
         var chartEntries: [(String,Double)] = []
+        clearChartLabels()
+        lineChartView.clear()
+        barChartView.clear()
         switch currentMetric {
             case .distance:
                 for log in logs{
                     chartEntries.append((log.dateString,log.distanceInKilometer))
                 }
                 updateBarChartData(with: chartEntries)
-                updateChartUI(with: chartEntries)
             case .pace:
                 for log in logs{
                     chartEntries.append((log.dateString, Double(log.pace)))
                 }
                 updateBarChartData(with: chartEntries)
-                updateChartUI(with: chartEntries)
             case .heartRate:
                 for heartRate in heartRateData {
                     chartEntries.append((dateFormatter.string(from: heartRate.date), heartRate.value))
                 }
                 updateLineChartData(with: chartEntries)
-                updateChartUI(with: chartEntries)
             case .activeEnergyBurned:
                 for activeEneryBurned in activeEnergyBurnedData {
                     chartEntries.append((dateFormatter.string(from: activeEneryBurned.date), activeEneryBurned.value))
                 }
                 updateLineChartData(with: chartEntries)
-                updateChartUI(with: chartEntries)
         }
+        updateChartUI(with: chartEntries)
+        
         // 그외 추가로 더 해줘야하는 것들
         measureMessagePrefix.text = currentMetric.prefix
         measureUnit.text = currentMetric.unit
+    }
+    
+    func clearChartLabels(){
+        summary.text = "0"
+        measuredPeriod.text = "Today"
     }
 }
 
@@ -278,7 +327,7 @@ extension ActivityViewController {
             // remove unnecessory sample data. only extract date / kilocalories value
             let samplesByDate = samples.map { sample -> HKData in
                 guard let quantitySample: HKQuantitySample = sample as? HKQuantitySample else { return HKData(loggedDate: Date(), value: 0) }
-                return HKData(loggedDate: quantitySample.startDate, value: quantitySample.quantity.doubleValue(for: HKUnit.kilocalorie()))
+                return HKData(loggedDate: quantitySample.startDate, value: Double.rounded(quantitySample.quantity.doubleValue(for: HKUnit.kilocalorie()))())
             }
             
             // group kilocalories value by date
@@ -374,11 +423,9 @@ extension ActivityViewController :UITableViewDelegate, UITableViewDataSource{
             case .pace:
                 return logs.count
             case .heartRate:
-                return 0
-//                return heartRateData.count
+                return heartRateData.count
             case .activeEnergyBurned:
-                return 0
-//                return activeEnergyBurnedData.count
+                return activeEnergyBurnedData.count
         }
     }
     
@@ -387,7 +434,6 @@ extension ActivityViewController :UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch currentMetric {
             case .distance:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "distance", for: indexPath)
@@ -403,12 +449,21 @@ extension ActivityViewController :UITableViewDelegate, UITableViewDataSource{
                 return cell
             case .heartRate:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "heartRate", for: indexPath)
+                let data = heartRateData[indexPath.row]
+                cell.textLabel?.text = String.init(format: "%.2f", data.value)
+                let daysCount = self.days(from: data.date)
+                cell.detailTextLabel?.text = "\(daysCount)일 전"
                 return cell
             case .activeEnergyBurned:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "activeEnergyBurned", for: indexPath)
+                let data = activeEnergyBurnedData[indexPath.row]
+                cell.textLabel?.text = "\(Int(data.value))"
+                let daysCount = self.days(from: data.date)
+                cell.detailTextLabel?.text = "\(daysCount)일 전"
                 return cell
         }
     }
-    
-    
+    func days(from date:Date) -> Int{
+        return Calendar.current.dateComponents([.day], from:date, to: Date()).day! + 1
+    }
 }

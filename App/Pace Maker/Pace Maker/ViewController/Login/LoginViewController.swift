@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
               let password = password.text else { return }
         activityIndicator.startAnimating()
         
-        _ = realReference.reference(withPath: "user")
+        _ = realtimeReference.reference(withPath: "user")
             .queryOrdered(byChild: "email")
             .queryEqual(toValue: email.text)
             .observeSingleEvent(of: .value) { snapshot in
@@ -114,6 +114,12 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         authorizationController.performRequests()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? HomeViewController {
+            destVC.loginRequested = true
+        }
+    }
+    
     /// - Tag: perform_appleid_request
     @objc
     func handleAuthorizationAppleIDButtonPress() {
@@ -168,25 +174,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 //            try KeychainItem(service: "com.example.apple-samplecode.juice", account: "userIdentifier").saveItem(userIdentifier)
 //        } catch {
 //            print("Unable to save userIdentifier to keychain.")
-//        }
-//    }
-    
-//    private func showResultViewController(userIdentifier: String, fullName: PersonNameComponents?, email: String?) {
-//        guard let viewController = self.presentingViewController as? ResultViewController
-//        else { return }
-//
-//        DispatchQueue.main.async {
-//            viewController.userIdentifierLabel.text = userIdentifier
-//            if let givenName = fullName?.givenName {
-//                viewController.givenNameLabel.text = givenName
-//            }
-//            if let familyName = fullName?.familyName {
-//                viewController.familyNameLabel.text = familyName
-//            }
-//            if let email = email {
-//                viewController.emailLabel.text = email
-//            }
-//            self.dismiss(animated: true, completion: nil)
 //        }
 //    }
     

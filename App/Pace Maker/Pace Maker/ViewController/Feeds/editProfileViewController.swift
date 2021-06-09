@@ -6,21 +6,24 @@
 //
 
 import UIKit
+import UnderKeyboard
 
 
 class editProfileViewController: UIViewController, UITextViewDelegate {
     
     let imagePicker = UIImagePickerController()
-    
-    @IBOutlet weak var editProfileImage: UIImageView!
-    @IBOutlet weak var editName: UITextField!
-    @IBOutlet weak var editNickName: UITextField!
-    @IBOutlet weak var editEmail: UITextField!
-    @IBOutlet weak var editProfileStory: UITextView!
-    @IBOutlet weak var editPassword: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
+    let underKeyboardLayoutConstraint = UnderKeyboardLayoutConstraint()
     
     @IBOutlet weak var profileStack: UIStackView!
+    @IBOutlet weak var editProfileImage: UIImageView!
+    @IBOutlet weak var editName: UILabel!
+    @IBOutlet weak var editEmail: UILabel!
+    @IBOutlet weak var editNickName: UITextField!
+    @IBOutlet weak var editDescription: UITextView!
+    @IBOutlet weak var editPassword: UITextField!
+    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +41,14 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         editProfileImage.layer.cornerRadius = editProfileImage.frame.width / 2
         editProfileImage.clipsToBounds = true
         
-        editProfileStory.delegate = self
-        editProfileStory.layer.borderWidth = 0.5
-        editProfileStory.layer.borderColor = UIColor.systemGray4.cgColor
-        editProfileStory.layer.cornerRadius = 5
+        editDescription.delegate = self
+        editDescription.layer.borderWidth = 0.5
+        editDescription.layer.borderColor = UIColor.systemGray4.cgColor
+        editDescription.layer.cornerRadius = 5
         
         placeholderSetting()
         loadProfile()
+        underKeyboardLayoutConstraint.setup(bottomLayoutConstraint, view: view)
 
     }
     
@@ -53,16 +57,17 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         editName.text = user?.name
         editNickName.text = user?.nickName
         editEmail.text = user?.email
-        
+        editPassword.text = user?.password
+        editDescription.text = user?.description
     }
     
     func placeholderSetting() {
-        editProfileStory.delegate = self // txtvReview가 유저가 선언한 outlet
-        if user?.discription == nil {
-            editProfileStory.text = "Description"
-            editProfileStory.textColor = UIColor.systemGray3
+        editDescription.delegate = self // txtvReview가 유저가 선언한 outlet
+        if user?.description == nil {
+            editDescription.text = "Description"
+            editDescription.textColor = UIColor.systemGray3
         } else {
-            editProfileStory.text = user?.discription
+            editDescription.text = user?.description
         }
     }
         
@@ -110,16 +115,6 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     @objc func pickImage(tapGestureRecognizer: UITapGestureRecognizer){
         self.present(self.imagePicker, animated: true)
     }
@@ -147,7 +142,7 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         ]
             
         // 바꾸는쿼리
-        let userReference = realReference.reference().child("user")
+        let userReference = realtimeReference.reference().child("user")
             .child(user.UID)
             .setValue(values)
     }
@@ -165,8 +160,11 @@ extension editProfileViewController: UIImagePickerControllerDelegate, UINavigati
             newImage = possibleImage // 원본 이미지가 있을 경우
         }
         
-        self.editProfileImage.image = newImage // 받아온 이미지를 update
-        uploadProfileImage()
+        if let newProfileImage = newImage {
+            editProfileImage.image = newProfileImage // 받아온 이미지를 update
+            uploadProfileImage(image: newProfileImage)
+        }
+        
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
         

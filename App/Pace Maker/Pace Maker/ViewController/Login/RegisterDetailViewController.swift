@@ -77,7 +77,7 @@ class RegisterDetailViewController: UIViewController {
         guard let name = name.text,
               let nickname = nickname.text,
               let age = age.text else { return }
-        let userReference = realReference.reference().child("user").childByAutoId()
+        let userReference = realtimeReference.reference().child("user").childByAutoId()
         let values: [String: Any] = [
             "email": email!,
             "passwd": password!,
@@ -91,6 +91,11 @@ class RegisterDetailViewController: UIViewController {
         performSegue(withIdentifier: "unwindToHome", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destVC = segue.destination as? HomeViewController {
+            destVC.loginRequested = true
+        }
+    }
 }
 
 extension RegisterDetailViewController: UITextFieldDelegate{

@@ -91,7 +91,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     //Load Logs Of Friends
     private func loadLogsOfFriends(){
-        let refer = realReference.reference(withPath: "log")
+        let refer = realtimeReference.reference(withPath: "log")
         let logOrderByDate = refer.queryOrdered(byChild: "date").queryLimited(toLast: 30)
         logOrderByDate.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{

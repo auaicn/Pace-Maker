@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-let DEFAULT_USER_ID: Int = 1
 var userId: String? = nil
 var user: User? = nil
 
@@ -16,18 +15,23 @@ let defaultProfileImage = UIImage(systemName: "person.crop.circle.badge.xmark")
 
 struct User {
     
+    // immutable
     let UID :String // PK, 회원 번호
-    var name: String
     let email: String
+    let name: String
     let age: Int
+    
+    // mutable
     var nickName: String
-    let challenges: [String]
-    let friends: [String]
+    var password: String
+    var description: String
+    var challenges: [String]
+    var friends: [String]
     
+    // profile image
     var profileImage: UIImage?
-    var discription: String?
     
-    init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String]) {
+    init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends: [String], description: String, password: String) {
         self.UID = UID
         self.name = name
         self.email = email
@@ -35,17 +39,7 @@ struct User {
         self.nickName = nickName
         self.challenges = challenges
         self.friends = friends
-        self.profileImage = nil
-    }
-    
-    init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String], profileImage: UIImage?) {
-        self.UID = UID
-        self.name = name
-        self.email = email
-        self.age = age
-        self.nickName = nickName
-        self.challenges = challenges
-        self.friends = friends
-        self.profileImage = profileImage
+        self.password = password
+        self.description = description
     }
 }

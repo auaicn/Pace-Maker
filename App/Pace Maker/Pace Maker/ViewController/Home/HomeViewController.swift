@@ -16,11 +16,10 @@ var authenticationStatus : AuthenticationStatus = .loggined
 var homeScreenChallengeIndex : Int = 0
 
 class HomeViewController: UIViewController{
-
-    var userIdentifierString: String?
     
+    var loginRequested: Bool = true
+
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var screenImageView: UIImageView!
     
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
@@ -30,53 +29,78 @@ class HomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         updateAuthenticationStatus(to: .notLoggined)
-        setNavigationBar()
-        updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        login()
+        tryLogin()
     }
     
     func updateUI(){
-        updateProfile()
-        
+        updateProfileImage()
     }
-    
-    func updateProfile(){
-        if authenticationStatus == .loggined{
-            
-        }
-    }
-
 }
 
 // 로그인 관련
 extension HomeViewController {
     
-    func loginAsDefaultUser() {
-        login(with: String(DEFAULT_USER_ID))
+    func tryLogin(){
+        guard let userId = userId else {
+            print("user Id not set")
+            return
+        }
+        if !loginRequested {
+            print("already logined")
+            return;
+        }else {
+            loginRequested = false // used up request
+            let userReference = realtimeReference.reference(withPath: "user")
+            userReference.child(userId).observeSingleEvent(of: .value) { snapshot in
+                let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
+                
+                let UID: String = snapshot.key
+                
+                let age: Int = userDictionary["age"] as! Int
+                let email: String = userDictionary["email"] as! String
+                let name: String = userDictionary["name"] as! String
+                let nick: String = userDictionary["nick"] as! String
+                let password: String = userDictionary["passwd"] as! String // 로그인 단계에서는 필요없어 보인다.
+                
+                let challenges: [String] = userDictionary["challenges"] as? [String] ?? []
+                let friends: [String] = userDictionary["friends"] as? [String] ?? []
+                let description: String = userDictionary["friends"] as? String ?? "설정에서 설명을 추가해주세요"
+                
+                user = User(UID: UID, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends, description: description, password: password)
+                self.updateAuthenticationStatus(to: .loggined)
+                print("successfully logined with UID \(userId)")
+                
+                self.download()
+
+            }
+        }
     }
     
-    func login(with id:String){
-        let userReference = realReference.reference(withPath: "user")
-        userReference.child(id).observe(.value) { snapshot in
-            let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
-            
-            let age: Int = userDictionary["age"] as! Int
-//            let challenges: [String] = userDictionary["challenges"] as! [String]
-            let friends: [String] = userDictionary["friends"] as! [String]
-            let email: String = userDictionary["email"] as! String
-            let name: String = userDictionary["name"] as! String
-            let nick: String = userDictionary["nick"] as! String
-            //let passwd: String = userDictionary["passwd"] as! String
-            
-            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: [], friends: friends)
-            self.updateAuthenticationStatus(to: .loggined)
-            print("successfully logined with UID \(userId)")
-            
-            downloadProfileImage()
-
+    func download() {
+        guard let userId = userId else { return }
+        
+        let suffix: String = ".png"
+        let imageUrl = storageUrlBase + "profiles/\(userId)\(suffix)"
+        storage.reference(forURL: imageUrl).downloadURL { (url, error) in
+            if let _ = error {
+                user?.profileImage = nil
+                print("error while downloading profile")
+            }
+            if url != nil {
+                let data = NSData(contentsOf: url!)
+                let image = UIImage(data: data! as Data)
+                user?.profileImage = image
+                print("successfully downloaded profile \(userId)")
+                self.updateUI()
+            } else {
+                // storage 에 해당 이미지가 없는 경우
+                print("failed to download profile of UID :\(userId)")
+                user?.profileImage = nil
+                return
+            }
         }
     }
     
@@ -96,52 +120,37 @@ extension HomeViewController {
 // 네비게이션 바 관련
 extension HomeViewController {
     
-    func setNavigationBar() {
-        self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
-        // self.navigationItem.rightBarButtonItem = makeCameraScreenshotImage()
-
-        // maybe Large Title Stuff
+    private func updateProfileImage(){
         
-        // or hide on swipe things
+        var imageViewToUpdate: UIImageView? = nil
         
-    }
-    
-    /// Make View For Left Navigation Bar Item using User's profile image
-    private func makeCameraScreenshotImage() -> UIBarButtonItem {
+        if let user = user,
+           let profileImage = user.profileImage {
+            imageViewToUpdate = makeRoundImageView(with: profileImage)
+        } else {
+            guard let defaultImage = defaultProfileImage else {
+                print("default image not set")
+                return
+            }
+            imageViewToUpdate = UIImageView(image: defaultImage)
+        }
         
-        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
-        
-        let customView = UIButton()
-        customView.addSubview(profileImageView)
-        customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        customView.addTarget(self, action: #selector(tappedCamera), for: .touchUpInside)
-        
-        let item = UIBarButtonItem(customView: customView)
-        item.target = self
-        
-        return item;
-    }
-    
-    @objc func tappedCamera(){
-        print("tappedCamera")
-        screenImageView.image = view.takeScreenshot()
-    }
-    
-    /// Make View For Left Navigation Bar Item using User's profile image
-    private func makeNavigationBarItemWithImage() -> UIBarButtonItem {
-        
-        let profileImageView = user?.profileImage != nil ? makeRoundImageView(with: (user?.profileImage)!) : UIImageView(image: defaultProfileImage)
+        guard let imageViewToUpdate = imageViewToUpdate else {
+            print("imageViewToUpdate not set")
+            return
+        }
         
         let customView = UIButton()
-        customView.addSubview(profileImageView)
+        customView.addSubview(imageViewToUpdate)
         customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
         customView.addTarget(self, action: #selector(tappedProfile), for: .touchUpInside)
         
-        let item = UIBarButtonItem(customView: customView)
-        item.target = self
-//        item.action = #selector(tappedProfile)
+        leftBarButtonItem.customView = customView
+//        let item = UIBarButtonItem(customView: customView)
+//        item.target = self
         
-        return item;
+//        leftBarButtonItem = item
+        print("successfully profile image updated")
     }
     
     func makeRoundImageView(with image: UIImage) -> UIImageView {
@@ -155,6 +164,7 @@ extension HomeViewController {
     }
     
     @objc func tappedProfile(){
+        print("tapped profile image")
         switch authenticationStatus {
             case .loggined:
                 // 로그인이 되어있는 경우, 세팅 화면으로 이동한다

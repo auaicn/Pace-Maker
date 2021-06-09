@@ -43,7 +43,7 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
         self.userCandidate = []
         
         let input = searchText.lowercased()
-        let refer = realReference.reference(withPath: "user")
+        let refer = realtimeReference.reference(withPath: "user")
         let users = refer.queryOrdered(byChild: "nick")
         users.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{

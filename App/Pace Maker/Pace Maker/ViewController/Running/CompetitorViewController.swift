@@ -40,7 +40,7 @@ class CompetitorViewController: UIViewController {
     }
     
 //    func loadFriends() {
-//        let refer = realReference.reference(withPath: "user")
+//        let refer = realtimeReference.reference(withPath: "user")
 //
 //        refer.child(String(user!.UID)).child("friends").observe(.value){ snapshot in
 //            let friends = snapshot.value as! [Int]
