@@ -92,8 +92,8 @@ class RouteDetailViewController: UIViewController {
         
         let trackPoints = rootGPX.tracks[0].segments[0].points
         let coords: [CLLocationCoordinate2D] = trackPoints.filter { trackPoint in
-            guard let latitude = trackPoint.latitude else { return false }
-            guard let longitude = trackPoint.longitude else { return false }
+            guard let _ = trackPoint.latitude else { return false }
+            guard let _ = trackPoint.longitude else { return false }
             return true
         }.map { trackPoint in
             return CLLocationCoordinate2D(latitude: trackPoint.latitude!, longitude: trackPoint.longitude!)

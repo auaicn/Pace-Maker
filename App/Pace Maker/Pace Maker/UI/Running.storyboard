@@ -768,6 +768,7 @@
                         <outlet property="mapView" destination="T5p-cA-XyL" id="lEF-JP-l1H"/>
                         <outlet property="movedDistanceLabel" destination="gZh-aU-yeB" id="Fvg-NC-Ec4"/>
                         <outlet property="startPauseImage" destination="ffJ-Rb-573" id="BGJ-Au-Krf"/>
+                        <segue destination="hGW-n1-E6O" kind="show" id="htX-ns-rj7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oH8-8T-XIe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

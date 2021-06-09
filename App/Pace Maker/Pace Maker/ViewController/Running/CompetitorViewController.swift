@@ -27,7 +27,7 @@ class CompetitorViewController: UIViewController {
     }
     
     func loadDatabase() {
-        print(user?.friends)
+//        print(user?.friends)
         loadFriends()
     }
     
@@ -62,7 +62,7 @@ extension CompetitorViewController :UITableViewDataSource, UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "follower",for: indexPath)
         
-        let categoryValues = Array(followers.values)[indexPath.section]
+        let _ = Array(followers.values)[indexPath.section]
         
         cell.textLabel!.text = "auaicn"
         return cell

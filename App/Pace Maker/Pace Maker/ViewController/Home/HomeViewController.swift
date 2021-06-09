@@ -108,9 +108,9 @@ extension HomeViewController {
         authenticationStatus = newStatus
         switch newStatus {
             case .notLoggined:
-                let i = 1
+                print("authenticationStatus chagned to \"notLoggined\" status now")
             case .loggined:
-                let i = 1
+                print("authenticationStatus chagned to \"loggined\" status now")
         }
         updateUI()
     }

@@ -24,7 +24,7 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
     func getProfileImage(imgview: UIImageView, id: String){
         let imageUrl = storageUrlBase + "profiles/" + id + ".jpg"
         storage.reference(forURL: imageUrl).downloadURL { (url, error) in
-            if let error = error {
+            if let _ = error {
                 //let image = UIImage()
                 //imgview.image = image
             }
