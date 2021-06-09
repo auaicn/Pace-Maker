@@ -27,6 +27,7 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(user)
         self.hideKeyboardWhenTappedAround()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pickImage(tapGestureRecognizer:)))
@@ -132,6 +133,7 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         user?.nickName = editNickName.text!
         user?.password = editPassword.text!
         user?.description = editDescription.text
+        print(String(editDescription.text))
         guard let user = user else { return }
         // 바꿀 값
         let values: [String: Any] = [
@@ -141,7 +143,8 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
             "nick": String(editNickName.text!),
             "age": user.age,
             "challenges": user.challenges,
-            "friends": user.friends
+            "friends": user.friends,
+            "description": String(editDescription.text)
         ]
             
         // 바꾸는쿼리
