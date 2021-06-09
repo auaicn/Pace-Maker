@@ -186,19 +186,19 @@ extension ActivityViewController {
         
         // Charts
         // Switch Current ChartView
-        var chartView: BarLineChartViewBase? = nil
+        var _chartView: BarLineChartViewBase? = nil
         switch currentMetric {
             case .pace, .distance:
                 lineChartView.isHidden = true
                 barChartView.isHidden = false
-                chartView = barChartView as BarLineChartViewBase
+                _chartView = barChartView as BarLineChartViewBase
             case .heartRate, .activeEnergyBurned:
                 barChartView.isHidden = true
                 lineChartView.isHidden = false
-                chartView = lineChartView as BarLineChartViewBase
+                _chartView = lineChartView as BarLineChartViewBase
         }
         
-        guard let chartView = chartView else { return }
+        guard let chartView = _chartView else { return }
         
         // limit lines
         let averageLine = ChartLimitLine(limit: averageValue, label: currentMetric.limitLineLabel)
