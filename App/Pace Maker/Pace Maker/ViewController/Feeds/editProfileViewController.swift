@@ -12,12 +12,12 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     
     let imagePicker = UIImagePickerController()
     
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var mobile: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var profileStory: UITextView!
+    @IBOutlet weak var editProfileImage: UIImageView!
+    @IBOutlet weak var editName: UITextField!
+    @IBOutlet weak var editNickName: UITextField!
+    @IBOutlet weak var editEmail: UITextField!
+    @IBOutlet weak var editProfileStory: UITextView!
+    @IBOutlet weak var editPassword: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var profileStack: UIStackView!
@@ -26,35 +26,89 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pickImage(tapGestureRecognizer:)))
-        profileImage.addGestureRecognizer(tapGestureRecognizer)
-        profileImage.isUserInteractionEnabled = true
+        editProfileImage.addGestureRecognizer(tapGestureRecognizer)
+        editProfileImage.isUserInteractionEnabled = true
         
-        saveButton.isEnabled = false
-
         self.imagePicker.sourceType = .photoLibrary // 앨범에서 가져옴
         self.imagePicker.allowsEditing = true // 수정 가능 여부
         self.imagePicker.delegate = self // picker delegate
         // Do any additional setup after loading the view.
         
-        let nowImage = (UIImage(named: "2"))
-                            //?.withRenderingMode(.alwaysOriginal))!
+        editProfileImage.contentMode = .scaleAspectFill
+        editProfileImage.layer.cornerRadius = editProfileImage.frame.width / 2
+        editProfileImage.clipsToBounds = true
         
-        profileImage.image = nowImage
-        profileImage.contentMode = .scaleAspectFill
-        profileImage.layer.cornerRadius = profileImage.frame.width / 2
-        profileImage.clipsToBounds = true
+        editProfileStory.delegate = self
+        editProfileStory.layer.borderWidth = 0.5
+        editProfileStory.layer.borderColor = UIColor.systemGray4.cgColor
+        editProfileStory.layer.cornerRadius = 5
         
-        profileStory.delegate = self
-        profileStory.text = "story"
-        self.profileStory.layer.borderWidth = 1.0
-        self.profileStory.layer.borderColor = UIColor.black.cgColor
-
-        
-        //profileStack.addArrangedSubview(profileImage)
-        
+        placeholderSetting()
+        loadProfile()
 
     }
     
+    func loadProfile() {
+        editProfileImage.image = user?.profileImage != nil ? user?.profileImage! : defaultProfileImage!
+        editName.text = user?.name
+        editNickName.text = user?.nickName
+        editEmail.text = user?.email
+        
+    }
+    
+    func placeholderSetting() {
+        editProfileStory.delegate = self // txtvReview가 유저가 선언한 outlet
+        if user?.discription == nil {
+            editProfileStory.text = "Description"
+            editProfileStory.textColor = UIColor.systemGray3
+        } else {
+            editProfileStory.text = user?.discription
+        }
+    }
+        
+    // TextView Place Holder
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.systemGray3 {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+        
+    }
+       
+    // TextView Place Holder
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Description"
+            textView.textColor = UIColor.systemGray3
+        }
+    }
+
+    
+    func verifyCorrectInputFormat() -> Bool {
+        guard let nameString = editName.text else { return false }
+        guard let nickNameString = editNickName.text else { return false }
+        guard let passwordString = editPassword.text else { return false }
+        if nameString == "" {
+            alertIncorrectInputFormt(with: "이름")
+            return false
+        } else if nickNameString == "" {
+            alertIncorrectInputFormt(with: "닉네임")
+            return false
+        } else if !passwordString.isValidPassword {
+            alertIncorrectInputFormt(with: "비밀번호")
+            return false
+        }
+        return true
+    }
+    
+    func alertIncorrectInputFormt(with message: String){
+        let message = "\(message) 형식이 올바르지 않습니다"
+        let alertController = UIAlertController(title: "",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation
@@ -69,14 +123,41 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     @objc func pickImage(tapGestureRecognizer: UITapGestureRecognizer){
         self.present(self.imagePicker, animated: true)
     }
-
+    
+    @IBAction func pressSaveButton(_ sender: UIButton) {
+        guard verifyCorrectInputFormat() else { return }
+        //uploadProfileImage(img: editProfileImage.image!)
+        
+        updateUser()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func updateUser() {
+        guard let user = user else { return }
+            
+        // 바꿀 값
+        let values: [String: Any] = [
+            "email": user.email,
+            "passwd": String(editPassword.text!),
+            "name": String(editName.text!),
+            "nick": String(editNickName.text!),
+            "age": user.age,
+            "challenges": user.challenges,
+            "friends": user.friends
+        ]
+            
+        // 바꾸는쿼리
+        let userReference = realReference.reference().child("user")
+            .child(user.UID)
+            .setValue(values)
+    }
 }
 
 extension editProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        var newImage: UIImage? = nil // update 할 이미지
+        var newImage: UIImage? = editProfileImage.image // update 할 이미지
         
         if let possibleImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             newImage = possibleImage // 수정된 이미지가 있을 경우
@@ -84,8 +165,10 @@ extension editProfileViewController: UIImagePickerControllerDelegate, UINavigati
             newImage = possibleImage // 원본 이미지가 있을 경우
         }
         
-        self.profileImage.image = newImage // 받아온 이미지를 update
+        self.editProfileImage.image = newImage // 받아온 이미지를 update
+        uploadProfileImage()
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
+        
         
     }
 }

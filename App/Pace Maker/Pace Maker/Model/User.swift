@@ -17,14 +17,15 @@ let defaultProfileImage = UIImage(systemName: "person.crop.circle.badge.xmark")
 struct User {
     
     let UID :String // PK, 회원 번호
-    let name: String
+    var name: String
     let email: String
     let age: Int
-    let nickName: String
+    var nickName: String
     let challenges: [String]
     let friends: [String]
     
     var profileImage: UIImage?
+    var discription: String?
     
     init(UID : String, name: String, email: String, age: Int, nickName: String, challenges: [String], friends:[String]) {
         self.UID = UID
