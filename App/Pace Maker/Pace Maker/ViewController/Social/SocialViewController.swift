@@ -9,11 +9,16 @@ import UIKit
 import Firebase
 
 class SocialViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+
     
     @IBOutlet weak var socialCollectionView: UICollectionView!
-
+    
     var infoOfFriends: [DataSnapshot] = []
     var logOfFriends: [DataSnapshot] = []
+    
+    let today = Date()
+    
+    var index = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +26,6 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         self.setupFlowLayout()
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.logOfFriends.count
     }
@@ -31,32 +35,64 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     socialFeedCell else {
                 return UICollectionViewCell()
             }
-        let img = UIImage(named: "feed-1")
-        cell.imgView?.image = img
+
+        cell.contentView.layer.masksToBounds = true
+        cell.roundView.layer.masksToBounds = true
+        
+        self.index = (self.index + 1) % 5
+
+        //let img = UIImage(named: "feed-1")
+        //cell.imgView?.image = img
+        
+        getLogImage(imgview: cell.imgView, logName: "\(self.index)")
+        
         let tmpLog = logOfFriends[indexPath.row]
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
         let date = tmpLog.childSnapshot(forPath: "date").value as! String
-        let distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64
-        let time = tmpLog.childSnapshot(forPath: "time").value as! Float64
-        cell.label.text = "\(nick) \(date) 달린거리: \(distance) (km) \n 달린시간: \(time) (seconds)"
+        var distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64
+        distance = round(distance * 100) / 100
+        var time = tmpLog.childSnapshot(forPath: "time").value as! Float64
+        time = round(time * 100) / 100
+        
+        cell.userLabel.textAlignment = .center
+        cell.userLabel.numberOfLines = 1
+        cell.userLabel.text = "\(nick)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let startDate = dateFormatter.date(from: date)!
+        let daysCount = self.days(from: startDate)
+        
+        cell.dateLabel.textAlignment = .center
+        cell.dateLabel.numberOfLines = 1
+        cell.dateLabel.text = "\(daysCount)일 전"
+        
+        cell.infoLog.numberOfLines = 1
+        cell.infoLog.text = " \(distance) (km) / \(time) (seconds)"
         return cell
+    }
+    
+    func days(from date:Date) -> Int{
+        return Calendar.current.dateComponents([.day], from:date, to:self.today).day! + 1
     }
     
     private func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumInteritemSpacing = 1
-        flowLayout.minimumLineSpacing = 1
+        let width = socialCollectionView.bounds.width
+        let space = width / 20
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: space, bottom: 0, right: 0)
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
         
-        let halfWidth = (socialCollectionView.bounds.width)
-        flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth)
+        let halfWidth = width
+        flowLayout.itemSize = CGSize(width: halfWidth, height: halfWidth * 1.2)
         self.socialCollectionView.collectionViewLayout = flowLayout
     }
     
     //Load Logs Of Friends
     private func loadLogsOfFriends(){
         let refer = realReference.reference(withPath: "log")
-        let logOrderByDate = refer.queryOrdered(byChild: "date")
+        let logOrderByDate = refer.queryOrdered(byChild: "date").queryLimited(toLast: 30)
         logOrderByDate.observe(.value, with: {snapshot in
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let val = child.childSnapshot(forPath: "runner").value as! String
@@ -64,6 +100,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
                     self.logOfFriends.append(child)
                 }
             }
+            self.logOfFriends.reverse()
             self.socialCollectionView.reloadData()
         })
         
@@ -73,7 +110,10 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
 
 class socialFeedCell: UICollectionViewCell{
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var infoLog: UILabel!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var roundView: RoundedView!
 }
 
 

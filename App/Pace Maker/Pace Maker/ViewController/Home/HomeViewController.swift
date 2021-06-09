@@ -54,25 +54,24 @@ class HomeViewController: UIViewController{
 // 로그인 관련
 extension HomeViewController {
     
-    func login(){
-        guard let userId = userId else {
-            print("failed to login")
-            return
-        }
+    func loginAsDefaultUser() {
+        login(with: String(DEFAULT_USER_ID))
+    }
+    
+    func login(with id:String){
         let userReference = realReference.reference(withPath: "user")
-        userReference.child(userId).observeSingleEvent(of: .value) { snapshot in
+        userReference.child(id).observe(.value) { snapshot in
             let userDictionary = snapshot.value as? [String : AnyObject] ?? [:]
             
             let age: Int = userDictionary["age"] as! Int
+//            let challenges: [String] = userDictionary["challenges"] as! [String]
+            let friends: [String] = userDictionary["friends"] as! [String]
             let email: String = userDictionary["email"] as! String
             let name: String = userDictionary["name"] as! String
             let nick: String = userDictionary["nick"] as! String
+            //let passwd: String = userDictionary["passwd"] as! String
             
-            let friends: [String] = userDictionary["friends"] as? [String] ?? []
-            let challenges: [String] = userDictionary["challenges"] as? [String] ?? []
-            // let passwd: String = userDictionary["passwd"] as! String 로그인시에는 필요없어 보인다
-            
-            user = User(UID: userId, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends)
+            user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: [], friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
             
             print("logined with UID \(userId)")

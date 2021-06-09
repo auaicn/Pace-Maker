@@ -11,7 +11,7 @@ struct Route{
     var dateString: String
     var distanceInKilometer: Double
     var routeSavedPath: String
-    var runnerUID: Int
+    var runnerUID: String
     var timeSpentInSeconds : Double
     
     var pace: Int {
