@@ -135,13 +135,13 @@ extension HomeViewController {
             imageViewToUpdate = UIImageView(image: defaultImage)
         }
         
-        guard let imageViewToUpdate = imageViewToUpdate else {
+        guard let imageViewToUpdate_ = imageViewToUpdate else {
             print("imageViewToUpdate not set")
             return
         }
         
         let customView = UIButton()
-        customView.addSubview(imageViewToUpdate)
+        customView.addSubview(imageViewToUpdate_)
         customView.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
         customView.addTarget(self, action: #selector(tappedProfile), for: .touchUpInside)
         
