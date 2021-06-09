@@ -64,6 +64,7 @@
 		ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E0C68266E0742002FB13D /* UsersCell.swift */; };
 		ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */; };
 		ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */; };
+		EDBE773B2670B57D00D7B304 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +128,7 @@
 		ED1E0C68266E0742002FB13D /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
 		ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableTableViewController.swift; sourceTree = "<group>"; };
 		ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,9 @@
 			children = (
 				188126C1261EE8A40073029F /* AppDelegate.swift */,
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
+				EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */,
+				188126CF261EE8A70073029F /* Info.plist */,
+				1840D178265E409F006956E7 /* Format.swift */,
 				18A1EA2D2670BEEE00037636 /* GoogleService-Info.plist */,
 				188126CF261EE8A70073029F /* Info.plist */,
 			);
@@ -403,6 +408,8 @@
 				18653ECF265F8FBF001D9A68 /* CollectionReusableView.xib in Resources */,
 				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
+				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
+				EDBE773B2670B57D00D7B304 /* GoogleService-Info.plist in Resources */,
 				18A1EA2E2670BEEE00037636 /* GoogleService-Info.plist in Resources */,
 				1824F46C266F410200D8B9BC /* coolvetica rg it.ttf in Resources */,
 				18A1EA332670BF3100037636 /* Main.storyboard in Resources */,
