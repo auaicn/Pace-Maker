@@ -85,7 +85,7 @@ class RegisterDetailViewController: UIViewController {
             "nick": nickname,
             "age": Int(age)!,
             "challenges": [],
-            "friends": []
+            "friends": ["1", "2", "0"]
         ]
         userReference.setValue(values)
         performSegue(withIdentifier: "unwindToHome", sender: nil)

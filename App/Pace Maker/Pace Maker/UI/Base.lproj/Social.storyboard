@@ -227,7 +227,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Social" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="rQD-ew-f84">
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="CJf-KP-8Qy">
+                        <barButtonItem key="rightBarButtonItem" id="CJf-KP-8Qy">
+                            <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="medium"/>
                             <connections>
                                 <segue destination="Xkf-ec-2ZG" kind="show" id="2iV-oL-sg4"/>
                             </connections>
@@ -273,6 +274,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-de-lli">
+                                            <rect key="frame" x="348" y="6" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
