@@ -75,7 +75,6 @@ extension ActivityViewController {
                     let date: String = singleLog["date"] as! String
                     let distance: Double = singleLog["distance"] as! Double
                     let route: String = singleLog["route"] as! String
-                    let runner: String = singleLog["runner"] as! String
                     let time: Double = singleLog["time"] as! Double
                     let nickname: String = singleLog["nick"] as! String
                     

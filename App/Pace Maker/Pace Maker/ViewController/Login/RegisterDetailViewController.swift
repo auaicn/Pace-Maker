@@ -47,7 +47,7 @@ class RegisterDetailViewController: UIViewController {
     }
     
     func setInitialValueIfAvailable() {
-        let healthStore = HKHealthStore()
+        let _ = HKHealthStore()
         
         if HKHealthStore.isHealthDataAvailable(){
             // nickname

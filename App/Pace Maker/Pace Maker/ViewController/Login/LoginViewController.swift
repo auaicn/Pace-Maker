@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
               let password = password.text else { return }
         activityIndicator.startAnimating()
         
-        _ = realtimeReference.reference(withPath: "user")
+        realtimeReference.reference(withPath: "user")
             .queryOrdered(byChild: "email")
             .queryEqual(toValue: email.text)
             .observeSingleEvent(of: .value) { snapshot in

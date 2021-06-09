@@ -230,7 +230,7 @@ extension RunningViewController :CLLocationManagerDelegate{
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionMeters, longitudinalMeters: regionMeters)
         mapView.setRegion(region, animated: true)
-        let locationDescription = "lati : \(String(format: "%3.8f",location.coordinate.latitude))\nlong: \(String(format: "%3.8f",location.coordinate.longitude))"
+        let _ = "lati : \(String(format: "%3.8f",location.coordinate.latitude))\nlong: \(String(format: "%3.8f",location.coordinate.longitude))"
 
         // UI labels
 //        coordinateLabel.text = locationDescription

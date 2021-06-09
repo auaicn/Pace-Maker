@@ -143,7 +143,7 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         ]
             
         // 바꾸는쿼리
-        let userReference = realtimeReference.reference().child("user")
+        let _ = realtimeReference.reference().child("user")
             .child(user.UID)
             .setValue(values)
     }
