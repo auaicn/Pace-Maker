@@ -129,8 +129,10 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     }
     
     func updateUser() {
+        user?.nickName = editNickName.text!
+        user?.password = editPassword.text!
+        user?.description = editDescription.text
         guard let user = user else { return }
-            
         // 바꿀 값
         let values: [String: Any] = [
             "email": user.email,
