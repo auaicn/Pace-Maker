@@ -274,14 +274,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-de-lli">
-                                            <rect key="frame" x="348" y="6" width="46" height="30"/>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-de-lli">
+                                            <rect key="frame" x="301" y="0.0" width="113" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
+                                            <state key="normal" title="Follow"/>
+                                            <connections>
+                                                <action selector="followUser:" destination="Xkf-ec-2ZG" eventType="touchUpInside" id="AA0-dl-XDc"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="followBtn" destination="zIz-de-lli" id="TGU-aB-sDh"/>
                                     <outlet property="imgView" destination="Ejr-vy-POz" id="1qh-L6-7xf"/>
                                     <outlet property="userInfoLabel" destination="3sq-XD-UIQ" id="md2-d7-KR3"/>
                                 </connections>
