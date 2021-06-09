@@ -27,6 +27,7 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(pickImage(tapGestureRecognizer:)))
         editProfileImage.addGestureRecognizer(tapGestureRecognizer)
@@ -121,10 +122,9 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func pressSaveButton(_ sender: UIButton) {
         guard verifyCorrectInputFormat() else { return }
-        //uploadProfileImage(img: editProfileImage.image!)
         
         updateUser()
-        dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func updateUser() {
@@ -168,5 +168,18 @@ extension editProfileViewController: UIImagePickerControllerDelegate, UINavigati
         picker.dismiss(animated: true, completion: nil) // picker를 닫아줌
         
         
+    }
+}
+
+// Put this piece of code anywhere you like
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

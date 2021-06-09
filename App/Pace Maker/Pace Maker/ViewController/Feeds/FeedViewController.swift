@@ -120,10 +120,7 @@ extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func touchEditButton() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "editProfileViewController")
-        //vc?.modalTransitionStyle = .coverVertical
-        self.present(vc!, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "Setting", sender: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

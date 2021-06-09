@@ -10,15 +10,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--editProfileViewController-->
+        <!--Setting-->
         <scene sceneID="mc5-2R-hqz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Feed" referencedIdentifier="editProfileViewController" id="cbt-kK-7Me" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Setting" id="cbt-kK-7Me" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Mfv-ku-fCI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scb-NZ-vpk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450" y="-1146"/>
+            <point key="canvasLocation" x="1370" y="-1145"/>
         </scene>
         <!--Login-->
         <scene sceneID="cHg-rc-mRd">
@@ -138,18 +138,18 @@
                                                         <rect key="frame" x="0.0" y="284.5" width="414" height="317.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="현재 참여중인 챌린지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkW-Qx-cVy" userLabel="현재 참여중인 챌린지">
-                                                                <rect key="frame" x="24" y="8" width="366" height="15"/>
+                                                                <rect key="frame" x="24" y="8" width="366" height="15.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYw-0Z-egB" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="31" width="382" height="286.5"/>
+                                                                <rect key="frame" x="16" y="31.5" width="382" height="286"/>
                                                                 <subviews>
                                                                     <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-Vn-Is2">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q1g-0G-JKq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="ups-Ne-bdx" userLabel="challenge Image">
@@ -169,25 +169,25 @@
                                                                         <blurEffect style="dark"/>
                                                                     </visualEffectView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-lH-Onb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="286"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="lQa-p2-D6p" userLabel="Blank">
-                                                                                <rect key="frame" x="126" y="0.0" width="240" height="132"/>
+                                                                                <rect key="frame" x="126" y="0.0" width="240" height="131.5"/>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성준스 다이어트" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJS-qz-w32">
-                                                                                <rect key="frame" x="163" y="140" width="203" height="43.5"/>
+                                                                                <rect key="frame" x="163" y="139.5" width="203" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.49 / 100.0 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRZ-05-VBi">
-                                                                                <rect key="frame" x="109.5" y="191.5" width="256.5" height="43.5"/>
+                                                                                <rect key="frame" x="109.5" y="191" width="256.5" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 Day 23 Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-Nl-C19" userLabel="남은시간">
-                                                                                <rect key="frame" x="131.5" y="243" width="234.5" height="43.5"/>
+                                                                                <rect key="frame" x="131.5" y="242.5" width="234.5" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -195,7 +195,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-e3-DHP" userLabel="챌린지 이동 버튼">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                         <connections>
                                                                             <segue destination="xwp-me-HCa" kind="show" id="y4Z-4q-hqK"/>
                                                                         </connections>

@@ -39,8 +39,7 @@ func downloadProfileImage() {
 }
 
 func uploadProfileImage(image: UIImage){
-    guard let _ = user?.profileImage,
-          let userId = userId else { return }
+    guard let userId = userId else { return }
     
     var data = Data()
     data = image.pngData()!
@@ -51,11 +50,12 @@ func uploadProfileImage(image: UIImage){
     storage.reference(forURL: imageUrl).putData(data, metadata: metaData){
         (metaData, error) in
         if let error = error {
+            print("uploadProfileImage failed")
             print(error.localizedDescription)
             return
         }
         else{
-            print("Succecssfully Done")
+            print("uploadProfileImage Succecssfully Done")
         }
     }
 }
