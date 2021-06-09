@@ -24,6 +24,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         self.loadLogsOfFriends()
         self.setupFlowLayout()
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

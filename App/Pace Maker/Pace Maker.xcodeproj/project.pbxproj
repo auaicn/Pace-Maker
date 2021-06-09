@@ -48,10 +48,10 @@
 		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
 		18952184263F0D510089AE77 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18952183263F0D510089AE77 /* RunningViewController.swift */; };
 		18B6F06C26565D8400534D9D /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B6F06B26565D8400534D9D /* ActivityViewController.swift */; };
-		18C646AE264EC07A00E3E71B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		18C646AE264EC07A00E3E71B /* (null) in Sources */ = {isa = PBXBuildFile; };
 		18D3C944265121B800EBA66A /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C943265121B800EBA66A /* Challenge.swift */; };
 		18D3C947265121CE00EBA66A /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C946265121CE00EBA66A /* Badge.swift */; };
-		18D3C94A265121D800EBA66A /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		18D3C94A265121D800EBA66A /* (null) in Sources */ = {isa = PBXBuildFile; };
 		18D3C94D265127C700EBA66A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D3C94C265127C700EBA66A /* Login.storyboard */; };
 		18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C94F2651293F00EBA66A /* RegisterViewController.swift */; };
 		18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C9552651299300EBA66A /* LoginViewController.swift */; };
@@ -63,7 +63,7 @@
 		ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3F040C2669E9C1000B3C86 /* Social.storyboard */; };
 		ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */; };
 		ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */; };
-		ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */; };
+		EDBE773B2670B57D00D7B304 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,7 +126,7 @@
 		ED3F040B2669E9C1000B3C86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Social.storyboard; sourceTree = "<group>"; };
 		ED3F040E2669FBEC000B3C86 /* UserSearchTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableTableViewController.swift; sourceTree = "<group>"; };
 		ED3FF83C2668DE2D0028D5EE /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
-		ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,8 +200,8 @@
 			children = (
 				188126C1261EE8A40073029F /* AppDelegate.swift */,
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
+				EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */,
 				188126CF261EE8A70073029F /* Info.plist */,
-				ED9C0C7A264521BA002418B5 /* GoogleService-Info.plist */,
 				1840D178265E409F006956E7 /* Format.swift */,
 			);
 			path = "Supported Files";
@@ -410,9 +410,9 @@
 				ED3F040A2669E9C1000B3C86 /* Social.storyboard in Resources */,
 				18653ECF265F8FBF001D9A68 /* CollectionReusableView.xib in Resources */,
 				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
-				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
+				EDBE773B2670B57D00D7B304 /* GoogleService-Info.plist in Resources */,
 				1824F46C266F410200D8B9BC /* coolvetica rg it.ttf in Resources */,
 				1824F46E266F411600D8B9BC /* Uni Sans Thin Italic.otf in Resources */,
 			);
@@ -485,12 +485,12 @@
 				18161560263B01F0008038C5 /* TabBarViewController.swift in Sources */,
 				A66F2A58266F413D00D99E5E /* ContentsViewController.swift in Sources */,
 				18653EC8265F8EAB001D9A68 /* User.swift in Sources */,
-				18C646AE264EC07A00E3E71B /* BuildFile in Sources */,
+				18C646AE264EC07A00E3E71B /* (null) in Sources */,
 				1831C828264F05C500BC75F5 /* ChallengeViewController.swift in Sources */,
 				1866A409266DF278001CE029 /* UnderlineLabel.swift in Sources */,
 				188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */,
 				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
-				18D3C94A265121D800EBA66A /* BuildFile in Sources */,
+				18D3C94A265121D800EBA66A /* (null) in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
 				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
