@@ -67,7 +67,7 @@ extension HomeViewController {
                 
                 let challenges: [String] = userDictionary["challenges"] as? [String] ?? []
                 let friends: [String] = userDictionary["friends"] as? [String] ?? []
-                let description: String = userDictionary["friends"] as? String ?? "설정에서 설명을 추가해주세요"
+                let description: String = userDictionary["description"] as? String ?? "설정에서 설명을 추가해주세요"
                 
                 user = User(UID: UID, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends, description: description, password: password)
                 self.updateAuthenticationStatus(to: .loggined)
