@@ -37,6 +37,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>BinggraeMelona-Bold.ttf</string>
+		<string>Uni Sans Heavy.otf</string>
+		<string>Uni Sans Heavy Italic.otf</string>
+		<string>coolvetica rg it.ttf</string>
+		<string>Uni Sans Thin Italic.otf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -59,6 +63,12 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

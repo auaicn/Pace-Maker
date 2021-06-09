@@ -11,26 +11,70 @@ import CoreGPX
 import FirebaseStorage
 import CoreLocation
 
+var competitorPolyline: MKPolyline? = nil
+
 class RouteDetailViewController: UIViewController {
     
-    var rootGPX: GPXRoot? = nil
-    var route: Route? = nil
-    let sourceLocation = CLLocationCoordinate2D(latitude: 37.518207217837876, longitude:127.01001167904042)
-    let destinationLocation = CLLocationCoordinate2D(latitude: 37.53393643481008, longitude: 127.02611500393752)
+    let MAP_VIEW_SCALE_FACTOR: Double = 1.3
     
-    @IBOutlet weak var imageView: UIImageView!
+    var rootGPX: GPXRoot? = nil
+    var log: Log? = nil
+    
+    @IBOutlet weak var RouteTitle: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var isVoiceFeedbackEnabled: UISwitch!
+    @IBOutlet weak var isVoiceRecordingEnabled: UISwitch!
+    @IBOutlet weak var isAutoStopEnabled: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapView.delegate = self
         downloadGPX()
+        setMapView()
+        updateUI()
     }
     
+    func updateUI(){
+        updateSettingUI()
+        updateDetailedRouteUI()
+    }
+    
+    func updateSettingUI(){
+        if authenticationStatus == .notLoggined {
+            isVoiceFeedbackEnabled.isEnabled = false
+        }
+        isVoiceRecordingEnabled.isOn = true
+        isAutoStopEnabled.isOn = true
+    }
+
+    
+    func updateDetailedRouteUI(){
+        guard let log = log else { return }
+
+        RouteTitle.text = "\(log.nickname) 님의 달리기"
+        paceLabel.text = "페이스: 1 km 당 \(log.paceString)"
+        distanceLabel.text = "거리: \(String(format: "%.2f", log.distanceInKilometer)) km"
+        let (hour, minute, second): (Int, Int, Int) = log.timeDescription
+        if hour != 0 {
+            timeLabel.text = "시간: \(hour) 시간 \(minute) 분 \(second) 초"
+        }else if minute != 0 {
+            timeLabel.text = "시간: \(minute) 분 \(second) 초"
+        }else{
+            timeLabel.text = "시간: \(second) 초"
+        }
+        paceLabel.text = "\(log.paceDescription) PER 1 KM"
+    }
+
+    
     func downloadGPX(){
-        guard let selectedRoute = route else { return }
+        guard let selectedRoute = log else { return }
         let fileName = selectedRoute.routeSavedPath
         let filePath = fileName + ".gpx"
-//        let filePath = "0526-01435801.gpx"
+        
         storage.reference(forURL: "gs://pace-maker-74452.appspot.com/routes").child(filePath).downloadURL { (url, error) in
             guard let url = url else { return }
             if let error = error {
@@ -54,16 +98,7 @@ class RouteDetailViewController: UIViewController {
         }.map { trackPoint in
             return CLLocationCoordinate2D(latitude: trackPoint.latitude!, longitude: trackPoint.longitude!)
         }
-        // these are your two lat/long coordinates
-//        CLLocationCoordinate2D coordinate1 = CLLocationCoordinate2DMake(lat1,long1);
-//        CLLocationCoordinate2D coordinate2 = CLLocationCoordinate2DMake(lat2,long2);
-//        
-//        // convert them to MKMapPoint
-//        MKMapPoint p1 = MKMapPointForCoordinate (coordinate1);
-//        MKMapPoint p2 = MKMapPointForCoordinate (coordinate2);
-//        
-//        // and make a MKMapRect using mins and spans
-//        MKMapRect mapRect = MKMapRectMake(fmin(p1.x,p2.x), fmin(p1.y,p2.y), fabs(p1.x-p2.x), fabs(p1.y-p2.y));
+        
         do {
             print("Typed pointers")
             let count = coords.count
@@ -83,11 +118,13 @@ class RouteDetailViewController: UIViewController {
                 print("value \(index): \(value)")
             }
             
-            let polyline = MKPolyline(coordinates: pointer, count: count)
-            self.mapView.addOverlay(polyline, level: .aboveLabels)
+            competitorPolyline = MKPolyline(coordinates: pointer, count: count)
             
+            guard let competitorPolyline = competitorPolyline else { return }
             
-            var rect = polyline.boundingMapRect
+            self.mapView.addOverlay(competitorPolyline, level: .aboveLabels)
+            
+            var rect = competitorPolyline.boundingMapRect
             print(rect)
             print(rect.size.width)
             print(rect.size.height)
@@ -151,10 +188,12 @@ class RouteDetailViewController: UIViewController {
 }
 
 extension RouteDetailViewController : MKMapViewDelegate {
+    func setMapView() {
+        self.mapView.delegate = self
+    }
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKPolyline {
-            /// define a list of colors you want in your gradient
-//            let gradientColors = [UIColor.green, UIColor.blue, UIColor.yellow, UIColor.red]
             let gradientColors = [UIColor.orange, UIColor.blue, UIColor.black, UIColor.red]
             
             /// Initialise a GradientPathRenderer with the colors

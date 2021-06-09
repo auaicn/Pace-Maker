@@ -180,7 +180,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="vFh-oJ-eEn">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="445"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9j-ye-a1x">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="g9j-ye-a1x" userLabel="Email">
                                                 <rect key="frame" x="25" y="8" width="340" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvb-mz-yOx">
@@ -197,7 +197,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UCN-SF-4rz">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="UCN-SF-4rz" userLabel="Password">
                                                 <rect key="frame" x="25" y="111" width="340" height="231"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일을 입력해주세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IhT-5L-CiK" userLabel="이메일을 입력해주세요">
@@ -214,7 +214,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                         <connections>
-                                                            <action selector="editingDidEnd:" destination="x7J-Ar-3xb" eventType="editingDidEnd" id="Zm3-bc-5l4"/>
+                                                            <action selector="emailEditingDidChanged:" destination="x7J-Ar-3xb" eventType="editingChanged" id="djD-KO-8lx"/>
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용하실 비밀번호를 입력해주세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0C-Me-Wxj" userLabel="사용하실 비밀번호를 입력해주세요">
@@ -231,10 +231,10 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                         <connections>
-                                                            <action selector="editingDidEnd:" destination="x7J-Ar-3xb" eventType="editingDidEnd" id="45b-mo-mxS"/>
+                                                            <action selector="passwordEditingDidChanged:" destination="x7J-Ar-3xb" eventType="editingChanged" id="ea2-fV-iDk"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cs0-5d-d1P">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password Again" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cs0-5d-d1P">
                                                         <rect key="frame" x="0.0" y="186" width="340" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="ZPq-ie-SZW"/>
@@ -242,26 +242,38 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                         <connections>
-                                                            <action selector="editingDidEnd:" destination="x7J-Ar-3xb" eventType="editingDidEnd" id="iml-Z4-SIu"/>
+                                                            <action selector="anotherPasswordEditingDidChanged:" destination="x7J-Ar-3xb" eventType="editingChanged" id="p1S-gw-fAD"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khY-ie-xU2">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOP-YE-cVH" userLabel="Register">
                                                 <rect key="frame" x="25" y="392" width="340" height="45"/>
-                                                <color key="backgroundColor" red="0.0" green="0.14901960780000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khY-ie-xU2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="45"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.14901960780000001" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="e7A-V1-Yy3"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="다음">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="registerAction:" destination="x7J-Ar-3xb" eventType="touchUpInside" id="3qy-eY-qDN"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="45" id="e7A-V1-Yy3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="khY-ie-xU2" secondAttribute="trailing" id="KCl-4d-mb3"/>
+                                                    <constraint firstItem="khY-ie-xU2" firstAttribute="leading" secondItem="nOP-YE-cVH" secondAttribute="leading" id="gDU-vf-If7"/>
+                                                    <constraint firstItem="khY-ie-xU2" firstAttribute="top" secondItem="nOP-YE-cVH" secondAttribute="top" id="gTf-ax-7SN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="khY-ie-xU2" secondAttribute="bottom" id="nJ8-qp-Mbu"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="다음">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="registerAction:" destination="x7J-Ar-3xb" eventType="touchUpInside" id="3qy-eY-qDN"/>
-                                                </connections>
-                                            </button>
+                                            </view>
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="25" bottom="8" right="25"/>
                                     </stackView>
@@ -295,6 +307,10 @@
                         <outlet property="email" destination="c1c-3j-QyZ" id="0bS-sm-cLF"/>
                         <outlet property="password" destination="tZZ-hK-cOT" id="EoP-Bs-Ku4"/>
                         <outlet property="registerButton" destination="khY-ie-xU2" id="iKx-ch-PRN"/>
+                        <outlet property="registerView" destination="nOP-YE-cVH" id="FRT-Bn-Bgn"/>
+                        <outletCollection property="inputTextFields" destination="c1c-3j-QyZ" collectionClass="NSMutableArray" id="xUR-bH-wdL"/>
+                        <outletCollection property="inputTextFields" destination="tZZ-hK-cOT" collectionClass="NSMutableArray" id="nxj-cH-Kvt"/>
+                        <outletCollection property="inputTextFields" destination="cs0-5d-d1P" collectionClass="NSMutableArray" id="8S9-QS-84k"/>
                         <segue destination="7g2-CZ-gfd" kind="show" identifier="ContinueRegister" id="RNN-NV-9TU"/>
                     </connections>
                 </viewController>

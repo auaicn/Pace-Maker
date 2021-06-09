@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
 
     var isCorrectEmailFormat: Bool = false
     var isCorrectPasswordFormat: Bool = false
+    var isPasswordSame: Bool = false
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
@@ -21,42 +22,88 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var anotherPassword: UITextField!
+    @IBOutlet var inputTextFields: [UITextField]!
     
+    @IBOutlet weak var registerView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
         underKeyboardLayoutConstraint.setup(bottomLayoutConstraint, view: view)
         activityIndicator.hidesWhenStopped = true
-        registerButton.isEnabled = false
-
+        setTextFields()
+    }
+    
+    func setTextFields() {
         self.email.delegate = self
         self.password.delegate = self
         self.anotherPassword.delegate = self
-        // Do any additional setup after loading the view.
+        
+        for field in inputTextFields {
+            field.layer.cornerRadius = 6
+            field.layer.borderWidth = 1
+            field.layer.borderColor = UIColor.lightGray.cgColor
+        }
     }
     
-    @IBAction func editingDidEnd(_ sender: Any) {
-        registerButton.isEnabled = false
-        guard isCorrectFormat else { return }
-        registerButton.isEnabled = true
-        
+    @IBAction func emailEditingDidChanged(_ sender: UITextField) {
+        print("editing changed")
+        guard let text = sender.text else { return }
+        if text.isValidEmail() {
+            sender.layer.borderColor = UIColor.lightGray.cgColor
+        }else {
+            sender.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    @IBAction func passwordEditingDidChanged(_ sender: UITextField) {
+        print("editing changed")
+        guard let text = sender.text else { return }
+        if text.isValidPassword {
+            sender.layer.borderColor = UIColor.lightGray.cgColor
+        }else {
+            sender.layer.borderColor = UIColor.red.cgColor
+        }
+    }
+    
+    @IBAction func anotherPasswordEditingDidChanged(_ sender: UITextField) {
+        if (anotherPassword.text != nil) && anotherPassword.text == password.text{
+            isPasswordSame = true
+            sender.layer.borderColor = UIColor.lightGray.cgColor
+        }else {
+            sender.layer.borderColor = UIColor.red.cgColor
+        }
     }
     
     @IBAction func registerAction(_ sender: Any) {
-        guard verifyCorrectInputFormat() else { return }
+        if verifyCorrectInputFormat() {
+            handleRegisterSuccess()
+        }else {
+            handleRegisterFailure()
+        }
+    }
+    
+    func handleRegisterSuccess() {
         verifyNotDuplicatedEmail()
+    }
+
+    func handleRegisterFailure() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+        registerView.shake()
     }
     
     func verifyCorrectInputFormat() -> Bool {
-        guard let emailString = email.text else { return false }
-        guard let passwordString = password.text else { return false }
-        if !emailString.isValidEmail() {
+        if !isCorrectEmailFormat{
             alertIncorrectInputFormt(with: "이메일")
             return false
-        } else if !passwordString.isValidPassword {
+        } else if !isCorrectPasswordFormat{
             alertIncorrectInputFormt(with: "비밀번호")
+            return false
+        }else if !isPasswordSame {
+            alertIncorrectInputFormt(with: "일치하지 않는 비밀번호")
             return false
         }
         return true
@@ -103,6 +150,8 @@ class RegisterViewController: UIViewController {
     func continueRegisterAction(){
         // email NOT duplicated
         // continue registering
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         performSegue(withIdentifier: "ContinueRegister", sender: nil)
     }
     
@@ -145,11 +194,9 @@ extension RegisterViewController : UITextFieldDelegate {
 extension String {
     
     func isValidEmail() -> Bool {
-        guard !self.lowercased().hasPrefix("mailto:") else { return false }
-        guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
-        let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: self.count))
-        guard matches.count == 1 else { return false }
-        return matches[0].url?.scheme == "mailto"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: self)
     }
     
     var isValidPassword: Bool {
@@ -168,5 +215,15 @@ extension String {
         } catch {
             return false
         }
+    }
+}
+
+extension UIView {
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.duration = 0.6
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
     }
 }

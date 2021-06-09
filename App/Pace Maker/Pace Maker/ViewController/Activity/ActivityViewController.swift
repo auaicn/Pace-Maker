@@ -26,7 +26,7 @@ class ActivityViewController: UIViewController {
     let syncMessage = UILabel(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
     
     // Data
-    var logs: [Route] = []
+    var logs: [Log] = []
     var heartRateData: [(date: Date, value: Double)] = []
     var activeEnergyBurnedData: [(date: Date, value: Double)] = []
     
@@ -83,9 +83,13 @@ extension ActivityViewController {
                     let date: String = singleLog["date"] as! String
                     let distance: Double = singleLog["distance"] as! Double
                     let route: String = singleLog["route"] as! String
-                    let runner: Int = singleLog["runner"] as! Int
                     let time: Double = singleLog["time"] as! Double
-                    self.logs.append(Route(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runner, timeSpentInSeconds: time))
+                    let nickname: String = singleLog["nick"] as! String
+                    
+                    let runnerId: Int = singleLog["runner"] as! Int
+                    let runnerString = String(runnerId)
+                    
+                    self.logs.append(Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerString, nickname: nickname, timeSpentInSeconds: time))
                 }
                 self.updateUI()
             }

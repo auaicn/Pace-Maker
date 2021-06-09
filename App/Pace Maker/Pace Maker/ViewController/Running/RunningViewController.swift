@@ -12,50 +12,83 @@ import CoreGPX
 import Firebase
 
 class RunningViewController: UIViewController{
+    
+    var competitorLog: Log? = nil
+    var movedDistance: Double = 0
+    var timeElapsed: Int = 0
+    var isRunning: Bool = false
+    
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var coordinateLabel: UILabel!
-    @IBOutlet weak var altitudeLabel: UILabel!
+//    @IBOutlet weak var coordinateLabel: UILabel!
+//    @IBOutlet weak var altitudeLabel: UILabel!
+//    @IBOutlet weak var timeStampLabel: UILabel!
+//    @IBOutlet weak var speedLabel: UILabel!
+    
     @IBOutlet weak var movedDistanceLabel: UILabel!
-    @IBOutlet weak var floorLabel: UILabel!
-    @IBOutlet weak var horizontalAccuracyLabel: UILabel!
-    @IBOutlet weak var speedAccuracyLabel: UILabel!
-    @IBOutlet weak var courseAccuracyLabel: UILabel!
-    @IBOutlet weak var timeStampLabel: UILabel!
-    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    
+    @IBOutlet var longPressGesture: UILongPressGestureRecognizer!
+    @IBOutlet weak var startPauseImage: UIImageView!
+    
+    var isVoiceFeedbackEnabled: Bool = false
+    var isVoiceRecordingEnabled: Bool = false
+    var isAutoStopEnabled: Bool = false
+    var isTrackingStarted: Bool = false
     
     var previousLocation :CLLocation?
     var locationManager : CLLocationManager = CLLocationManager()
-    var isTrackingStarted: Bool = false
     let regionMeters: Double = 1000
     let format = DateFormatter()
     let fileNameFormat = DateFormatter()
+    
+    let alert = UIAlertController(title: "권한 오류", message: "위치 정보 사용이 필요합니다.", preferredStyle: .alert)
     
     var root = GPXRoot(creator: "Pace Maker") // insert your app name here
     var trackpoints = [GPXTrackPoint]()
     
     let storage = Storage.storage()
     
-    func uploadGPX(with prefix: String){
-        // filepath to upload
-        let gpxFormatSuffix :String = ".gpx"
-        let fileName = String(fileNameFormat.string(from: Date()))
-        let filePath = prefix + fileName + gpxFormatSuffix
-        // metadata
-        let metaData = StorageMetadata()
-        metaData.contentType = "xml"
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mapView.showsUserLocation = true
+        setNavigationBar()
+        setRunningStopGesture()
+        checkLocationServices()
+        format.dateFormat = "MM / dd HH : mm : ss"
+        fileNameFormat.dateFormat = "MMdd-HHmmssHH"
         
-        // encdoing using utf-8
-        let data: Data? = root.gpx().data(using: .utf8)
-        guard let dataToPut = data else {return}
-        storage.reference().child(filePath).putData(dataToPut,metadata: metaData){
-            (metaData,error) in if let error = error{
-                print(error.localizedDescription)
-                return
-            }else{
-                print("성공")
-            }
+    }
+    
+    @IBAction func longPressedMapView(_ sender: Any) {
+        let alert = UIAlertController(title: "권한 오류", message: "위치 정보 사용이 필요합니다.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "롱프레스", style: .cancel, handler: nil))
+    }
+    
+    func startRunning() {
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(secondElapsed), userInfo: nil, repeats: true)
+    }
+    
+    @objc func secondElapsed()
+    {
+        if isRunning {
+            timeElapsed += 1
         }
+        updateUI()
+    }
+    
+    func updateUI() {
+        elapsedTimeLabel.text = "\(timeElapsed)"
+        movedDistanceLabel.text = "\(movedDistance)"
+    }
+    
+    func setRunningStopGesture() {
+        longPressGesture.numberOfTapsRequired = 2
+    }
+    
+    func setNavigationBar() {
+        self.navigationController?.navigationItem.leftBarButtonItem = nil
+        self.navigationController?.title = "Beat \(competitorLog?.nickname ?? "Myself") 🔥"
         
     }
     
@@ -71,23 +104,51 @@ class RunningViewController: UIViewController{
             locationManager.stopUpdatingHeading()
             locationManager.stopUpdatingLocation()
             
+            // 달리기 완료
             let track = GPXTrack()                          // inits a track
             let tracksegment = GPXTrackSegment()            // inits a tracksegment
             tracksegment.add(trackpoints: trackpoints)      // adds an array of trackpoints to a track segment
             track.add(trackSegment: tracksegment)           // adds a track segment to a track
             root.add(track: track)                          // adds a track
-            
-            uploadGPX(with: "routes/")
-            
             root = GPXRoot(creator: "Pace Maker")
+
+            uploadGPX(with: "routes/")
         }
     }
     @IBOutlet weak var button: UIButton!
+    
+    @IBAction func tappedPlayPauseButton(_ sender: UIButton) {
+        startRunning()
+        isRunning = !isRunning
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected {
+            startPauseImage.image = UIImage(systemName: "pause")
+            view.backgroundColor = UIColor(named: "AccentColor")
+        }else {
+            startPauseImage.image = UIImage(systemName: "play")
+            view.backgroundColor = .systemBackground
+        }
+    }
+
+}
+
+// LOCATION 관련
+extension RunningViewController :CLLocationManagerDelegate{
     
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest // This level of accurate is available only if isAuthorizedForPreciseLocation is true.
         locationManager.distanceFilter = .zero
+        
+        // 백그라운드 설정
+        locationManager.allowsBackgroundLocationUpdates = true
+        
+        alert.addAction(UIAlertAction(title: "권한요청", style: .default, handler: { UIAlertAction in
+            self.checkLocationAuthrization()
+        }))
+        alert.addAction(UIAlertAction(title: "홈으로 돌아가기", style: .cancel, handler: { UIAlertAction in
+            self.handleLocationUsageDisabled()
+        }))
     }
     
     func centerViewOnUserLocation() {
@@ -97,11 +158,10 @@ class RunningViewController: UIViewController{
         }
     }
     
-    let alert = UIAlertController(title: "No Permission", message: "Geo Location Usages is denied", preferredStyle: .alert)
-    
     /// 앱별로 위치정보 사용동의 값이 다를 수 있는데, 확인하고 각자 필요한 후처리를 해주는 함수.
-//    @available(iOS 14.0, *)
+    //    @available(iOS 14.0, *)
     func checkLocationAuthrization() {
+        
         print("location usage permisson - \(locationManager.authorizationStatus.rawValue)")
         switch locationManager.authorizationStatus {
             case .authorizedWhenInUse: // foreground 에서만 location 정보가 필요한 경우
@@ -113,21 +173,25 @@ class RunningViewController: UIViewController{
                 break;
             case .denied:
                 print("location usage permisson - denied")
-                present(alert,animated: false,completion: nil) // 위치 정보 사용에 동의가 되어있지 않은경우, 기능을 사용하기위해 사람들이 해야할 동작들을 명시해주자
+                present(alert, animated: false, completion: nil) // 위치 정보 사용에 동의가 되어있지 않은경우, 기능을 사용하기위해 사람들이 해야할 동작들을 명시해주자
                 break
             case .notDetermined:
                 print("location usage permisson - notDetermined")
                 locationManager.requestWhenInUseAuthorization()
-//                locationManager.requestAlwaysAuthorization() <<- 에러
+                //                locationManager.requestAlwaysAuthorization() <<- 에러
                 break
             case .restricted:
                 print("location usage permisson - restricted")
-                present(alert,animated: false,completion: nil)
+                present(alert, animated: false, completion: nil)
                 // show an alert
                 break;
             @unknown default:
                 fatalError()
         }
+    }
+    
+    func handleLocationDisabled() {
+        
     }
     
     func startTrackingUserLocation(){
@@ -141,16 +205,9 @@ class RunningViewController: UIViewController{
             setupLocationManager()
             checkLocationAuthrization()
         }else{
+            
             // Show alert letting the user know they have to turn this on.
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mapView.showsUserLocation = false
-        checkLocationServices()
-        format.dateFormat = "MM / dd HH : mm : ss"
-        fileNameFormat.dateFormat = "MMdd-HHmmssHH"
     }
     
     func getCenterLocation(for mapView:MKMapView) -> CLLocation {
@@ -158,9 +215,6 @@ class RunningViewController: UIViewController{
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-}
-
-extension RunningViewController :CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return } // locations 에 아무것도 반환되지 않은경우, 아무일도 하지 않는다.
@@ -179,14 +233,10 @@ extension RunningViewController :CLLocationManagerDelegate{
         let locationDescription = "lati : \(String(format: "%3.8f",location.coordinate.latitude))\nlong: \(String(format: "%3.8f",location.coordinate.longitude))"
 
         // UI labels
-        coordinateLabel.text = locationDescription
-        altitudeLabel.text = String(format: "%3.8f",location.altitude)
-        speedLabel.text = String(location.speed)
-        floorLabel.text = String(location.floor?.level ?? -4)
-        horizontalAccuracyLabel.text = String(location.horizontalAccuracy)
-        speedAccuracyLabel.text = String(location.speedAccuracy)
-        courseAccuracyLabel.text = String(location.courseAccuracy) // 필요없는.. 것 같은데
-        timeStampLabel.text = String(format.string(from: location.timestamp))
+//        coordinateLabel.text = locationDescription
+//        altitudeLabel.text = String(format: "%3.8f",location.altitude)
+//        speedLabel.text = String(location.speed)
+//        timeStampLabel.text = String(format.string(from: location.timestamp))
 
         // calculated UI Labels
         let distance = location.distance(from: previousLocation!)
@@ -208,29 +258,75 @@ extension RunningViewController :CLLocationManagerDelegate{
     func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         print("locationManagerDidResumeLocationUpdates")
     }
+    
+    func handleLocationUsageDisabled(){
+        
+    }
+    
 }
 
+// MAPVIEW 관련
 extension RunningViewController: MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: mapView)
-        let geoCoder = CLGeocoder()
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        let center = getCenterLocation(for: mapView)
+//        let geoCoder = CLGeocoder()
+//
+//        guard center.distance(from: previousLocation!) > 50 else {return}
+//        previousLocation = center
+//
+//        geoCoder.reverseGeocodeLocation(center) { [weak self] placemarks, error in
+//            guard let self = self else {return}
+//
+//            if let _ = error {
+//                return
+//            }
+//
+//            guard let placemark = placemarks?.first else{
+//                return
+//            }
+//
+//            let streetNumber = placemark.subThoroughfare
+//
+//        }
+//    }
+    
+    
+    func addCompetitorOverlay() {
+        guard let competitorPolyline = competitorPolyline else { return }
+        self.mapView.addOverlay(competitorPolyline, level: .aboveLabels)
+    }
+    
+}
+
+// GPX 관련
+extension RunningViewController {
+    
+    func finishRunning() {
+//        result view 띄워준다. 현재 뛴 정보로
         
-        guard center.distance(from: previousLocation!) > 50 else {return}
-        previousLocation = center
+//        uploadGPX 를 하는데 로그인이 안되어 있으면..?
         
-        geoCoder.reverseGeocodeLocation(center) { [weak self] placemarks, error in
-            guard let self = self else {return}
-            
-            if let _ = error {
+    }
+    
+    func uploadGPX(with prefix: String){
+        // filepath to upload
+        let gpxFormatSuffix :String = ".gpx"
+        let fileName = String(fileNameFormat.string(from: Date()))
+        let filePath = prefix + fileName + gpxFormatSuffix
+        // metadata
+        let metaData = StorageMetadata()
+        metaData.contentType = "xml"
+        
+        // encdoing using utf-8
+        let data: Data? = root.gpx().data(using: .utf8)
+        guard let dataToPut = data else {return}
+        storage.reference().child(filePath).putData(dataToPut,metadata: metaData){
+            (metaData,error) in if let error = error{
+                print(error.localizedDescription)
                 return
+            }else{
+                print("성공")
             }
-            
-            guard let placemark = placemarks?.first else{
-                return
-            }
-            
-            let streetNumber = placemark.subThoroughfare
-            
         }
         
     }
