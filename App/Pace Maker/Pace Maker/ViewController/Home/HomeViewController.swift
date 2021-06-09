@@ -50,6 +50,7 @@ extension HomeViewController {
         }
         if !loginRequested {
             print("already logined")
+            updateUI()
             return;
         }else {
             loginRequested = false // used up request
