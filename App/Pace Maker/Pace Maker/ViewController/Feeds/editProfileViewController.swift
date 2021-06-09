@@ -124,7 +124,8 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         guard verifyCorrectInputFormat() else { return }
         
         updateUser()
-        presentingViewController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+//        presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     func updateUser() {
@@ -162,6 +163,7 @@ extension editProfileViewController: UIImagePickerControllerDelegate, UINavigati
         
         if let newProfileImage = newImage {
             editProfileImage.image = newProfileImage // 받아온 이미지를 update
+            user?.profileImage = newProfileImage
             uploadProfileImage(image: newProfileImage)
         }
         
