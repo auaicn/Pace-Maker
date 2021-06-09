@@ -12,7 +12,8 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
     @IBOutlet var userTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     var userCandidate: [DataSnapshot] = []
-    
+    //private let sections: [String] = ["New", "Friends"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -68,6 +69,9 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    // Returns the title of the section.
+    //func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sections[section] }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -80,8 +84,9 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
 
         let candidate =  self.userCandidate[indexPath.row]
         
-        //let id = candidate.childSnapshot(forPath: )
-        self.getProfileImage(imgview: cell.imgView, id: candidate.key)
+        let key = candidate.key
+        
+        self.getProfileImage(imgview: cell.imgView, id: key)
         
         let nick = candidate.childSnapshot(forPath: "nick").value as! String
         let name = candidate.childSnapshot(forPath: "name").value as! String
@@ -89,8 +94,17 @@ class UserSearchTableTableViewController: UITableViewController, UISearchBarDele
         let txt = "\(nick) (\(name))"
         
         cell.userInfoLabel.text = txt
+        
+        DispatchQueue.main.async {
+            if (user?.friends.contains(key) == true && key != user?.UID){
+                cell.followBtn.isHidden = true
+            }
+        }
 
         return cell
     }
 
+    @IBAction func followUser(_ sender: Any) {
+        print("button clicked")
+    }
 }

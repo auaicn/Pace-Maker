@@ -24,6 +24,12 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
         self.loadLogsOfFriends()
         self.setupFlowLayout()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadLogsOfFriends()
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

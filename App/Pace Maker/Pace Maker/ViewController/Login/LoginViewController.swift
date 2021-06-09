@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
               let password = password.text else { return }
         activityIndicator.startAnimating()
         
-        _ = realtimeReference.reference(withPath: "user")
+        realtimeReference.reference(withPath: "user")
             .queryOrdered(byChild: "email")
             .queryEqual(toValue: email.text)
             .observeSingleEvent(of: .value) { snapshot in
@@ -49,19 +49,23 @@ class LoginViewController: UIViewController {
                     // no corresponding email
                     self.handleLoginDidFailure()
                 }else {
-                    let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
-                    print(snapshot.keys)
-                    let userPrivacies = snapshot.first?.value as? [String : AnyObject] ?? [:]
-                    let userCredential: String =  userPrivacies["passwd"] as! String
-                    
-                    if userCredential == password{
-                        let UID = snapshot.first!.key
-                        self.handleLoginDidSuccess(with: UID)
-                        // login success
-                    }else {
-                        self.handleLoginDidFailure()
-                        // login fail
+                    print(snapshot)
+                    for child in snapshot.children.allObjects as! [DataSnapshot]{
+                        let userCredential = child.childSnapshot(forPath: "passwd").value as! String
+                        if userCredential == password{
+                            let UID = child.key
+                            self.handleLoginDidSuccess(with: UID)
+                            // login success
+                        }else {
+                            self.handleLoginDidFailure()
+                            // login fail
+                        }
                     }
+                    //let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
+                    //let snapshot = snapshot.value as? [[String : AnyObject]] ?? []
+                    //let userPrivacies = snapshot.first?.value as? [String : AnyObject] ?? [:]
+                    //let userCredential: String =  userPrivacies["passwd"] as! String
+                
                 }
                 self.activityIndicator.stopAnimating()
             }

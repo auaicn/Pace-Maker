@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DsO-D7-b7m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DsO-D7-b7m">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -227,7 +227,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Social" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="rQD-ew-f84">
-                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="CJf-KP-8Qy">
+                        <barButtonItem key="rightBarButtonItem" id="CJf-KP-8Qy">
+                            <imageReference key="image" image="magnifyingglass" catalog="system" symbolScale="medium"/>
                             <connections>
                                 <segue destination="Xkf-ec-2ZG" kind="show" id="2iV-oL-sg4"/>
                             </connections>
@@ -256,7 +257,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsersCell" id="cx8-i1-oGm" customClass="UsersCell" customModule="Pace_Maker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cx8-i1-oGm" id="gYe-w2-s4t">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -273,9 +274,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIz-de-lli">
+                                            <rect key="frame" x="301" y="0.0" width="113" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Follow"/>
+                                            <connections>
+                                                <action selector="followUser:" destination="Xkf-ec-2ZG" eventType="touchUpInside" id="AA0-dl-XDc"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="followBtn" destination="zIz-de-lli" id="TGU-aB-sDh"/>
                                     <outlet property="imgView" destination="Ejr-vy-POz" id="1qh-L6-7xf"/>
                                     <outlet property="userInfoLabel" destination="3sq-XD-UIQ" id="md2-d7-KR3"/>
                                 </connections>
