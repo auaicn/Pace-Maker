@@ -19,10 +19,14 @@ func downloadProfileImage() {
     
     let imageUrl = storageUrlBase + "profiles/\(userId)"
     storage.reference(forURL: imageUrl).downloadURL { (url, error) in
-        if let _ = error { user?.profileImage = nil}
+        if let _ = error {
+            user?.profileImage = nil
+            print("error while downloading profile")
+        }
         let data = NSData(contentsOf: url!)
         let image = UIImage(data: data! as Data)
         user?.profileImage = image
+        print("successfully downloaded profile \(userId)")
     }
 }
 

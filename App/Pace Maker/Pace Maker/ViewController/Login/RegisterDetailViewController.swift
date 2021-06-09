@@ -90,6 +90,7 @@ class RegisterDetailViewController: UIViewController {
         userReference.setValue(values)
         performSegue(withIdentifier: "unwindToHome", sender: nil)
     }
+    
 }
 
 extension RegisterDetailViewController: UITextFieldDelegate{

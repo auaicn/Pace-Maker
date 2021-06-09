@@ -144,18 +144,18 @@
                                                         <rect key="frame" x="0.0" y="714.5" width="414" height="794.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="현재 참여중인 챌린지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkW-Qx-cVy" userLabel="현재 참여중인 챌린지">
-                                                                <rect key="frame" x="24" y="8" width="366" height="492"/>
+                                                                <rect key="frame" x="24" y="8" width="366" height="492.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYw-0Z-egB" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="508" width="382" height="286.5"/>
+                                                                <rect key="frame" x="16" y="508.5" width="382" height="286"/>
                                                                 <subviews>
                                                                     <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-Vn-Is2">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q1g-0G-JKq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="ups-Ne-bdx" userLabel="challenge Image">
@@ -175,25 +175,25 @@
                                                                         <blurEffect style="dark"/>
                                                                     </visualEffectView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jMJ-lH-Onb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="286"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="lQa-p2-D6p" userLabel="Blank">
-                                                                                <rect key="frame" x="126" y="0.0" width="240" height="132"/>
+                                                                                <rect key="frame" x="126" y="0.0" width="240" height="131.5"/>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성준스 다이어트" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJS-qz-w32">
-                                                                                <rect key="frame" x="163" y="140" width="203" height="43.5"/>
+                                                                                <rect key="frame" x="163" y="139.5" width="203" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.49 / 100.0 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRZ-05-VBi">
-                                                                                <rect key="frame" x="109.5" y="191.5" width="256.5" height="43.5"/>
+                                                                                <rect key="frame" x="109.5" y="191" width="256.5" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 Day 23 Hour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSf-Nl-C19" userLabel="남은시간">
-                                                                                <rect key="frame" x="131.5" y="243" width="234.5" height="43.5"/>
+                                                                                <rect key="frame" x="131.5" y="242.5" width="234.5" height="43.5"/>
                                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="32"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -201,7 +201,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0aS-e3-DHP" userLabel="챌린지 이동 버튼">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="286"/>
                                                                         <connections>
                                                                             <segue destination="xwp-me-HCa" kind="show" id="y4Z-4q-hqK"/>
                                                                         </connections>
@@ -493,7 +493,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Iun-3s-wO2">
                         <barButtonItem key="leftBarButtonItem" image="person.crop.circle.badge.xmark" catalog="system" id="Auq-zi-voS"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="camera" catalog="system" id="uvX-yC-ZBh"/>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="Auq-zi-voS" id="qME-yV-JvE"/>
@@ -604,7 +603,6 @@
     <resources>
         <image name="3" width="3136" height="1762"/>
         <image name="ProtoType_Only_Badge" width="726" height="422"/>
-        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="figure.walk.diamond" catalog="system" width="128" height="122"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>

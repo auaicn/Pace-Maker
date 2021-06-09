@@ -13,6 +13,11 @@
 		1816156E263B0D59008038C5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1816156D263B0D59008038C5 /* Home.storyboard */; };
 		18161571263B0D89008038C5 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161570263B0D89008038C5 /* Setting.storyboard */; };
 		18161574263B0D97008038C5 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18161573263B0D97008038C5 /* Feed.storyboard */; };
+		1824F469266F21BC00D8B9BC /* RoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1824F468266F21BC00D8B9BC /* RoutesTableViewCell.swift */; };
+		1824F46C266F410200D8B9BC /* coolvetica rg it.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1824F46B266F410200D8B9BC /* coolvetica rg it.ttf */; };
+		1824F46E266F411600D8B9BC /* Uni Sans Thin Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1824F46D266F411600D8B9BC /* Uni Sans Thin Italic.otf */; };
+		1824F470266F411E00D8B9BC /* Uni Sans Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1824F46F266F411E00D8B9BC /* Uni Sans Heavy.otf */; };
+		1824F472266F412500D8B9BC /* Uni Sans Heavy Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1824F471266F412500D8B9BC /* Uni Sans Heavy Italic.otf */; };
 		18252B71261EFE79001A76DC /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18252B70261EFE79001A76DC /* Route.swift */; };
 		18291977262767CF00EE6A50 /* BinggraeMelona-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */; };
 		182B0229265B646E002C5195 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 182B0228265B646E002C5195 /* HealthKit.framework */; };
@@ -68,6 +73,11 @@
 		1816156D263B0D59008038C5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18161570263B0D89008038C5 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		18161573263B0D97008038C5 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		1824F468266F21BC00D8B9BC /* RoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesTableViewCell.swift; sourceTree = "<group>"; };
+		1824F46B266F410200D8B9BC /* coolvetica rg it.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "coolvetica rg it.ttf"; sourceTree = "<group>"; };
+		1824F46D266F411600D8B9BC /* Uni Sans Thin Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uni Sans Thin Italic.otf"; sourceTree = "<group>"; };
+		1824F46F266F411E00D8B9BC /* Uni Sans Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uni Sans Heavy.otf"; sourceTree = "<group>"; };
+		1824F471266F412500D8B9BC /* Uni Sans Heavy Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Uni Sans Heavy Italic.otf"; sourceTree = "<group>"; };
 		18252B70261EFE79001A76DC /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BinggraeMelona-Bold.ttf"; sourceTree = "<group>"; };
 		182B0227265B646E002C5195 /* Pace Maker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pace Maker.entitlements"; sourceTree = "<group>"; };
@@ -132,6 +142,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1824F46A266F21CB00D8B9BC /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				1824F468266F21BC00D8B9BC /* RoutesTableViewCell.swift */,
+			);
+			path = Running;
+			sourceTree = "<group>";
+		};
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +181,7 @@
 		18252B6F261EFE62001A76DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1824F46A266F21CB00D8B9BC /* Running */,
 				188126CC261EE8A70073029F /* LaunchScreen.storyboard */,
 				188126C7261EE8A40073029F /* Main.storyboard */,
 				18161573263B0D97008038C5 /* Feed.storyboard */,
@@ -191,6 +210,10 @@
 		182919752627679E00EE6A50 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1824F46F266F411E00D8B9BC /* Uni Sans Heavy.otf */,
+				1824F471266F412500D8B9BC /* Uni Sans Heavy Italic.otf */,
+				1824F46B266F410200D8B9BC /* coolvetica rg it.ttf */,
+				1824F46D266F411600D8B9BC /* Uni Sans Thin Italic.otf */,
 				18291976262767CF00EE6A50 /* BinggraeMelona-Bold.ttf */,
 			);
 			path = Fonts;
@@ -372,7 +395,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1824F472266F412500D8B9BC /* Uni Sans Heavy Italic.otf in Resources */,
 				18161574263B0D97008038C5 /* Feed.storyboard in Resources */,
+				1824F470266F411E00D8B9BC /* Uni Sans Heavy.otf in Resources */,
 				188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */,
 				18D3C98326523DD300EBA66A /* Running.storyboard in Resources */,
 				18653ED2265F8FF5001D9A68 /* FeedStory.xcassets in Resources */,
@@ -388,6 +413,8 @@
 				ED9C0C7B264521BA002418B5 /* GoogleService-Info.plist in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
 				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
+				1824F46C266F410200D8B9BC /* coolvetica rg it.ttf in Resources */,
+				1824F46E266F411600D8B9BC /* Uni Sans Thin Italic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +497,7 @@
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
 				ED3F040F2669FBEC000B3C86 /* UserSearchTableTableViewController.swift in Sources */,
 				18653ED72660AD0B001D9A68 /* RouteDetailViewController.swift in Sources */,
+				1824F469266F21BC00D8B9BC /* RoutesTableViewCell.swift in Sources */,
 				188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */,
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */,

@@ -73,8 +73,9 @@ extension HomeViewController {
             
             user = User(UID: id, name: name, email: email, age: age, nickName: nick, challenges: [], friends: friends)
             self.updateAuthenticationStatus(to: .loggined)
+            print("successfully logined with UID \(userId)")
             
-            print("logined with UID \(userId)")
+            downloadProfileImage()
 
         }
     }
@@ -83,11 +84,9 @@ extension HomeViewController {
         authenticationStatus = newStatus
         switch newStatus {
             case .notLoggined:
-                navigationItem.rightBarButtonItem?.isEnabled = false
-                navigationItem.rightBarButtonItem?.tintColor = .gray
+                let i = 1
             case .loggined:
-                navigationItem.rightBarButtonItem?.isEnabled = true
-                navigationItem.rightBarButtonItem?.tintColor = .label
+                let i = 1
         }
         updateUI()
     }
@@ -99,10 +98,8 @@ extension HomeViewController {
     
     func setNavigationBar() {
         self.navigationItem.leftBarButtonItem = makeNavigationBarItemWithImage()
-        self.navigationItem.rightBarButtonItem = makeCameraScreenshotImage()
+        // self.navigationItem.rightBarButtonItem = makeCameraScreenshotImage()
 
-//        self.navigationItem.rightBarButtonItem?.action = #selector(tappedCamera)
-        
         // maybe Large Title Stuff
         
         // or hide on swipe things

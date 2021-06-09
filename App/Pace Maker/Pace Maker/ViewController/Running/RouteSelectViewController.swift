@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import Firebase
 
 class RouteSelectViewController: UIViewController {
     
-    var routes: [Route] = []
+    var routes: [Log] = []
+    var routesBySelf: [Log] = []
     var indexToDateString: [String] = []
-    var routesByGroup: [String:[Route]] = [:]
+    var routesByGroup: [String:[Log]] = [:]
     
     var refreshControl = UIRefreshControl()
     
+    @IBOutlet weak var encourageMessage: UILabel!
+    @IBOutlet weak var bestRecordLabel: UILabel!
+    @IBOutlet weak var latestRecordLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -46,6 +51,11 @@ class RouteSelectViewController: UIViewController {
         self.refreshControl.endRefreshing()
     }
     
+    func groupRoutes() {
+        groupRoutesByDate()
+        groupRoutesByMonth()
+    }
+    
     func groupRoutesByDate(){
         routesByGroup.removeAll()
         indexToDateString.removeAll()
@@ -61,24 +71,57 @@ class RouteSelectViewController: UIViewController {
         indexToDateString = indexToDateString.sorted(by: >)
     }
     
+    func groupRoutesByMonth(){
+        routesByGroup.removeAll()
+        indexToDateString.removeAll()
+        
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MM"
+        let calendar = Calendar.current
+
+        for route in routes {
+            let date: Date = dateFormatter.date(from: route.dateString)!
+            let monthFormatter = DateFormatter()
+            monthFormatter.dateFormat = "MM"
+            let monthString = calendar.monthSymbols[Int(monthFormatter.string(from: date)) ?? 0]
+            
+            if routesByGroup[monthString] == nil {
+                indexToDateString.append(monthString)
+                routesByGroup[monthString] = [route]
+            }else{
+                routesByGroup[monthString]?.append(route)
+            }
+        }
+        indexToDateString = indexToDateString.sorted(by: >)
+    }
+    
     func loadLogs(){
+        
         let logReference = realReference.reference(withPath: "log")
-        logReference.queryOrdered(byChild: "runner")
-            .queryEqual(toValue: user?.UID)
-            .observe(.value) { snapshot in
-                let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
+        logReference.queryOrdered(byChild: "date")
+            .observeSingleEvent(of: .value) { snapshot in
+                let snapshot = snapshot.value as? [[String : AnyObject]] ?? []
                 self.routes.removeAll()
-                // snapshot is an Array of Dictionary
-                for logDictonary in snapshot {
-                    let singleLog = logDictonary.value
-                    let date: String = singleLog["date"] as! String
-                    let distance: Double = singleLog["distance"] as! Double
-                    let route: String = singleLog["route"] as! String
-                    let runner: String = singleLog["runner"] as! String
-                    let time: Double = singleLog["time"] as! Double
-                    self.routes.append(Route(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runner, timeSpentInSeconds: time))
+                for i in (0..<snapshot.count).reversed(){
+                    let log = snapshot[i]
+                    let date: String = log["date"] as! String
+                    let distance: Double = log["distance"] as! Double
+                    let route: String = log["route"] as! String
+                    let time: Double = log["time"] as! Double
+                    let nickname: String = log["nick"] as! String
+                    
+                    let runner: Int = log["runner"] as! Int
+                    let runnerString = String(runner)
+                    
+                    let fetchedLog = Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerString, nickname: nickname, timeSpentInSeconds: time)
+                    
+                    if runnerString == user?.UID {
+                        self.routesBySelf.append(fetchedLog)
+                    } else {
+                        self.routes.append(fetchedLog)
+                    }
                 }
-                self.groupRoutesByDate()
+                self.groupRoutes()
                 self.tableView.reloadData()
             }
     }
@@ -88,10 +131,9 @@ class RouteSelectViewController: UIViewController {
            let indexPath = tableView.indexPathForSelectedRow {
             let dateString = indexToDateString[indexPath.section]
             let selectedRoute = routesByGroup[dateString]![indexPath.row]
-            nextViewController.route = selectedRoute
+            nextViewController.log = selectedRoute
         }
     }
-
 }
 
 extension RouteSelectViewController : UITableViewDelegate, UITableViewDataSource {
@@ -107,10 +149,27 @@ extension RouteSelectViewController : UITableViewDelegate, UITableViewDataSource
         return indexToDateString[section]
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        guard let footer = view as? UITableViewHeaderFooterView else { return }
+        footer.textLabel?.textAlignment = .right
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "총 : \(String((routesByGroup[indexToDateString[section]] ?? []).count) )"
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RouteSelectCell",for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RoutesTableViewCell",for: indexPath)
         let route = routesByGroup[indexToDateString[indexPath.section]]![indexPath.row]
-        cell.textLabel?.text = "\(route.dateString) \(String(format: "%.2f", route.distanceInKilometer))km"
+//        cell.textLabel?.text = "\(route.dateString) \(String(format: "%.2f", route.distanceInKilometer))km"
+//        cell.detailTextLabel?.text = "\(route.nickname) ran with pace \(route.paceString)"
+        cell.textLabel?.text = "\(route.nickname)"
+        cell.detailTextLabel?.text = "\(route.paceString)"
+        
         return cell
     }
 }
