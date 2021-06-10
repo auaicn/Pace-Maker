@@ -17,6 +17,9 @@ target 'Pace Maker' do
 
   # Under Keyboard
   pod 'UnderKeyboard', '~> 13.0'
+
+  # Floating Banner
+  pod 'NotificationBannerSwift', '~> 3.0.0'
   
 end
 
