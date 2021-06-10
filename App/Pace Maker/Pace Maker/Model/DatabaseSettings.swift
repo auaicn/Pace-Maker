@@ -38,6 +38,28 @@ func downloadProfileImage() {
     }
 }
 
+func uploadLogImage(with image: UIImage?, named fileName: String){
+    guard let image = image else { return }
+    
+    var data = Data()
+    data = image.pngData()!
+    
+    let imageUrl = storageUrlBase + "log_images/\(fileName)\(suffix)"
+    let metaData = StorageMetadata()
+    metaData.contentType = "image/png"
+    storage.reference(forURL: imageUrl).putData(data, metadata: metaData){
+        (metaData, error) in
+        if let error = error {
+            print("uploadLogImage failed")
+            print(error.localizedDescription)
+            return
+        }
+        else{
+            print("uploadLogImage Succecssfully Done")
+        }
+    }
+}
+
 func uploadProfileImage(image: UIImage){
     guard let userId = userId else { return }
     

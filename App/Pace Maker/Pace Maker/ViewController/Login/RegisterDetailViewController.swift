@@ -78,6 +78,8 @@ class RegisterDetailViewController: UIViewController {
               let nickname = nickname.text,
               let age = age.text else { return }
         let userReference = realtimeReference.reference().child("user").childByAutoId()
+        guard let newUserId = userReference.key else { return }
+        userId = newUserId
         let values: [String: Any] = [
             "email": email!,
             "passwd": password!,
@@ -97,10 +99,6 @@ class RegisterDetailViewController: UIViewController {
             destVC.loginRequested = true
         }
     }
-}
-
-extension RegisterDetailViewController: UITextFieldDelegate{
-    
 }
 
 extension RegisterDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {

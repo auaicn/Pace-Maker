@@ -61,19 +61,14 @@ class LoginViewController: UIViewController {
                             // login fail
                         }
                     }
-                    //let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
-                    //let snapshot = snapshot.value as? [[String : AnyObject]] ?? []
-                    //let userPrivacies = snapshot.first?.value as? [String : AnyObject] ?? [:]
-                    //let userCredential: String =  userPrivacies["passwd"] as! String
-                
                 }
                 self.activityIndicator.stopAnimating()
             }
     }
     
     func handleLoginDidFailure() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
+
+        hapticfeedbackGenerator.notificationOccurred(.error)
         
         let message = "이메일 또는 패스워드가 잘못되었습니다. 다시 한 번 확인해 주세요"
         let alertController = UIAlertController(title: "로그인 실패",
@@ -84,8 +79,7 @@ class LoginViewController: UIViewController {
     }
     
     func handleLoginDidSuccess(with user: String?) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        hapticfeedbackGenerator.notificationOccurred(.success)
         
         guard let user = user else { return }
         userId = user

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import NotificationBannerSwift
 
 enum AuthenticationStatus {
     case notLoggined,loggined
@@ -20,6 +21,7 @@ class HomeViewController: UIViewController{
     var loginRequested: Bool = true
 
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         _ = unwindSegue.source
@@ -29,6 +31,7 @@ class HomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         updateAuthenticationStatus(to: .notLoggined)
+        setNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +41,27 @@ class HomeViewController: UIViewController{
     func updateUI(){
         updateProfileImage()
     }
+    
+    func setNavigationBar(){
+        let customView = UIButton()
+        customView.addSubview(UIImageView(image: UIImage(systemName: "signature")))
+        customView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        customView.addTarget(self, action: #selector(tappedAutoLogin), for: .touchUpInside)
+        rightBarButtonItem.customView = customView
+    }
 }
 
 // 로그인 관련
 extension HomeViewController {
+    
+    @objc func tappedAutoLogin(){
+        guard let savedUserId = UserDefaults.standard.string(forKey: "id") else {
+            print("no entry in UserDefaults")
+            return
+        }
+        userId = savedUserId
+        tryLogin()
+    }
     
     func tryLogin(){
         guard let userId = userId else {
@@ -70,10 +90,9 @@ extension HomeViewController {
                 let description: String = userDictionary["description"] as? String ?? "설정에서 설명을 추가해주세요"
                 
                 user = User(UID: UID, name: name, email: email, age: age, nickName: nick, challenges: challenges, friends: friends, description: description, password: password)
-                self.updateAuthenticationStatus(to: .loggined)
-                print("successfully logined with UID \(userId)")
                 
-                self.download()
+                print("successfully logined with UID \(userId)")
+                self.updateAuthenticationStatus(to: .loggined)
 
             }
         }
@@ -111,6 +130,9 @@ extension HomeViewController {
                 print("authenticationStatus chagned to \"notLoggined\" status now")
             case .loggined:
                 print("authenticationStatus chagned to \"loggined\" status now")
+                UserDefaults.standard.set(user?.UID, forKey: "id")
+                banner2.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+                self.download()
         }
         updateUI()
     }
@@ -146,10 +168,7 @@ extension HomeViewController {
         customView.addTarget(self, action: #selector(tappedProfile), for: .touchUpInside)
         
         leftBarButtonItem.customView = customView
-//        let item = UIBarButtonItem(customView: customView)
-//        item.target = self
-        
-//        leftBarButtonItem = item
+
         print("successfully profile image updated")
     }
     
@@ -204,5 +223,19 @@ extension UIView {
             return image!
         }
         return UIImage()
+    }
+}
+
+extension HomeViewController: NotificationBannerDelegate {
+    func notificationBannerWillAppear(_ banner: BaseNotificationBanner) {
+    }
+    
+    func notificationBannerDidAppear(_ banner: BaseNotificationBanner) {
+    }
+    
+    func notificationBannerWillDisappear(_ banner: BaseNotificationBanner) {
+    }
+    
+    func notificationBannerDidDisappear(_ banner: BaseNotificationBanner) {
     }
 }
