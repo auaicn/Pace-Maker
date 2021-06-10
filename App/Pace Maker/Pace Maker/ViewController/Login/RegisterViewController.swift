@@ -52,8 +52,10 @@ class RegisterViewController: UIViewController {
         print("editing changed")
         guard let text = sender.text else { return }
         if text.isValidEmail() {
+            isCorrectEmailFormat = true
             sender.layer.borderColor = UIColor.lightGray.cgColor
         }else {
+            isCorrectEmailFormat = false
             sender.layer.borderColor = UIColor.red.cgColor
         }
     }
@@ -62,8 +64,10 @@ class RegisterViewController: UIViewController {
         print("editing changed")
         guard let text = sender.text else { return }
         if text.isValidPassword {
+            isCorrectPasswordFormat = true
             sender.layer.borderColor = UIColor.lightGray.cgColor
         }else {
+            isCorrectPasswordFormat = false
             sender.layer.borderColor = UIColor.red.cgColor
         }
     }
@@ -73,6 +77,7 @@ class RegisterViewController: UIViewController {
             isPasswordSame = true
             sender.layer.borderColor = UIColor.lightGray.cgColor
         }else {
+            isPasswordSame = false
             sender.layer.borderColor = UIColor.red.cgColor
         }
     }
@@ -90,8 +95,7 @@ class RegisterViewController: UIViewController {
     }
 
     func handleRegisterFailure() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
+        hapticfeedbackGenerator.notificationOccurred(.error)
         registerView.shake()
     }
     
@@ -150,8 +154,7 @@ class RegisterViewController: UIViewController {
     func continueRegisterAction(){
         // email NOT duplicated
         // continue registering
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
+        hapticfeedbackGenerator.notificationOccurred(.success)
         performSegue(withIdentifier: "ContinueRegister", sender: nil)
     }
     

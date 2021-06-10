@@ -10,11 +10,15 @@ import MapKit
 import CoreLocation
 import CoreGPX
 import Firebase
+import NotificationBannerSwift
 
-class RunningViewController: UIViewController{
+class RunningViewController: UIViewController {
     
     // fetched from previous view
     var competitorLog: Log? = nil
+    var goalPace: Int? = nil
+    var goalDistance: Double? = nil
+    var goalElapsedTime: Double? = nil
     
     // display
     var movedDistance: Double = 0
@@ -32,10 +36,12 @@ class RunningViewController: UIViewController{
     @IBOutlet weak var movedDistanceLabel: UILabel!
     @IBOutlet weak var elapsedTimeLabel: UILabel!
     @IBOutlet weak var currentPaceLabel: UILabel!
+    @IBOutlet weak var goalPaceLabel: UILabel!
     
     @IBOutlet weak var startPauseImage: UIImageView!
+    @IBOutlet weak var playPauseButton: UIButton!
     
-    var isVoiceFeedbackEnabled: Bool = false
+    var isVoicehapticfeedbackGeneratorEnabled: Bool = false
     var isVoiceRecordingEnabled: Bool = false
     var isAutoStopEnabled: Bool = false
     var isTrackingStarted: Bool = false
@@ -43,15 +49,11 @@ class RunningViewController: UIViewController{
     var previousLocation :CLLocation?
     var locationManager : CLLocationManager = CLLocationManager()
     let regionMeters: Double = 1000
-    let format = DateFormatter()
-    let fileNameFormat = DateFormatter()
     
     let alert = UIAlertController(title: "권한 오류", message: "위치 정보 사용이 필요합니다.", preferredStyle: .alert)
     
     var root = GPXRoot(creator: "Pace Maker") // insert your app name here
     var trackpoints = [GPXTrackPoint]()
-    
-    let storage = Storage.storage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,28 +63,35 @@ class RunningViewController: UIViewController{
         setNavigationBar()
         checkLocationServices()
         setDefaultUI()
+        
         // other settings
         currentPaceLabel.text = "- : --"
-        format.dateFormat = "MM / dd HH : mm : ss"
-        fileNameFormat.dateFormat = "MMdd-HHmmssHH"
     }
     
     func setDefaultUI() {
         movedDistance = 0
         timeElapsed = 0
+        if goalPace != nil {
+            goalPaceLabel.text = "목표 페이스 \(goalPace! / 60) : \(goalPace! % 60)"
+        }
         updateUI()
     }
     
     @IBAction func didLongPressRunningButton(_ sender: Any) {
         print("long pressed")
-        let alert = UIAlertController(title: "권한 오류", message: "위치 정보 사용이 필요합니다.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "롱프레스", style: .cancel, handler: nil))
-        finishRunning()
+        if isRunning {
+            isRunning = false
+            if startedRunning {
+                finishRunning()
+            }
+        }
     }
     
     func setMapView() {
         mapView.showsUserLocation = true
         mapView.overrideUserInterfaceStyle = .dark
+        mapView.mapType = MKMapType(rawValue: 0)!
+        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)! // follows heading!
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,24 +105,51 @@ class RunningViewController: UIViewController{
     }
     
     func startRunning() {
-        startedRunning = true
-        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(secondElapsed), userInfo: nil, repeats: true)
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+        banner3.show()
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(handleTimerEvent), userInfo: nil, repeats: true)
     }
  
     func stopRunning(){
-//        button.setTitle("중지", for: .normal)
-        locationManager.startUpdatingLocation()
-        isRunning = false
+        banner3.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+        hapticfeedbackGenerator.notificationOccurred(.error)
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
     }
     
     func resumeRunning() {
-        isRunning = true
-//        button.setTitle("시작", for: .normal)
-        locationManager.stopUpdatingLocation()
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
+    }
+    
+    func uploadLog(with fileName: String){
+        guard let user = user else { return }
+        
+        let logReference = realtimeReference.reference().child("log").childByAutoId()
+        guard let logName = logReference.key else { return }
+        
+        let values: [String: Any] = [
+            "date": dateFormatter.string(from: Date()),
+            "distance": movedDistance,
+            "nick": user.nickName,
+            "route": fileName,
+            "runner": user.UID,
+            "time": timeElapsed,
+        ]
+        
+        logReference.setValue(values)
+        print("[Success] registerNewLog")
+        
+        uploadLogImage(with: screenshotImage, named: logName)
     }
     
     func finishRunning() {
+        print("운동을 종료합니다")
         startedRunning = false
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
+        hapticfeedbackGenerator.notificationOccurred(.success)
         
         let track = GPXTrack()                          // inits a track
         let tracksegment = GPXTrackSegment()            // inits a tracksegment
@@ -121,9 +157,19 @@ class RunningViewController: UIViewController{
         track.add(trackSegment: tracksegment)           // adds a track segment to a track
         root.add(track: track)                          // adds a track
         root = GPXRoot(creator: "Pace Maker")
-        
+
         uploadGPX()
         performSegue(withIdentifier: "Result", sender: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.backgroundColor = .clear
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.backgroundColor = .none
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,9 +180,9 @@ class RunningViewController: UIViewController{
         }
     }
     
-    @objc func secondElapsed()
+    @objc func handleTimerEvent()
     {
-        if startedRunning {
+        if isRunning {
             timeElapsed += 1
         }
         updateUI()
@@ -144,7 +190,7 @@ class RunningViewController: UIViewController{
     
     func updateUI() {
         elapsedTimeLabel.text = "\(timeElapsed)"
-        movedDistanceLabel.text = "\(movedDistance)"
+        movedDistanceLabel.text = "\(String(format:"%.2f",movedDistance))"
         if movedDistance != 0 {
             let paceInSeconds: Int = Int(Double(timeElapsed) / movedDistance)
             
@@ -157,30 +203,25 @@ class RunningViewController: UIViewController{
     
     func setNavigationBar() {
         self.navigationController?.navigationItem.leftBarButtonItem = nil
-//        self.navigationController? .title = "Beat \(competitorLog?.nickname ?? "Myself") 🔥"
     }
 
-    @IBOutlet weak var button: UIButton!
-    
-    @IBAction func tappedPlayPauseButton(_ sender: UIButton) {
-        startRunning()
-        startedRunning = !startedRunning
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
+    @IBAction func tappedPlayPause(_ sender: Any) {
+        print("tapped")
+        isRunning = !isRunning
+        if isRunning {
+            // 원래는 = 였다가 이제 play
             startPauseImage.image = UIImage(systemName: "pause")
-//            view.backgroundColor = UIColor(named: "AccentColor")
             if !startedRunning{
                 startRunning()
             }else {
                 resumeRunning()
             }
         }else {
+            // 원래는 playing
             startPauseImage.image = UIImage(systemName: "play")
-//            view.backgroundColor = .systemBackground
             stopRunning()
         }
     }
-
 }
 
 // LOCATION 관련
@@ -241,10 +282,6 @@ extension RunningViewController :CLLocationManagerDelegate{
         }
     }
     
-    func handleLocationDisabled() {
-        
-    }
-    
     func startTrackingUserLocation(){
         centerViewOnUserLocation()
         previousLocation = getCenterLocation(for: mapView)
@@ -282,9 +319,17 @@ extension RunningViewController :CLLocationManagerDelegate{
 
         // calculated UI Labels
         let distance = location.distance(from: previousLocation!)
-        movedDistance += distance
+        movedDistance += distance / 1000 // unit transformation
         previousLocation = location
         
+        //drawing path or route covered
+        if let oldLocationNew = previousLocation as CLLocation?{
+            let oldCoordinates = oldLocationNew.coordinate
+            let newCoordinates = location.coordinate
+            var area = [oldCoordinates, newCoordinates]
+            let polyline = MKPolyline(coordinates: &area, count: area.count)
+            mapView.addOverlay(polyline)
+        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -302,50 +347,26 @@ extension RunningViewController :CLLocationManagerDelegate{
     func handleLocationUsageDisabled(){
         
     }
-    
 }
 
 // MAPVIEW 관련
 extension RunningViewController: MKMapViewDelegate{
-//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        let center = getCenterLocation(for: mapView)
-//        let geoCoder = CLGeocoder()
-//
-//        guard center.distance(from: previousLocation!) > 50 else {return}
-//        previousLocation = center
-//
-//        geoCoder.reverseGeocodeLocation(center) { [weak self] placemarks, error in
-//            guard let self = self else {return}
-//
-//            if let _ = error {
-//                return
-//            }
-//
-//            guard let placemark = placemarks?.first else{
-//                return
-//            }
-//
-//            let streetNumber = placemark.subThoroughfare
-//
-//        }
-//    }
-    
-    
     func addCompetitorOverlay() {
         guard let competitorPolyline = competitorPolyline else { return }
         self.mapView.addOverlay(competitorPolyline, level: .aboveLabels)
     }
-    
 }
 
 // GPX 관련
 extension RunningViewController {
-    
     func uploadGPX(){
+        guard let _ = user else { return }
+        
         // filepath to upload
-        let gpxFormatSuffix :String = ".gpx"
-        let fileName = String(fileNameFormat.string(from: Date()))
-        let filePath = "routes/" + fileName + gpxFormatSuffix
+        let gpxFormatSuffix: String = ".gpx"
+        let fileName = String(gpxFileNameFormat.string(from: Date())) + gpxFormatSuffix
+        let filePath = "routes/" + fileName
+        
         // metadata
         let metaData = StorageMetadata()
         metaData.contentType = "xml"
@@ -358,9 +379,29 @@ extension RunningViewController {
                 print(error.localizedDescription)
                 return
             }else{
-                print("성공")
+                print("[Success] uploadGPX")
+                banner1.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+                self.uploadLog(with: fileName)
             }
         }
+        
+    }
+}
+
+extension RunningViewController : NotificationBannerDelegate {
+    func notificationBannerWillAppear(_ banner: BaseNotificationBanner) {
+        
+    }
+
+    func notificationBannerDidAppear(_ banner: BaseNotificationBanner) {
+        
+    }
+
+    func notificationBannerWillDisappear(_ banner: BaseNotificationBanner) {
+        
+    }
+
+    func notificationBannerDidDisappear(_ banner: BaseNotificationBanner) {
         
     }
 }

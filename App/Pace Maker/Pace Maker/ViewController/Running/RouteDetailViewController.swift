@@ -15,47 +15,43 @@ var competitorPolyline: MKPolyline? = nil
 
 class RouteDetailViewController: UIViewController {
     
-    let MAP_VIEW_SCALE_FACTOR: Double = 1.3
+    let MAP_VIEW_SCALE_FACTOR: Double = 2.0
     
     var rootGPX: GPXRoot? = nil
     var log: Log? = nil
     
-    @IBOutlet weak var RouteTitle: UILabel!
+    var pace: Int? = nil
+    
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var isVoiceFeedbackEnabled: UISwitch!
-    @IBOutlet weak var isVoiceRecordingEnabled: UISwitch!
-    @IBOutlet weak var isAutoStopEnabled: UISwitch!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         downloadGPX()
         setMapView()
         updateUI()
+        updateLabels()
+        addBottomSheetView()
     }
     
     func updateUI(){
-        updateSettingUI()
         updateDetailedRouteUI()
     }
     
-    func updateSettingUI(){
-        if authenticationStatus == .notLoggined {
-            isVoiceFeedbackEnabled.isEnabled = false
+    func updateLabels(){
+        guard let log = log else { return }
+        if pace != nil {
+            paceLabel.text = "목표 페이스 \(log.pace / 60):\(log.pace % 60)"
         }
-        isVoiceRecordingEnabled.isOn = true
-        isAutoStopEnabled.isOn = true
     }
-
     
     func updateDetailedRouteUI(){
         guard let log = log else { return }
 
-        RouteTitle.text = "\(log.nickname) 님의 달리기"
+        self.title = "\(log.nickname) 님의 달리기"
         paceLabel.text = "페이스: 1 km 당 \(log.paceString)"
         distanceLabel.text = "거리: \(String(format: "%.2f", log.distanceInKilometer)) km"
         let (hour, minute, second): (Int, Int, Int) = log.timeDescription
@@ -66,9 +62,8 @@ class RouteDetailViewController: UIViewController {
         }else{
             timeLabel.text = "시간: \(second) 초"
         }
-        paceLabel.text = "\(log.paceDescription) PER 1 KM"
+        paceLabel.text = "\(log.paceDescription)"
     }
-
     
     func downloadGPX(){
         guard let selectedRoute = log else { return }
@@ -114,9 +109,9 @@ class RouteDetailViewController: UIViewController {
             }
             
             let bufferPointer = UnsafeBufferPointer(start: pointer, count: count)
-            for (index, value) in bufferPointer.enumerated() {
-                print("value \(index): \(value)")
-            }
+//            for (index, value) in bufferPointer.enumerated() {
+//                print("value \(index): \(value)")
+//            }
             
             competitorPolyline = MKPolyline(coordinates: pointer, count: count)
             
@@ -125,16 +120,13 @@ class RouteDetailViewController: UIViewController {
             self.mapView.addOverlay(competitorPolyline, level: .aboveLabels)
             
             var rect = competitorPolyline.boundingMapRect
-            print(rect)
-            print(rect.size.width)
-            print(rect.size.height)
-            rect.size = MKMapSize(width: rect.size.width * 2, height: rect.size.height * 2)
-            print(rect)
-            print(rect.size.width)
-            print(rect.size.height)
+            
+            let adjustedPadding = (MAP_VIEW_SCALE_FACTOR - 1) / 2
+            rect.origin = MKMapPoint(x: rect.origin.x - adjustedPadding, y: rect.origin.y - adjustedPadding)
+            rect.size = MKMapSize(width: rect.size.width * MAP_VIEW_SCALE_FACTOR, height: rect.size.height * MAP_VIEW_SCALE_FACTOR)
+            
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
-        
     }
     
     func createPath(with sourceLocation:CLLocationCoordinate2D,and destinationLocation:CLLocationCoordinate2D){
@@ -182,9 +174,30 @@ class RouteDetailViewController: UIViewController {
             
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
-        
     }
-
+    
+    func addBottomSheetView() {
+        // 1- Init bottomSheetVC
+        let bottomSheetVC = RunningSettingViewController()
+        
+        // 2- Add bottomSheetVC as a child view
+        self.addChild(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParent: self)
+        
+        // 3- Adjust bottomSheet frame and initial position.
+        let height = view.frame.height
+        let width  = view.frame.width
+        bottomSheetVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? RunningViewController {
+            nextVC.goalPace = log?.pace
+            nextVC.goalDistance = log?.distanceInKilometer
+            nextVC.goalElapsedTime = log?.timeSpentInSeconds
+        }
+    }
 }
 
 extension RouteDetailViewController : MKMapViewDelegate {

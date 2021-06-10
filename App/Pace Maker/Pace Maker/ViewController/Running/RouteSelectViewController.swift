@@ -26,6 +26,10 @@ class RouteSelectViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setTableView()
+        // loadLogs()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadLogs()
     }
     
@@ -96,14 +100,19 @@ class RouteSelectViewController: UIViewController {
     }
     
     func loadLogs(){
+        // guard let user = user else { return }
         
         let logReference = realtimeReference.reference(withPath: "log")
         logReference.queryOrdered(byChild: "date")
-            .observeSingleEvent(of: .value) { snapshot in
-                let snapshot = snapshot.value as? [[String : AnyObject]] ?? []
+            .observe(.value) { snapshot in
+                let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
+                // print("LOGS snapshot.count",snapshot.count)
+                // print(snapshot)
                 self.routes.removeAll()
-                for i in (0..<snapshot.count).reversed(){
-                    let log = snapshot[i]
+                for (logId,log) in snapshot {
+                // for i in (0..<snapshot.count).reversed(){
+                    // let log = snapshot[i]
+                    
                     let date: String = log["date"] as! String
                     let distance: Double = log["distance"] as! Double
                     let route: String = log["route"] as! String
@@ -120,9 +129,24 @@ class RouteSelectViewController: UIViewController {
                         self.routes.append(fetchedLog)
                     }
                 }
-                self.groupRoutes()
-                self.tableView.reloadData()
+                self.updateUI()
             }
+    }
+    
+    func updateUI() {
+        groupRoutes()
+        tableView.reloadData()
+        if routesBySelf.count != 0 {
+            guard let paceInSeconds = routesBySelf.max (by: { lhs, rhs in
+                return lhs.pace < rhs.pace
+            })?.pace else { return }
+            bestRecordLabel.text = "\(paceInSeconds / 60) \(paceInSeconds % 60)"
+            guard let latestRecordPaceInSeconds = routesBySelf.last?.pace else { return }
+            latestRecordLabel.text = "\(latestRecordPaceInSeconds / 60) \(latestRecordPaceInSeconds % 60)"
+        }else {
+            bestRecordLabel.text = "- : --"
+            latestRecordLabel.text = "- : --"
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -164,8 +188,6 @@ extension RouteSelectViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoutesTableViewCell",for: indexPath)
         let route = routesByGroup[indexToDateString[indexPath.section]]![indexPath.row]
-//        cell.textLabel?.text = "\(route.dateString) \(String(format: "%.2f", route.distanceInKilometer))km"
-//        cell.detailTextLabel?.text = "\(route.nickname) ran with pace \(route.paceString)"
         cell.textLabel?.text = "\(route.nickname)"
         cell.detailTextLabel?.text = "\(route.paceString)"
         

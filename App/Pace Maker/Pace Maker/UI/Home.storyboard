@@ -367,66 +367,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJi-rr-RMq" userLabel="Profile (Navigation Bar Item)">
-                                <rect key="frame" x="256.5" y="12" width="165.5" height="76"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="guest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNe-jx-2fm" userLabel="사용자 이름">
-                                        <rect key="frame" x="49.5" y="31" width="32" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" systemColor="systemGray2Color"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인을 해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15e-V5-WQ0" userLabel="사용자 등급">
-                                        <rect key="frame" x="-5" y="49.5" width="86.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <color key="textColor" systemColor="systemGray2Color"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vmD-Cj-uWl" userLabel="프로필 이미지">
-                                        <rect key="frame" x="89.5" y="8.5" width="60" height="59"/>
-                                        <color key="tintColor" systemColor="systemGray2Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="KH7-P7-oDy"/>
-                                            <constraint firstAttribute="width" secondItem="vmD-Cj-uWl" secondAttribute="height" multiplier="1:1" id="dUG-YV-Mke"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="vmD-Cj-uWl" secondAttribute="bottom" constant="8" id="0st-7f-QWv"/>
-                                    <constraint firstAttribute="trailing" secondItem="vmD-Cj-uWl" secondAttribute="trailing" constant="16" id="PMe-kZ-EuX"/>
-                                    <constraint firstItem="15e-V5-WQ0" firstAttribute="bottom" secondItem="vmD-Cj-uWl" secondAttribute="bottom" constant="-4" id="X9L-Yc-d3X"/>
-                                    <constraint firstItem="GNe-jx-2fm" firstAttribute="trailing" secondItem="15e-V5-WQ0" secondAttribute="trailing" id="guQ-dr-lJA"/>
-                                    <constraint firstItem="15e-V5-WQ0" firstAttribute="top" secondItem="GNe-jx-2fm" secondAttribute="bottom" constant="4" id="mes-7g-m9w"/>
-                                    <constraint firstAttribute="height" constant="76" id="n2c-ZQ-kdm"/>
-                                    <constraint firstItem="vmD-Cj-uWl" firstAttribute="leading" secondItem="15e-V5-WQ0" secondAttribute="trailing" constant="8" id="vZp-vY-ztj"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wyr-3h-1cs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wyr-3h-1cs" firstAttribute="top" secondItem="rcW-Ni-Cex" secondAttribute="top" id="N60-m7-Afh"/>
                             <constraint firstItem="wyr-3h-1cs" firstAttribute="trailing" secondItem="2qP-fp-e8M" secondAttribute="trailing" constant="8" id="Ubh-Uc-Yfi"/>
-                            <constraint firstItem="BJi-rr-RMq" firstAttribute="trailing" secondItem="wyr-3h-1cs" secondAttribute="trailing" constant="8" id="VSh-Qj-A5t"/>
                             <constraint firstItem="2qP-fp-e8M" firstAttribute="leading" secondItem="wyr-3h-1cs" secondAttribute="leading" constant="8" id="We9-Bz-PVA"/>
                             <constraint firstItem="wyr-3h-1cs" firstAttribute="bottom" secondItem="2qP-fp-e8M" secondAttribute="bottom" constant="16" id="YOU-lh-jiR"/>
-                            <constraint firstItem="BJi-rr-RMq" firstAttribute="bottom" secondItem="wyr-3h-1cs" secondAttribute="top" id="fBO-yw-A5K"/>
                             <constraint firstItem="wyr-3h-1cs" firstAttribute="leading" secondItem="rcW-Ni-Cex" secondAttribute="leading" id="fiX-j9-14e"/>
-                            <constraint firstItem="BJi-rr-RMq" firstAttribute="width" secondItem="wyr-3h-1cs" secondAttribute="width" multiplier="0.4" id="guX-Ev-sip"/>
                             <constraint firstItem="rcW-Ni-Cex" firstAttribute="trailing" secondItem="wyr-3h-1cs" secondAttribute="trailing" id="snR-F9-M7j"/>
                             <constraint firstItem="rcW-Ni-Cex" firstAttribute="bottom" secondItem="wyr-3h-1cs" secondAttribute="bottom" id="wVf-0i-oOu"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="BJi-rr-RMq"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Home" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Iun-3s-wO2">
                         <barButtonItem key="leftBarButtonItem" image="person.crop.circle.badge.xmark" catalog="system" id="Auq-zi-voS"/>
+                        <barButtonItem key="rightBarButtonItem" title=" " image="signature" catalog="system" id="Rem-gV-Ink"/>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="Auq-zi-voS" id="xrL-IZ-EwZ"/>
+                        <outlet property="rightBarButtonItem" destination="Rem-gV-Ink" id="jDB-Yx-lPA"/>
                         <segue destination="cbt-kK-7Me" kind="show" identifier="Setting" id="n1X-US-etP"/>
                         <segue destination="ek3-95-ndM" kind="show" identifier="Login" id="noU-YG-DMQ"/>
                     </connections>
@@ -531,8 +491,8 @@
         <image name="3" width="3136" height="1762"/>
         <image name="ProtoType_Only_Badge" width="726" height="422"/>
         <image name="figure.walk.diamond" catalog="system" width="128" height="122"/>
-        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>
+        <image name="signature" catalog="system" width="128" height="90"/>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -541,9 +501,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

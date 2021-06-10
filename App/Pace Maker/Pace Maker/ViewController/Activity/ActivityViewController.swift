@@ -37,8 +37,11 @@ class ActivityViewController: UIViewController {
         updateUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        loadLogs()
+    }
+    
     func loadDatabase() {
-        loadLogs() // load data
         loadHealthKitData()
         loadWatchKitData()
     }
@@ -63,10 +66,13 @@ class ActivityViewController: UIViewController {
 extension ActivityViewController {
     
     func loadLogs(){
+        guard let user = user else { return }
+        
         let logReference = realtimeReference.reference(withPath: "log")
         logReference.queryOrdered(byChild: "runner")
-            .queryEqual(toValue: user?.UID)
+            .queryEqual(toValue: user.UID)
             .observe(.value) { snapshot in
+                print("snapshot.childrenCount", snapshot.childrenCount)
                 let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
                 self.logs.removeAll()
                 // snapshot is an Array of Dictionary
@@ -308,7 +314,7 @@ extension ActivityViewController {
             for sampleOneDay in samplesGrouped {
                 let date: Date = dateFormatter.date(from: "\(sampleOneDay.key[0])-\(sampleOneDay.key[1])-\(sampleOneDay.key[2])")!
                 let heartRate: Double = sampleOneDay.value.reduce(0.0){$0 + $1.value} / Double(sampleOneDay.value.count)
-                print(date, heartRate)
+                // print(date, heartRate)
                 self.heartRateData.append((date, heartRate))
             }
             self.heartRateData.sort { $0.date < $1.date }
