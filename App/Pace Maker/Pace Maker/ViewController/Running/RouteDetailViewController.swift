@@ -34,7 +34,7 @@ class RouteDetailViewController: UIViewController {
         setMapView()
         updateUI()
         updateLabels()
-        addBottomSheetView()
+        // addBottomSheetView()
     }
     
     func updateUI(){

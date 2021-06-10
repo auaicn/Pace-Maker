@@ -106,12 +106,10 @@ class RouteSelectViewController: UIViewController {
         logReference.queryOrdered(byChild: "date")
             .observe(.value) { snapshot in
                 let snapshot = snapshot.value as? [String : AnyObject] ?? [:]
-                // print("LOGS snapshot.count",snapshot.count)
-                // print(snapshot)
+                 print("LOGS snapshot.count",snapshot.count)
+                
                 self.routes.removeAll()
                 for (logId,log) in snapshot {
-                // for i in (0..<snapshot.count).reversed(){
-                    // let log = snapshot[i]
                     
                     let date: String = log["date"] as! String
                     let distance: Double = log["distance"] as! Double
@@ -150,11 +148,19 @@ class RouteSelectViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nextViewController = segue.destination as? RouteDetailViewController,
-           let indexPath = tableView.indexPathForSelectedRow {
-            let dateString = indexToDateString[indexPath.section]
-            let selectedRoute = routesByGroup[dateString]![indexPath.row]
-            nextViewController.log = selectedRoute
+        if let nextViewController = segue.destination as? RouteDetailViewController{
+           if let indexPath = tableView.indexPathForSelectedRow {
+                let dateString = indexToDateString[indexPath.section]
+                let selectedRoute = routesByGroup[dateString]![indexPath.row]
+                
+                nextViewController.log = selectedRoute
+           }else {
+                if routesByGroup.count != 0 {
+                    nextViewController.log = routesBySelf.max(by: { lhs, rhs in
+                        lhs.pace < rhs.pace
+                    })
+                }
+           }
         }
     }
 }

@@ -80,7 +80,6 @@ class RunningViewController: UIViewController {
     @IBAction func didLongPressRunningButton(_ sender: Any) {
         print("long pressed")
         if isRunning {
-            isRunning = false
             if startedRunning {
                 finishRunning()
             }
@@ -105,6 +104,7 @@ class RunningViewController: UIViewController {
     }
     
     func startRunning() {
+        startedRunning = true
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         banner3.show()
