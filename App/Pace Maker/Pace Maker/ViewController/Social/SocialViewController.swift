@@ -13,7 +13,6 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var socialCollectionView: UICollectionView!
     
-    var infoOfFriends: [DataSnapshot] = []
     var logOfFriends: [DataSnapshot] = []
     
     let today = Date()
@@ -22,7 +21,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadLogsOfFriends()
+//        self.loadLogsOfFriends()
         self.setupFlowLayout()
         
     }
@@ -33,6 +32,7 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let user = user else { return 0 }
         return self.logOfFriends.count
     }
     
@@ -92,16 +92,19 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     //Load Logs Of Friends
     private func loadLogsOfFriends(){
+        guard let user = user else { return }
+        
         let refer = realtimeReference.reference(withPath: "log")
         let logOrderByDate = refer.queryOrdered(byChild: "date").queryLimited(toLast: 30)
         logOrderByDate.observe(.value, with: {snapshot in
+            self.logOfFriends.removeAll()
             for child in snapshot.children.allObjects as! [DataSnapshot]{
                 let val = child.childSnapshot(forPath: "runner").value as! String
-                if ((user?.friends.contains(val)) != nil) {
+                if ((user.friends.contains(val)) != nil) {
                     self.logOfFriends.append(child)
                 }
             }
-            self.logOfFriends.reverse()
+            // self.logOfFriends.reverse()
             self.socialCollectionView.reloadData()
         })
         
