@@ -28,6 +28,9 @@ struct User {
     var challenges: [String]
     var friends: [String]
     
+    var runningDistance: Float64 = 0
+    var runningTime: Float64 = 0
+    
     // profile image
     var profileImage: UIImage?
     

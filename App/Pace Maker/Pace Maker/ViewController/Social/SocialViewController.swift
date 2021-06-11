@@ -45,14 +45,9 @@ class SocialViewController: UIViewController, UICollectionViewDataSource, UIColl
         cell.contentView.layer.masksToBounds = true
         cell.roundView.layer.masksToBounds = true
         
-        self.index = (self.index + 1) % 5
-
-        //let img = UIImage(named: "feed-1")
-        //cell.imgView?.image = img
-        
-        getLogImage(imgview: cell.imgView, logName: "\(self.index)")
-        
         let tmpLog = logOfFriends[indexPath.row]
+        let key = tmpLog.key
+        getLogImage(imgview: cell.imgView, logName: "\(key)")
         let nick = tmpLog.childSnapshot(forPath: "nick").value as! String
         let date = tmpLog.childSnapshot(forPath: "date").value as! String
         var distance = tmpLog.childSnapshot(forPath: "distance").value as! Float64

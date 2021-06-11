@@ -204,7 +204,7 @@
                 <outlet property="following" destination="5dn-6i-upy" id="TDP-te-cDh"/>
                 <outlet property="time" destination="eeB-th-Zid" id="fbi-7L-kfo"/>
             </connections>
-            <point key="canvasLocation" x="-43.478260869565219" y="144.30803571428569"/>
+            <point key="canvasLocation" x="-43.478260869565219" y="143.97321428571428"/>
         </collectionReusableView>
     </objects>
     <resources>

@@ -6,32 +6,37 @@
 //
 
 import UIKit
+import Firebase
 
 class FeedViewController: UIViewController {
  
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
-    private var numberOfCell = 20 {
-        didSet {
-            if numberOfCell > 50 {
-                numberOfCell = 50
-            } else if
-                numberOfCell < 0{
-                numberOfCell = 0
+    //Load Logs Of Friends
+    private var logsOfUser: [DataSnapshot] = []
+    private var index = 0
+    
+    func loadLogsOfUser(){
+        let refer = realtimeReference.reference(withPath: "log")
+        let logOrderByDate = refer.queryOrdered(byChild: "date")
+        logOrderByDate.observe(.value, with: {snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot]{
+                let val = child.childSnapshot(forPath: "runner").value as! String
+                if val == user?.UID{
+                    self.logsOfUser.append(child)
+                    let distanceTmp = child.childSnapshot(forPath: "distance").value as! Float64
+                    user?.runningDistance += distanceTmp
+                    let timeTmp = child.childSnapshot(forPath: "time").value as! Float64
+                    user?.runningTime += timeTmp
+                }
+                
             }
-        }
+            self.logsOfUser.reverse()
+            self.feedCollectionView.reloadData()
+        })
+        
     }
-    
-    private var feedStorys : [UIImage] {
-        var feedStorys : [UIImage] = []
-        for i in 1...50 {
-            let index = i % 5 + 1
-            let image = UIImage(named: "feed-\(index)")!
-            feedStorys.append(image)
-        }
-        return feedStorys
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,12 +47,9 @@ class FeedViewController: UIViewController {
         feedCollectionView.dataSource = self
         feedCollectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
         
-      
-        //feedCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "default")
-        //feedCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "default")
-        //feedCollectionView.register(CollectionReusableView.self, forSuppl ementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedHeader")
         feedCollectionView.register(UINib(nibName: "CollectionReusableView", bundle: nil), forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier: "FeedHeader")
         
+        loadLogsOfUser()
         setupFlowLayout()
         
         
@@ -88,15 +90,17 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UICollectionViewDelegate, UICollectionViewDataSource, HeaderViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfCell
+        return self.logsOfUser.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCell", for: indexPath) as? FeedCell else {
             return UICollectionViewCell()
         }
-    
-        cell.imageView.image = feedStorys[indexPath.row]
+        
+        let tmpLog = logsOfUser[indexPath.row]
+        let key = tmpLog.key
+        getLogImage(imgview: cell.imageView, logName: "\(key)")
         cell.configure()
         return cell
     }
