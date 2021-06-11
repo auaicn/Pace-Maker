@@ -36,10 +36,13 @@ class CollectionReusableView: UICollectionReusableView {
         feedImage.layer.cornerRadius = feedImage.frame.width / 2
         feedImage.clipsToBounds = true
         
-        distance.text = "총 달린 거리 : "
-        time.text = "총 달린 시간 : "
+        let distTmp = round(user!.runningDistance)
+        let timeTmp = round(user!.runningTime)
+        
+        distance.text = "총 달린 거리 : \(distTmp ?? 0) km"
+        time.text = "총 달린 시간 : \(timeTmp ?? 0) seconds"
 //        badge.text = "획득 뱃지 : "
-        following.text = "팔로잉 : \(user?.friends.count)"
+        following.text = "팔로잉 : \(user?.friends.count ?? 0)"
         discription.text = user?.description
         
         editButton.layer.borderColor = UIColor.gray.cgColor

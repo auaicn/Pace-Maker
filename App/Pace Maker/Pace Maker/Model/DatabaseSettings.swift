@@ -82,10 +82,21 @@ func uploadProfileImage(image: UIImage){
     }
 }
 
+func generateRandomColor() -> UIColor {
+    let redValue = CGFloat(drand48())
+    let greenValue = CGFloat(drand48())
+    let blueValue = CGFloat(drand48())
+        
+    let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+        
+    return randomColor
+    }
+
 func getLogImage(imgview: UIImageView, logName: String){
     let imageUrl = storageUrlBase + "log_images/" + logName + ".png"
     storage.reference(forURL: imageUrl).downloadURL { (url, error) in
         if let error = error{
+            imgview.backgroundColor = generateRandomColor()
             print(error.localizedDescription)
         }
         else{
