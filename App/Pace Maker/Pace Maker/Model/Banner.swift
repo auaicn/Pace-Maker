@@ -8,6 +8,8 @@
 import Foundation
 import NotificationBannerSwift
 
+let bannerQueueToDisplaySeveralBanners = NotificationBannerQueue(maxBannersOnScreenSimultaneously: 3)
+
 let banner1 = FloatingNotificationBanner(
     title: "경로 저장 성공",
     subtitle: "경로 저장에 성공하였습니다. 지금부터 화인할 수 있습니다.",
@@ -19,7 +21,6 @@ let banner1 = FloatingNotificationBanner(
 let banner2 = FloatingNotificationBanner(
     title: "로그인에 성공하였습니다",
     titleTextAlign: .center,
-//    subtitleTextAlign: .center,
     style: .success
 )
 

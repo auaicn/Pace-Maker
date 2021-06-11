@@ -9,6 +9,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="BlackHanSans.ttf">
+            <string>BlackHanSans</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Setting-->
         <scene sceneID="mc5-2R-hqz">
@@ -149,7 +154,7 @@
                                                                     <visualEffectView opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDz-Vn-Is2">
                                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="q1g-0G-JKq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="286.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="287"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="ups-Ne-bdx" userLabel="challenge Image">
@@ -332,25 +337,25 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="gZx-kA-aX3"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="bPK-6T-HFS"/>
                             </scrollView>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qP-fp-e8M" userLabel="Start Running Overlay" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
-                                <rect key="frame" x="8" y="733" width="398" height="64"/>
+                            <view alpha="0.83999999999999997" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qP-fp-e8M" userLabel="Start Running Overlay" customClass="RoundedView" customModule="Pace_Maker" customModuleProvider="target">
+                                <rect key="frame" x="8" y="717" width="398" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Running" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ih7-EI-OQg">
-                                        <rect key="frame" x="124" y="15" width="150.5" height="34"/>
-                                        <fontDescription key="fontDescription" name="NotoSansOriya" family="Noto Sans Oriya" pointSize="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="러닝 시작하기 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ih7-EI-OQg">
+                                        <rect key="frame" x="103" y="24" width="192" height="32"/>
+                                        <fontDescription key="fontDescription" name="BlackHanSans" family="Black Han Sans" pointSize="32"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ne8-J0-JU0" userLabel="Start Running Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="64"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="80"/>
                                         <connections>
-                                            <segue destination="J9t-Vs-4X5" kind="show" id="bRg-r5-J7p"/>
+                                            <action selector="tappedStartRunning:" destination="0fW-Lw-UHA" eventType="touchUpInside" id="J0N-1x-uRa"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="background-overlay"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="0EY-oJ-d78"/>
+                                    <constraint firstAttribute="height" constant="80" id="0EY-oJ-d78"/>
                                     <constraint firstItem="Ne8-J0-JU0" firstAttribute="leading" secondItem="2qP-fp-e8M" secondAttribute="leading" id="6td-Yh-l2O"/>
                                     <constraint firstItem="Ih7-EI-OQg" firstAttribute="centerX" secondItem="2qP-fp-e8M" secondAttribute="centerX" id="AC6-Yj-5i9"/>
                                     <constraint firstAttribute="trailing" secondItem="Ne8-J0-JU0" secondAttribute="trailing" id="GAW-dA-aF5"/>
@@ -381,14 +386,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Iun-3s-wO2">
-                        <barButtonItem key="leftBarButtonItem" image="person.crop.circle.badge.xmark" catalog="system" id="Auq-zi-voS"/>
-                        <barButtonItem key="rightBarButtonItem" title=" " image="signature" catalog="system" id="Rem-gV-Ink"/>
+                        <barButtonItem key="leftBarButtonItem" image="person.crop.circle.badge.xmark" catalog="system" id="Auq-zi-voS">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title=" " image="signature" catalog="system" id="Rem-gV-Ink">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButtonItem" destination="Auq-zi-voS" id="xrL-IZ-EwZ"/>
                         <outlet property="rightBarButtonItem" destination="Rem-gV-Ink" id="jDB-Yx-lPA"/>
                         <segue destination="cbt-kK-7Me" kind="show" identifier="Setting" id="n1X-US-etP"/>
                         <segue destination="ek3-95-ndM" kind="show" identifier="Login" id="noU-YG-DMQ"/>
+                        <segue destination="J9t-Vs-4X5" kind="show" identifier="Running" id="tKO-kh-zJt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUC-ci-Xbk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -493,11 +503,11 @@
         <image name="figure.walk.diamond" catalog="system" width="128" height="122"/>
         <image name="person.crop.circle.badge.xmark" catalog="system" width="128" height="113"/>
         <image name="signature" catalog="system" width="128" height="90"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.14900000393390656" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="background-overlay">
-            <color red="0.18600000441074371" green="0.5" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

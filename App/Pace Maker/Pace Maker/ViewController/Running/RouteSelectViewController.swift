@@ -26,11 +26,11 @@ class RouteSelectViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         setTableView()
-        // loadLogs()
+         loadLogs()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        loadLogs()
+        // loadLogs()
     }
     
     func setNavigationBar(){
@@ -58,7 +58,13 @@ class RouteSelectViewController: UIViewController {
     func groupRoutes() {
         groupRoutesByDate()
         groupRoutesByMonth()
+        groupRoutesByName()
     }
+    
+    func groupRoutesByName(){
+        
+    }
+
     
     func groupRoutesByDate(){
         routesByGroup.removeAll()
@@ -87,7 +93,7 @@ class RouteSelectViewController: UIViewController {
             let date: Date = dateFormatter.date(from: route.dateString)!
             let monthFormatter = DateFormatter()
             monthFormatter.dateFormat = "MM"
-            let monthString = calendar.monthSymbols[Int(monthFormatter.string(from: date)) ?? 0]
+            let monthString = calendar.monthSymbols[(Int(monthFormatter.string(from: date)) ?? 1) - 1]
             
             if routesByGroup[monthString] == nil {
                 indexToDateString.append(monthString)
@@ -100,7 +106,7 @@ class RouteSelectViewController: UIViewController {
     }
     
     func loadLogs(){
-        // guard let user = user else { return }
+        guard let user = user else { return }
         
         let logReference = realtimeReference.reference(withPath: "log")
         logReference.queryOrdered(byChild: "date")
@@ -121,7 +127,7 @@ class RouteSelectViewController: UIViewController {
                     
                     let fetchedLog = Log(dateString: date, distanceInKilometer: distance, routeSavedPath: route, runnerUID: runnerId, nickname: nickname, timeSpentInSeconds: time)
                     
-                    if runnerId == user?.UID {
+                    if runnerId == user.UID {
                         self.routesBySelf.append(fetchedLog)
                     } else {
                         self.routes.append(fetchedLog)
@@ -134,11 +140,15 @@ class RouteSelectViewController: UIViewController {
     func updateUI() {
         groupRoutes()
         tableView.reloadData()
+        
         if routesBySelf.count != 0 {
+            // 최고 기록
             guard let paceInSeconds = routesBySelf.max (by: { lhs, rhs in
-                return lhs.pace < rhs.pace
+                return lhs.pace > rhs.pace
             })?.pace else { return }
             bestRecordLabel.text = "\(paceInSeconds / 60) \(paceInSeconds % 60)"
+            
+            // 최근 기록
             guard let latestRecordPaceInSeconds = routesBySelf.last?.pace else { return }
             latestRecordLabel.text = "\(latestRecordPaceInSeconds / 60) \(latestRecordPaceInSeconds % 60)"
         }else {

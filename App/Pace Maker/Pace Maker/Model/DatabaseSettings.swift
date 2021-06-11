@@ -39,6 +39,7 @@ func downloadProfileImage() {
 }
 
 func uploadLogImage(with image: UIImage?, named fileName: String){
+    
     guard let image = image else { return }
     
     var data = Data()

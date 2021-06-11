@@ -108,11 +108,12 @@ class RunningViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         banner3.show()
+        
         _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(handleTimerEvent), userInfo: nil, repeats: true)
     }
  
     func stopRunning(){
-        banner3.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+        // banner3.show(queuePosition: .front, bannerPosition: .top, queue: .default)
         hapticfeedbackGenerator.notificationOccurred(.error)
         locationManager.stopUpdatingLocation()
         locationManager.stopUpdatingHeading()
@@ -175,7 +176,8 @@ class RunningViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nextVC = segue.destination as? RunningResultViewController {
             nextVC.distance = movedDistance
-            nextVC.routeImage = mapView.takeScreenshot()
+            screenshotImage = mapView.takeScreenshot()
+            nextVC.routeImage = screenshotImage
             nextVC.time = timeElapsed
         }
     }
@@ -360,6 +362,7 @@ extension RunningViewController: MKMapViewDelegate{
 // GPX 관련
 extension RunningViewController {
     func uploadGPX(){
+        
         guard let _ = user else { return }
         
         // filepath to upload
@@ -380,11 +383,14 @@ extension RunningViewController {
                 return
             }else{
                 print("[Success] uploadGPX")
-                banner1.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+                banner1.show(queuePosition: .back, bannerPosition: .top, queue: .default, on: self)
                 self.uploadLog(with: fileName)
             }
         }
         
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        bannerQueueToDisplaySeveralBanners.dismissAllForced()
     }
 }
 

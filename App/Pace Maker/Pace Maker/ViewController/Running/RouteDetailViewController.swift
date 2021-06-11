@@ -109,9 +109,6 @@ class RouteDetailViewController: UIViewController {
             }
             
             let bufferPointer = UnsafeBufferPointer(start: pointer, count: count)
-//            for (index, value) in bufferPointer.enumerated() {
-//                print("value \(index): \(value)")
-//            }
             
             competitorPolyline = MKPolyline(coordinates: pointer, count: count)
             
@@ -122,7 +119,7 @@ class RouteDetailViewController: UIViewController {
             var rect = competitorPolyline.boundingMapRect
             
             let adjustedPadding = (MAP_VIEW_SCALE_FACTOR - 1) / 2
-            rect.origin = MKMapPoint(x: rect.origin.x - adjustedPadding, y: rect.origin.y - adjustedPadding)
+            rect.origin = MKMapPoint(x: rect.origin.x - rect.size.width * adjustedPadding, y: rect.origin.y - rect.size.height * adjustedPadding)
             rect.size = MKMapSize(width: rect.size.width * MAP_VIEW_SCALE_FACTOR, height: rect.size.height * MAP_VIEW_SCALE_FACTOR)
             
             self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
