@@ -29,7 +29,7 @@ struct Log {
     var paceDescription: String {
         let min = pace / 60
         let second = pace % 60
-        return "\(min) min\n \(second) s\n"
+        return "\(min) MIN\n\(second) S\n"
     }
     
     var timeDescription: (Int, Int, Int) {

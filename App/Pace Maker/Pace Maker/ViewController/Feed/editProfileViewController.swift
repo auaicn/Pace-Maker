@@ -126,7 +126,12 @@ class editProfileViewController: UIViewController, UITextViewDelegate {
         
         updateUser()
         navigationController?.popViewController(animated: true)
-//        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? HomeViewController {
+            nextVC.loginRequested = true
+        }
     }
     
     func updateUser() {

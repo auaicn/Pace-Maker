@@ -41,6 +41,9 @@
 		188126C2261EE8A40073029F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C1261EE8A40073029F /* AppDelegate.swift */; };
 		188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188126C3261EE8A40073029F /* SceneDelegate.swift */; };
 		188126CB261EE8A70073029F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188126CA261EE8A70073029F /* Assets.xcassets */; };
+		188A933B267132A5000036A5 /* RunningSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A933A267132A5000036A5 /* RunningSettingViewController.swift */; };
+		188A933D26714603000036A5 /* HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A933C26714603000036A5 /* HapticFeedback.swift */; };
+		188A933F26714C48000036A5 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A933E26714C48000036A5 /* Banner.swift */; };
 		188B6F43265A3A7E00DA24BE /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F3F265A3A7E00DA24BE /* FeedCell.swift */; };
 		188B6F44265A3A7E00DA24BE /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */; };
 		188B6F45265A3A7E00DA24BE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 188B6F41265A3A7E00DA24BE /* FeedCell.xib */; };
@@ -107,6 +110,9 @@
 		188126C3261EE8A40073029F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		188126CA261EE8A70073029F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		188126CF261EE8A70073029F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188A933A267132A5000036A5 /* RunningSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RunningSettingViewController.swift; path = "Pace Maker/ViewController/Running/RunningSettingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		188A933C26714603000036A5 /* HapticFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HapticFeedback.swift; path = "/Users/apple/projects/Pace-Maker/App/Pace Maker/Pace Maker/Model/HapticFeedback.swift"; sourceTree = "<absolute>"; };
+		188A933E26714C48000036A5 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = "Pace Maker/Model/Banner.swift"; sourceTree = SOURCE_ROOT; };
 		188B6F3F265A3A7E00DA24BE /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		188B6F40265A3A7E00DA24BE /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 		188B6F41265A3A7E00DA24BE /* FeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 		18252B6D261EFE53001A76DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				188A933C26714603000036A5 /* HapticFeedback.swift */,
 				1840D178265E409F006956E7 /* Format.swift */,
 				1866A408266DF278001CE029 /* UnderlineLabel.swift */,
 				18653EC7265F8EAB001D9A68 /* User.swift */,
@@ -199,8 +206,6 @@
 				188126C1261EE8A40073029F /* AppDelegate.swift */,
 				188126C3261EE8A40073029F /* SceneDelegate.swift */,
 				EDBE773A2670B57D00D7B304 /* GoogleService-Info.plist */,
-				188126CF261EE8A70073029F /* Info.plist */,
-				1840D178265E409F006956E7 /* Format.swift */,
 				18A1EA2D2670BEEE00037636 /* GoogleService-Info.plist */,
 				188126CF261EE8A70073029F /* Info.plist */,
 			);
@@ -233,10 +238,13 @@
 		1831C823264F059900BC75F5 /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				188A933A267132A5000036A5 /* RunningSettingViewController.swift */,
+				18A1EA352670DEF700037636 /* RunningResultViewController.swift */,
 				1824F468266F21BC00D8B9BC /* RoutesTableViewCell.swift */,
 				184EF11D265F5E1F00B0DAD1 /* CompetitorViewController.swift */,
 				18653ED3265F998D001D9A68 /* RouteSelectViewController.swift */,
 				18952183263F0D510089AE77 /* RunningViewController.swift */,
+				188A933E26714C48000036A5 /* Banner.swift */,
 				18653ED62660AD0B001D9A68 /* RouteDetailViewController.swift */,
 				18653ED82660D3D0001D9A68 /* GradientPathRenderer.swift */,
 			);
@@ -256,7 +264,6 @@
 		188126B5261EE8A40073029F = {
 			isa = PBXGroup;
 			children = (
-				18A1EA352670DEF700037636 /* RunningResultViewController.swift */,
 				188126C0261EE8A40073029F /* Pace Maker */,
 				188126BF261EE8A40073029F /* Products */,
 				A975AC6F32DF66127DEAA009 /* Pods */,
@@ -415,7 +422,6 @@
 				18653ECF265F8FBF001D9A68 /* CollectionReusableView.xib in Resources */,
 				18D3C94D265127C700EBA66A /* Login.storyboard in Resources */,
 				188126CB261EE8A70073029F /* Assets.xcassets in Resources */,
-				188126C9261EE8A40073029F /* Main.storyboard in Resources */,
 				EDBE773B2670B57D00D7B304 /* GoogleService-Info.plist in Resources */,
 				18A1EA2E2670BEEE00037636 /* GoogleService-Info.plist in Resources */,
 				1824F46C266F410200D8B9BC /* coolvetica rg it.ttf in Resources */,
@@ -475,6 +481,7 @@
 			files = (
 				184EF11E265F5E1F00B0DAD1 /* CompetitorViewController.swift in Sources */,
 				1876B4B22669D5A000ED2EC0 /* CurrentMetric.swift in Sources */,
+				188A933F26714C48000036A5 /* Banner.swift in Sources */,
 				18653ED0265F8FBF001D9A68 /* FeedViewController.swift in Sources */,
 				ED1E0C69266E0742002FB13D /* UsersCell.swift in Sources */,
 				18D3C9562651299300EBA66A /* LoginViewController.swift in Sources */,
@@ -499,6 +506,7 @@
 				ED3FF83D2668DE2D0028D5EE /* SocialViewController.swift in Sources */,
 				18D3C94A265121D800EBA66A /* (null) in Sources */,
 				18952184263F0D510089AE77 /* RunningViewController.swift in Sources */,
+				188A933D26714603000036A5 /* HapticFeedback.swift in Sources */,
 				18653ED4265F998D001D9A68 /* RouteSelectViewController.swift in Sources */,
 				18D3C9502651293F00EBA66A /* RegisterViewController.swift in Sources */,
 				184D48252652759F00888675 /* DatabaseSettings.swift in Sources */,
@@ -509,6 +517,7 @@
 				188126C4261EE8A40073029F /* SceneDelegate.swift in Sources */,
 				18653ED92660D3D0001D9A68 /* GradientPathRenderer.swift in Sources */,
 				1831C825264F05B100BC75F5 /* BadgeViewController.swift in Sources */,
+				188A933B267132A5000036A5 /* RunningSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

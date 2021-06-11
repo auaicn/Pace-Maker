@@ -9,14 +9,15 @@ import UIKit
 
 class RunningResultViewController: UIViewController {
     
+    let currentTime: Date = Date()
+    
     var time: Int? = nil
     var distance: Double? = nil
-    var currentTime: Date = Date()
     var routeImage: UIImage? = nil
 
-    @IBOutlet weak var elapsedTimeLabel: UILabel!
     @IBOutlet weak var routeImageView: UIImageView!
-    @IBOutlet weak var timeElapsedLabel: UILabel!
+    
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
@@ -31,11 +32,14 @@ class RunningResultViewController: UIViewController {
         guard let time = time,
               let distance = distance,
               let routeImage = routeImage else { return }
+        // set image
         routeImageView.image = routeImage
-        distanceLabel.text = "\(distance) 킬로미터"
-        timeElapsedLabel.text = "\(time / 60)분 \(time % 60) 초"
-        let paceInSeconds = Int(Double(time) / distance)
-        paceLabel.text = "\(paceInSeconds / 60)분 \(paceInSeconds % 60)"
+        
+        // set labels
+        distanceLabel.text = "\(String(format:".2f",distance)) 킬로미터"
+        timeLabel.text = "\(time / 60)분 \(time % 60) 초"
+        let paceInSeconds = distance != 0 ? Int(Double(time) / distance) : 0
+        paceLabel.text = "\(paceInSeconds / 60):\(paceInSeconds % 60)"
     }
     
 }

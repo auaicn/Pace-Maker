@@ -10,14 +10,6 @@ import UIKit
 
 @IBDesignable
 class RoundedView: UIView {
-//    @IBInspectable var borderWidth: CGFloat {
-//        get {
-//            return layer.borderWidth
-//        }
-//        set {
-//            layer.borderWidth = newValue
-//        }
-//    }
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -26,14 +18,6 @@ class RoundedView: UIView {
             layer.cornerRadius = newValue
         }
     }
-//    @IBInspectable var borderColor: UIColor {
-//        get {
-//            return UIColor(cgColor: layer.borderColor!)
-//        }
-//        set {
-//            layer.borderColor = newValue.cgColor
-//        }
-//    }
     @IBInspectable var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -58,12 +42,4 @@ class RoundedView: UIView {
             layer.shadowOpacity = newValue
         }
     }
-//    @IBInspectable var shadowColor: UIColor{
-//        get {
-//            return UIColor(cgColor: layer.shadowColor!)
-//        }
-//        set {
-//            layer.borderColor = newValue.cgColor
-//        }
-//    }
 }
