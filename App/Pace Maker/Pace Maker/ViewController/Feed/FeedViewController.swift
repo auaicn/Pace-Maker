@@ -41,8 +41,6 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
-        
-        
         feedCollectionView.delegate = self
         feedCollectionView.dataSource = self
         feedCollectionView.register(UINib(nibName: "FeedCell", bundle: nil), forCellWithReuseIdentifier: "FeedCell")
@@ -51,8 +49,6 @@ class FeedViewController: UIViewController {
         
         loadLogsOfUser()
         setupFlowLayout()
-        
-        
     }
     
     

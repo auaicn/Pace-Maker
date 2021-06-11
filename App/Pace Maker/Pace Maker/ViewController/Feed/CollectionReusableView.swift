@@ -41,7 +41,6 @@ class CollectionReusableView: UICollectionReusableView {
         
         distance.text = "총 달린 거리 : \(distTmp ?? 0) km"
         time.text = "총 달린 시간 : \(timeTmp ?? 0) seconds"
-//        badge.text = "획득 뱃지 : "
         following.text = "팔로잉 : \(user?.friends.count ?? 0)"
         discription.text = user?.description
         
