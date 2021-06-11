@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NotificationBannerSwift
 
 class RunningResultViewController: UIViewController {
     
@@ -14,6 +15,8 @@ class RunningResultViewController: UIViewController {
     var time: Int? = nil
     var distance: Double? = nil
     var routeImage: UIImage? = nil
+    
+    let bannerQueueToDisplaySeveralBanners = NotificationBannerQueue(maxBannersOnScreenSimultaneously: 3)
 
     @IBOutlet weak var routeImageView: UIImageView!
     
@@ -36,7 +39,8 @@ class RunningResultViewController: UIViewController {
         routeImageView.image = routeImage
         
         // set labels
-        distanceLabel.text = "\(String(format:".2f",distance)) 킬로미터"
+        print("distance", distance)
+        distanceLabel.text = "\(String(format:"%.2f",distance)) 킬로미터"
         timeLabel.text = "\(time / 60)분 \(time % 60) 초"
         let paceInSeconds = distance != 0 ? Int(Double(time) / distance) : 0
         paceLabel.text = "\(paceInSeconds / 60):\(paceInSeconds % 60)"

@@ -18,6 +18,9 @@ var homeScreenChallengeIndex : Int = 0
 
 class HomeViewController: UIViewController{
     
+//    var loginSuccessBanner: NotificationBanner? = nil
+//        =  NotificationBanner(customView: UIView(frame: CGRect(origin: CGPoint(x: 0, y: 88), size: CGSize(width: 100,height: 200))))
+    
     var loginRequested: Bool = true
 
     @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
@@ -48,6 +51,28 @@ class HomeViewController: UIViewController{
         customView.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         customView.addTarget(self, action: #selector(tappedAutoLogin), for: .touchUpInside)
         rightBarButtonItem.customView = customView
+    }
+    
+    @IBAction func tappedStartRunning(_ sender: Any) {
+        if user != nil {
+            performSegue(withIdentifier: "Running", sender: nil)
+        }else {
+            handleRunningWithoutLogin()
+        }
+    }
+    
+    func handleRunningWithoutLogin() {
+        hapticfeedbackGenerator.notificationOccurred(.error)
+    
+        let message = "러닝을 기록하기 위해서는 계정이 필요합니다. \n 로그인을 해주셍요"
+        let alertController = UIAlertController(title: "로그인 필요",
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "로그인 하기", style: .default, handler: {_ in
+            self.tappedProfile()
+        }))
+        alertController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -131,7 +156,7 @@ extension HomeViewController {
             case .loggined:
                 print("authenticationStatus chagned to \"loggined\" status now")
                 UserDefaults.standard.set(user?.UID, forKey: "id")
-                banner2.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self)
+                banner2.show(queuePosition: .front, bannerPosition: .top, queue: .default)
                 self.download()
         }
         updateUI()
